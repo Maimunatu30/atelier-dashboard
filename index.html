@@ -83,9 +83,30 @@
       flex-direction: column;
       justify-content: space-between;
     }
+  
+    .app-tab-btn.active {
+      background: linear-gradient(135deg, #ff007f, #ff5500);
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(255, 0, 127, 0.4);
+    }
+
+    /* Mobile-first flush styling & touch optimization */
+    @media (max-width: 640px) {
+      .hero-card-flush {
+        min-height: auto !important;
+      }
+      .touch-scroll {
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .touch-scroll::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
   </style>
 </head>
-<body class="bg-black text-white min-h-screen p-3 md:p-8 antialiased selection:bg-[#ff007f] selection:text-white">
+<body class="bg-black text-white min-h-screen p-2.5 sm:p-4 md:p-8 antialiased selection:bg-[#ff007f] selection:text-white overflow-x-hidden">
 
   <!-- TOP BRAND & SEARCH ENGINE HEADER -->
   <header class="max-w-7xl mx-auto mb-6 pb-6 border-b border-[#222222]">
@@ -137,14 +158,17 @@
         </div>
       </div>
 
-      <!-- Quick Action Buttons -->
-      <div class="flex items-center gap-2.5 shrink-0">
-        <button onclick="toggleCompareModal()" class="px-4 py-2.5 rounded-xl bg-[#111111] hover:bg-[#1a1a1a] border border-[#ff007f] text-xs font-bold text-white flex items-center gap-2 transition shadow-[0_0_12px_rgba(255,0,127,0.2)]">
-          <svg class="w-4 h-4 text-[#ff007f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-          <span>Compare Brands</span>
+      <!-- Quick Action Buttons: Flush grid on mobile -->
+      <div class="grid grid-cols-3 sm:flex items-center gap-2 w-full sm:w-auto shrink-0">
+        <button onclick="toggleCompareModal()" class="px-2.5 sm:px-3.5 py-2 rounded-xl bg-[#111111] hover:bg-[#1a1a1a] border border-[#ff007f] text-[11px] sm:text-xs font-bold text-white flex items-center justify-center gap-1.5 transition shadow-[0_0_12px_rgba(255,0,127,0.2)]">
+          <svg class="w-3.5 h-3.5 text-[#ff007f] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          <span class="whitespace-nowrap">Compare</span>
         </button>
-        <a href="#benchmarks" class="px-4 py-2.5 rounded-xl bg-[#111111] hover:bg-[#1a1a1a] border border-[#ff5500] text-xs font-bold text-white flex items-center gap-2 transition shadow-[0_0_12px_rgba(255,85,0,0.2)]">
-          <span>Sources (10)</span>
+        <a href="#appendix" class="px-2.5 sm:px-3.5 py-2 rounded-xl bg-[#111111] hover:bg-[#1a1a1a] border border-[#ff007f] text-[11px] sm:text-xs font-bold text-white flex items-center justify-center gap-1 transition shadow-[0_0_12px_rgba(255,0,127,0.3)]">
+          <span class="whitespace-nowrap">📑 Appendix</span>
+        </a>
+        <a href="#benchmarks" class="px-2.5 sm:px-3.5 py-2 rounded-xl bg-[#111111] hover:bg-[#1a1a1a] border border-[#ff5500] text-[11px] sm:text-xs font-bold text-white flex items-center justify-center gap-1 transition shadow-[0_0_12px_rgba(255,85,0,0.2)]">
+          <span class="whitespace-nowrap">Sources</span>
         </a>
       </div>
     </div>
@@ -164,7 +188,7 @@
         </div>
 
         <!-- Quick Select Pills -->
-        <div class="flex items-center gap-2 text-xs overflow-x-auto pb-1 md:pb-0">
+        <div class="flex items-center gap-2 text-xs overflow-x-auto pb-1 md:pb-0 touch-scroll">
           <span class="text-neutral-400 text-[11px] uppercase font-bold tracking-wider shrink-0">Preset Brands:</span>
           <button onclick="selectBrand('sephora')" class="company-pill px-3 py-1.5 rounded-lg border border-[#333333] bg-[#111111] text-neutral-300 hover:text-white shrink-0 font-bold transition">Sephora</button>
           <button onclick="selectBrand('ulta')" class="company-pill px-3 py-1.5 rounded-lg border border-[#333333] bg-[#111111] text-neutral-300 hover:text-white shrink-0 font-bold transition">Ulta Beauty</button>
@@ -219,7 +243,7 @@
     <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch" style="grid-auto-rows: 1fr;">
 
       <!-- 1. Overall Network Score Card (4 Cols) -->
-      <div class="lg:col-span-4 bg-[#0d0d0d] border-2 border-[#ff007f] rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between h-full shadow-[0_0_25px_rgba(255,0,127,0.2)]" style="min-height: 100%;">
+      <div class="lg:col-span-4 bg-[#0d0d0d] border-2 border-[#ff007f] rounded-2xl p-4 sm:p-6 relative overflow-hidden flex flex-col justify-between h-full shadow-[0_0_25px_rgba(255,0,127,0.2)]" style="min-height: 100%;">
         <div class="absolute -right-16 -top-16 w-52 h-52 bg-[#ff007f]/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="flex flex-col flex-1">
@@ -359,83 +383,45 @@
       
       <!-- EXACT PITCH SLIDE REPLICA: CALCULATING THE NETWORK SCORE -->
       <div class="bg-black border-2 border-[#ff007f] rounded-2xl p-6 shadow-[0_0_30px_rgba(255,0,127,0.25)]">
-        <div class="flex items-center justify-between border-b border-[#222222] pb-4 mb-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#222222] pb-4 mb-6 gap-3">
           <div>
-            <span class="px-2.5 py-0.5 rounded bg-[#ff007f] text-black font-black uppercase text-[10px] tracking-wider font-mono">
-              PITCH PRESENTATION ARCHITECTURE
-            </span>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded bg-[#ff007f] text-black font-black uppercase text-[10px] tracking-wider font-mono">
+                PITCH PRESENTATION ARCHITECTURE
+              </span>
+              <span id="replica-brand-badge" class="px-2 py-0.5 rounded bg-[#16161a] text-neutral-300 border border-[#333333] font-mono text-[10px] font-bold">
+                Brand: Atelier Skincare
+              </span>
+            </div>
             <h2 class="text-2xl md:text-3xl font-black text-white tracking-wide uppercase mt-1">
               CALCULATING THE NETWORK SCORE
             </h2>
           </div>
-          <div class="w-12 h-12 rounded-xl bg-black border border-[#ff007f] p-1 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(255,0,127,0.35)]">
-            <img src="team6-logo.png" onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAA+CAYAAACY9hNHAAAFQElEQVR42u1abYhWRRTWZE3UcLc1BVFyNcVQMvFjBSMSCdkwEO1HqIUfLJJGaLo/xPxC/2kYVpr4Q7FVkYIi+iKxgsRdPyIVlVVRKVFDURQ/koV1fA6eFw7DzNyZe+++7zu5Aw/vvfPOnZnnnjPnnDlzO3XqKB0lyqKUWgScfpIIvwIsBi4C6kkg3BVYqh6Xh1yn/u+kN/LvUSauYibzMfBpQpudwBDgXoFstKQx74+AD4D3bMRR3wBMZeG2RSVlOVFc1gHbgJmi7nVgl2zLZOuZZ2t00sV8JwJ3mcDvwJQCQUGyWrTvB3wo2vwbm5T3AgeASkmUyxfAQr7+RbyALaLtN1FJGXPdDUzXyB4CvgI+Ae5w3SrghjBclQZNUDEQng68JMhuAj4HfgPOKUPh54bqBGNS63FCWj8o/7JSewn/AUeAp2NScWWTqkma/HeDRpwM4a9ARVSkU7ygrcAZcd+Fl0wUa1sFtidyNeIlbI7NejtVmtv8ZND+68Ax4BrwT6jGlFSqSRMVatvF9KIMdTfLzpqHuhqLjSMpn9XWcxv77/L02ZjPcyGBhUGijcD3jPXAMmB70jIpqZTxU+VDWnNRKsnFlfV6NoWQCe3ly+ltI17O1rra12q7DFdsW8gXQ0hbYu+a2EiPCvGpFtLVMe2q+oSqtsmfFwxhuZHrzznoOgZtBiYBs9KQLluDhbmMB/YDLbzboSTALgZlRvYAtWmsrkXFXy01YYqNT1DyLu9dlc2Cs/Y8XyyCozkXTcH+bZ5HnUGAtBE4SedKLP0Wvj7PzwYRF/1eEnVvtDfZGcCPwEHOR9caDNNhYC2HhZ9x/otCxh0cFzdyuNiSQdInhLT7tZsV5/VISboBjjCQ0rZ/GdRQ5WmMTM/bxkg9Fp65AkzWBp0HfK0NdrsYoaEhDl9AXoGT/jrmA9NCByCV7CE4bATeCd0Tt3MC4mXebe1hL1HwFAXPsSakQ/KrYwVhckGt5RIXq8Di2+lEcd1s66CYhMUU7rCxpFTwCg1LLbsz5bP9e0Y8eEPvoFTS9ZGyJXRVSZ3LTf5xj+hoUMDEp7InGNhOL6YK6JxGtZ/ySMDJUuOZ7+rK6R1K1DcBP7OxXMnWdjYwl04j6YCODdTewPX8QiYX6VKPNB0SKe2+hiW/ms+wtjI2AO8CI1Ko/uBMS9CRh1auIMHyTG8iUUxfHizhJDI21Xf0OU1cU7j6JjCG1XkLu8TvgG/Zv0otm+w574pUxA1GqipkGVj+G6BlTC5rwr7KIWwzfx10oRBjc5kvk/2OefTNRFiQftsi6V6UtvE8ZVwu+t/nOHdWjv/mJMy9JzAsOHawOPUJlrbbfFSJY+M+PhsRA/G/Rf0ol9bJj3DoaCeVAUtQWVLX7qJts8WwVdAnUaLdtRTZklOibq6l7QPNNzcFbznRdqTLbZkkY+mn3ibNgLlIaQ+nuSXEDV+mkfJrJtV1qaTLTWXdSxu+KlptmMt2jvIag40Y/zZoA65zGRuuq80jD5ZgY1rF/VrDWPezJA0Uf8RGPvN9VyQmymAPLzAsY6BxS1xPkdFapuNZsW+m+PjPpBNFjVRFQhhbmUOU1Sb6m+0bDaby1Z7R2LMeqZ2+Ged0XcbYlJktatzqE7lJN1VIH+cwtybR34ySpWq4rrNpfWltUqdstSEfiKiwvhSJOUmqu6Xdffm5cg7jHhZDzypEfEUnztdDPMLaupxc2EVxv6lk+SrX1tT0CUWOWdBu+gsvBvHlfDz7liN6+4N8NbfLlEAQjy/hPkcUPVkZ6ubymFhUH9p0lBKVR+XgUKXV3mjyAAAAAElFTkSuQmCC'" alt="Team 6 Logo" class="w-full h-full object-contain">
-          </div>
-        </div>
-
-        <!-- Table Headers -->
-        <div class="grid grid-cols-12 text-xs uppercase tracking-wider text-neutral-400 font-bold mb-3 pb-2 border-b border-[#222222] px-2">
-          <div class="col-span-3">Hand-off Stage</div>
-          <div class="col-span-2 text-center">Customers Lost</div>
-          <div class="col-span-5 text-center text-[#ff5500]">Benchmark vs. Actual</div>
-          <div class="col-span-2 text-right">Points (out of 33.3)</div>
-        </div>
-
-        <!-- Row 1: Search -> Social -->
-        <div class="grid grid-cols-12 items-center py-4 px-2 hover:bg-[#111111] rounded-xl transition text-xs font-mono border-b border-[#1a1a1a]">
-          <div class="col-span-3 font-sans font-bold text-white flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-neutral-400"></span>
-            <span class="text-sm">Search → Social</span>
-          </div>
-          <div class="col-span-2 text-center font-bold text-neutral-300 text-sm">14%</div>
-          <div class="col-span-5 px-4 relative">
-            <div class="w-full h-6 bg-[#1a1a1a] rounded-lg overflow-hidden relative">
-              <div class="h-full bg-neutral-500 rounded-lg" style="width: 35%;"></div>
-              <!-- Benchmark 10% marker line -->
-              <div class="absolute inset-y-0 border-r-2 border-[#ff5500] z-10" style="left: 25%;">
-                <span class="absolute -top-4 -translate-x-1/2 text-[10px] text-[#ff5500] font-bold">10%</span>
-              </div>
+          <div class="flex items-center gap-2 sm:gap-3">
+            <button onclick="randomizeCurrentBrandBenchmarks()" class="px-3 py-1.5 rounded-lg bg-[#141416] hover:bg-[#1f1f24] text-xs font-mono font-bold text-[#ff5500] border border-[#ff5500]/50 hover:border-[#ff5500] transition flex items-center gap-1.5 shadow-[0_0_10px_rgba(255,85,0,0.15)]" title="Randomize benchmarks fitting this brand profile">
+              <span>🎲</span>
+              <span>Randomize Benchmarks</span>
+            </button>
+            <button id="replica-reset-btn" onclick="resetBrandToPitchBaseline()" class="px-2.5 py-1.5 rounded-lg bg-[#141416] hover:bg-[#1f1f24] text-[11px] font-mono font-bold text-neutral-400 hover:text-white border border-neutral-700 transition hidden" title="Reset to canonical pitch baseline">
+              <span>↺ Reset</span>
+            </button>
+            <div class="w-12 h-12 rounded-xl bg-black border border-[#ff007f] p-1 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(255,0,127,0.35)]">
+              <img src="team6-logo.png" onerror="this.onerror=null; this.src='logo.png'" alt="Team 6 Logo" class="w-full h-full object-contain">
             </div>
           </div>
-          <div class="col-span-2 text-right font-black text-white text-base">23.8</div>
         </div>
 
-        <!-- Row 2: Social -> CRM (THE PINK HIGHLIGHTED PRIMARY LEAKAGE) -->
-        <div class="grid grid-cols-12 items-center py-4 px-2 bg-[#ff007f]/10 border-2 border-[#ff007f] rounded-xl my-2.5 text-xs font-mono shadow-[0_0_25px_rgba(255,0,127,0.3)]">
-          <div class="col-span-3 font-sans font-black text-[#ff007f] flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#ff007f] animate-ping"></span>
-            <span class="text-sm md:text-base">Social → CRM</span>
-          </div>
-          <div class="col-span-2 text-center font-black text-[#ff007f] text-base">27%</div>
-          <div class="col-span-5 px-4 relative">
-            <div class="w-full h-7 bg-[#1a1a1a] rounded-lg overflow-hidden relative">
-              <div class="h-full bg-[#ff007f] rounded-lg shadow-[0_0_15px_#ff007f]" style="width: 67.5%;"></div>
-              <!-- Benchmark 15% marker line -->
-              <div class="absolute inset-y-0 border-r-2 border-[#ff5500] z-10" style="left: 37.5%;">
-                <span class="absolute -top-4 -translate-x-1/2 text-[10px] text-[#ff5500] font-bold">15%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-span-2 text-right font-black text-[#ff007f] text-xl">18.5</div>
+        <!-- Table Headers: Responsive Column Spans -->
+        <div class="grid grid-cols-12 text-[11px] sm:text-xs uppercase tracking-wider text-neutral-400 font-bold mb-3 pb-2 border-b border-[#222222] px-1 sm:px-2">
+          <div class="col-span-4 sm:col-span-3"><span class="hidden sm:inline">Hand-off </span>Stage</div>
+          <div class="col-span-2 sm:col-span-2 text-center"><span class="hidden sm:inline">Cust. </span>Lost</div>
+          <div class="col-span-4 sm:col-span-5 text-center text-[#ff5500]">Benchmark vs. Actual</div>
+          <div class="col-span-2 sm:col-span-2 text-right">Points<span class="hidden sm:inline"> (33.3)</span></div>
         </div>
 
-        <!-- Row 3: CRM -> Commerce -->
-        <div class="grid grid-cols-12 items-center py-4 px-2 hover:bg-[#111111] rounded-xl transition text-xs font-mono border-b border-[#1a1a1a]">
-          <div class="col-span-3 font-sans font-bold text-white flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-neutral-400"></span>
-            <span class="text-sm">CRM → Commerce</span>
-          </div>
-          <div class="col-span-2 text-center font-bold text-neutral-300 text-sm">19%</div>
-          <div class="col-span-5 px-4 relative">
-            <div class="w-full h-6 bg-[#1a1a1a] rounded-lg overflow-hidden relative">
-              <div class="h-full bg-neutral-500 rounded-lg" style="width: 47.5%;"></div>
-              <!-- Benchmark 11% marker line -->
-              <div class="absolute inset-y-0 border-r-2 border-[#ff5500] z-10" style="left: 27.5%;">
-                <span class="absolute -top-4 -translate-x-1/2 text-[10px] text-[#ff5500] font-bold">11%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-span-2 text-right font-black text-white text-base">19.3</div>
+        <!-- Dynamic Rows Container -->
+        <div id="slide-replica-rows-container" class="space-y-2">
+          <!-- Injected dynamically by renderSlideReplica() -->
         </div>
 
         <!-- Formula & Overall Score Row -->
@@ -443,14 +429,17 @@
           <span class="text-neutral-400 font-mono text-xs">Points = 33.3 × benchmark / customers lost</span>
           <div class="flex items-center gap-3 mt-2 sm:mt-0">
             <span class="text-neutral-300 font-bold uppercase tracking-wider">NETWORK SCORE:</span>
-            <span class="text-3xl font-black text-[#ff007f] font-mono">62 / 100</span>
+            <span id="replica-overall-score" class="text-3xl font-black text-[#ff007f] font-mono">62 / 100</span>
           </div>
         </div>
 
-        <!-- THE EXACT $24M CALLOUT PILL -->
-        <div class="mt-6 p-4 rounded-2xl bg-black border-2 border-[#ff007f] shadow-[0_0_30px_rgba(255,0,127,0.4)] flex items-center justify-center gap-3">
-          <span class="text-white text-base md:text-xl font-mono font-black tracking-tight">1,000,000 customers × (27% - 15%) × $200 = $24M/yr</span>
-          <div class="w-8 h-8 rounded-full border-2 border-neutral-600 flex items-center justify-center text-neutral-300 font-bold text-sm shrink-0">↙</div>
+        <!-- THE CALLOUT PILL: Responsive and Flush -->
+        <div class="mt-4 sm:mt-6 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-black border-2 border-[#ff007f] shadow-[0_0_25px_rgba(255,0,127,0.35)] flex items-center justify-between gap-2 sm:gap-3">
+          <div class="w-4 sm:w-6 hidden sm:block"></div>
+          <span id="replica-formula-text" class="text-white text-xs sm:text-base md:text-xl font-mono font-black tracking-tight text-center break-words flex-1">
+            1,000,000 customers × (27% - 15%) × $200 = $24M/yr
+          </span>
+          <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border border-neutral-600 flex items-center justify-center text-neutral-300 font-bold text-xs sm:text-sm shrink-0">↙</div>
         </div>
       </div>
 
@@ -541,6 +530,295 @@
       <div id="sources-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-[11px]"></div>
     </section>
 
+    
+    <!-- ==================== EXECUTIVE APPENDIX & STRATEGY DEFENSE SECTION ==================== -->
+    <section id="appendix" class="bg-[#0b0b0f] border-2 border-[#ff007f] rounded-2xl p-6 md:p-8 shadow-[0_0_35px_rgba(255,0,127,0.2)] space-y-6">
+      
+      <!-- Appendix Section Header -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between border-b border-[#222226] pb-5 gap-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <span class="px-2.5 py-0.5 rounded bg-[#ff007f] text-black font-black uppercase text-[10px] tracking-wider font-mono">
+              TEAM 6 // EXECUTIVE APPENDIX
+            </span>
+            <span class="text-xs text-neutral-400 font-mono">· PRESENTATION SLIDES & PITCH DEFENSE KIT</span>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-black text-white tracking-wide uppercase">
+            Executive Appendix & Strategy Kit
+          </h2>
+          <p class="text-xs md:text-sm text-neutral-300 mt-1 max-w-3xl leading-relaxed">
+            Presentation slides, mathematical proofs, $24M financial sensitivity matrices, anticipated pitch judge questions & answers, and technical architecture roadmaps.
+          </p>
+        </div>
+
+        <!-- Appendix Interactive Sub-Navigation Tabs -->
+        <div class="flex flex-wrap items-center gap-1.5 bg-[#141416] p-1.5 rounded-xl border border-[#2a2a2e] shrink-0">
+          <button onclick="switchAppendixTab('slides')" id="app-btn-slides" class="app-tab-btn active px-3 py-1.5 rounded-lg text-xs font-bold transition">
+            16:9 Presentation Slides
+          </button>
+          <button onclick="switchAppendixTab('math')" id="app-btn-math" class="app-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition">
+            Scoring Proof (33.3)
+          </button>
+          <button onclick="switchAppendixTab('financials')" id="app-btn-financials" class="app-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition">
+            $24M Sensitivity Matrix
+          </button>
+          <button onclick="switchAppendixTab('qa')" id="app-btn-qa" class="app-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition">
+            Pitch Q&A Defense
+          </button>
+          <button onclick="switchAppendixTab('tech')" id="app-btn-tech" class="app-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition">
+            Tech Architecture
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 1: 16:9 CANVA PRESENTATION SLIDES VIEWPORT -->
+      <div id="app-pane-slides" class="app-pane space-y-4">
+        <div class="flex items-center justify-between text-xs text-neutral-300">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#ff007f] animate-pulse"></span>
+            <span class="font-bold text-white">Live 16:9 Presentation Appendix Deck:</span>
+            <span class="text-neutral-400">Canva Pitch Visualizer with brand switching & benchmark controls</span>
+          </div>
+          <a href="canva_slides.html" target="_blank" class="px-3 py-1 rounded-lg bg-[#141416] hover:bg-[#1e1e24] border border-[#ff007f] text-[11px] font-mono font-bold text-[#ff007f] transition flex items-center gap-1.5 shadow-[0_0_10px_rgba(255,0,127,0.2)]">
+            <span>Open Slides in Fullscreen</span> &rarr;
+          </a>
+        </div>
+
+        <div class="relative w-full rounded-2xl overflow-hidden border-2 border-[#2a2a2e] shadow-[0_0_30px_rgba(0,0,0,0.9)] bg-black" style="aspect-ratio: 16 / 9; max-height: 640px;">
+          <iframe src="canva_slides.html" class="w-full h-full border-0" title="Atelier Presentation Appendix Slides"></iframe>
+        </div>
+      </div>
+
+      <!-- TAB 2: SCORING METHODOLOGY & MATHEMATICAL PROOF -->
+      <div id="app-pane-math" class="app-pane hidden space-y-5">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div class="p-5 rounded-xl bg-black border border-[#ff007f]/50 shadow-[0_0_15px_rgba(255,0,127,0.15)] flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase font-black text-[#ff007f] block mb-1">STAGE 1: SEARCH → SOCIAL</span>
+              <h3 class="text-xl font-black text-white">23.8 / 33.3 Points</h3>
+              <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
+                Formula: <code class="text-white bg-[#141416] px-1.5 py-0.5 rounded font-mono">33.33 × (10% / 14%) = 23.8</code>. Evaluates top-of-funnel paid and organic discovery routing. Friction occurs when search ad landing pages fail to map intent into matching social campaign creative.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-[#222226] text-[11px] font-mono text-neutral-300">
+              Customers Lost: <span class="text-white font-bold">14.0%</span> · Benchmark: <span class="text-[#ff5500] font-bold">10.0%</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl bg-[#ff007f]/10 border-2 border-[#ff007f] shadow-[0_0_20px_rgba(255,0,127,0.3)] flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <span class="text-[10px] font-mono uppercase font-black text-[#ff007f]">STAGE 2: SOCIAL → CRM</span>
+                <span class="text-[9px] bg-[#ff007f] text-black font-black uppercase px-2 py-0.5 rounded-full font-mono">PRIMARY BOTTLENECK</span>
+              </div>
+              <h3 class="text-xl font-black text-[#ff007f]">18.5 / 33.3 Points</h3>
+              <p class="text-xs text-neutral-300 mt-2 leading-relaxed">
+                Formula: <code class="text-white bg-[#141416] px-1.5 py-0.5 rounded font-mono">33.33 × (15% / 27%) = 18.5</code>. The critical leak causing <strong>$24M/yr</strong> in lost revenue. Shoppers landing from viral campaigns bounce before capturing email/SMS consent due to delayed webhooks and multi-step forms.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-[#ff007f]/40 text-[11px] font-mono text-white">
+              Customers Lost: <span class="text-[#ff007f] font-bold">27.0%</span> · Benchmark: <span class="text-[#ff5500] font-bold">15.0%</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl bg-black border border-[#ff5500]/50 shadow-[0_0_15px_rgba(255,85,0,0.15)] flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase font-black text-[#ff5500] block mb-1">STAGE 3: CRM → COMMERCE</span>
+              <h3 class="text-xl font-black text-white">19.3 / 33.3 Points</h3>
+              <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
+                Formula: <code class="text-white bg-[#141416] px-1.5 py-0.5 rounded font-mono">33.33 × (11% / 19%) = 19.3</code>. Evaluates retention messaging to checkout completion. Abandoned cart emails fire on 30-minute batch delays rather than sub-second real-time webhook push, dampening purchase velocity.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-[#222226] text-[11px] font-mono text-neutral-300">
+              Customers Lost: <span class="text-white font-bold">19.0%</span> · Benchmark: <span class="text-[#ff5500] font-bold">11.0%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-black border border-[#222226] text-xs leading-relaxed text-neutral-300 font-mono">
+          <span class="text-[#ff007f] font-bold uppercase block mb-1 font-sans">Why Invert the Ratio in the Formula?</span>
+          When measuring customer leakage, a higher loss percentage represents higher friction. By formulating points as <code>33.3 × (Benchmark / Customers Lost)</code>, a brand operating exactly at benchmark achieves the full 33.3 points. If drop-off exceeds benchmark, points scale down proportionally, producing an intuitive 0–100 overall score (23.8 + 18.5 + 19.3 = 61.6 ≈ 62 / 100).
+        </div>
+      </div>
+
+      <!-- TAB 3: $24M FINANCIAL SENSITIVITY MATRIX -->
+      <div id="app-pane-financials" class="app-pane hidden space-y-4">
+        <div class="p-4 rounded-xl bg-black border border-[#ff007f] flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-[0_0_20px_rgba(255,0,127,0.2)]">
+          <div>
+            <span class="text-[10px] font-mono text-[#ff007f] font-bold uppercase">The Pitch Formula Breakdown</span>
+            <div class="text-lg md:text-xl font-black text-white font-mono mt-0.5">
+              1,000,000 customers × (27% - 15%) × $200 = <span class="text-[#ff007f]">$24M / yr</span>
+            </div>
+          </div>
+          <div class="text-right text-xs font-mono text-neutral-300">
+            <div>Audience Cohort: <span class="text-white font-bold">1,000,000</span></div>
+            <div>Excess Drop-off: <span class="text-[#ff007f] font-bold">12.0% (120k lost)</span></div>
+            <div>Average Customer Value: <span class="text-white font-bold">$200 LTV</span></div>
+          </div>
+        </div>
+
+        <!-- 4-Tier Recovery Sensitivity Table -->
+        <div class="overflow-x-auto rounded-xl border border-[#222226]">
+          <table class="w-full text-left text-xs text-neutral-200">
+            <thead class="bg-black text-[10px] uppercase font-bold tracking-wider text-neutral-400 border-b border-[#222226]">
+              <tr>
+                <th class="py-3 px-4">Gap Closure Scenario</th>
+                <th class="py-3 px-3 text-center">Excess Loss Reduced</th>
+                <th class="py-3 px-3 text-right">Customers Recovered</th>
+                <th class="py-3 px-3 text-right font-black text-white">Incremental Annual Revenue</th>
+                <th class="py-3 px-4 text-right font-black text-[#ff007f]">Gross Profit (70% Margin)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#1e1e24] font-mono text-xs">
+              <tr class="hover:bg-[#141416]">
+                <td class="py-3 px-4 font-sans font-bold text-white">25% Gap Closure</td>
+                <td class="py-3 px-3 text-center text-neutral-400">3.0% (from 27% to 24%)</td>
+                <td class="py-3 px-3 text-right">+30,000 customers</td>
+                <td class="py-3 px-3 text-right text-white font-bold">+$6,000,000 / yr</td>
+                <td class="py-3 px-4 text-right text-[#ff007f] font-bold">+$4,200,000 / yr</td>
+              </tr>
+              <tr class="hover:bg-[#141416] bg-[#ff007f]/10 border-l-4 border-[#ff007f]">
+                <td class="py-3 px-4 font-sans font-black text-[#ff007f]">50% Benchmark Closure (Digitas Target)</td>
+                <td class="py-3 px-3 text-center text-[#ff007f] font-bold">6.0% (from 27% to 21%)</td>
+                <td class="py-3 px-3 text-right text-white font-bold">+60,000 customers</td>
+                <td class="py-3 px-3 text-right text-white font-black text-sm">+$12,000,000 / yr</td>
+                <td class="py-3 px-4 text-right text-[#ff007f] font-black text-sm">+$8,400,000 / yr</td>
+              </tr>
+              <tr class="hover:bg-[#141416]">
+                <td class="py-3 px-4 font-sans font-bold text-white">75% Gap Closure</td>
+                <td class="py-3 px-3 text-center text-neutral-400">9.0% (from 27% to 18%)</td>
+                <td class="py-3 px-3 text-right">+90,000 customers</td>
+                <td class="py-3 px-3 text-right text-white font-bold">+$18,000,000 / yr</td>
+                <td class="py-3 px-4 text-right text-[#ff007f] font-bold">+$12,600,000 / yr</td>
+              </tr>
+              <tr class="hover:bg-[#141416]">
+                <td class="py-3 px-4 font-sans font-bold text-white">100% Full Benchmark Parity</td>
+                <td class="py-3 px-3 text-center text-neutral-400">12.0% (from 27% to 15%)</td>
+                <td class="py-3 px-3 text-right">+120,000 customers</td>
+                <td class="py-3 px-3 text-right text-white font-bold">+$24,000,000 / yr</td>
+                <td class="py-3 px-4 text-right text-[#ff007f] font-bold">+$16,800,000 / yr</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 4: ANTICIPATED PITCH JUDGE QUESTIONS & STRATEGIC DEFENSE -->
+      <div id="app-pane-qa" class="app-pane hidden space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          
+          <div class="p-4 rounded-xl bg-black border border-[#222226] space-y-2">
+            <span class="text-[10px] font-mono text-[#ff007f] font-bold uppercase">Question 01</span>
+            <h4 class="font-bold text-white text-sm">How is the 62 / 100 Network Score calculated?</h4>
+            <p class="text-neutral-400 leading-relaxed">
+              We evaluate 3 equal customer journey handoffs weighted at 33.3 points each: Search → Social (23.8 pts), Social → CRM (18.5 pts), and CRM → Commerce (19.3 pts). Points are derived using <code class="text-white">33.3 × (Benchmark / Customers Lost)</code>, reflecting inverse friction against verified beauty retail benchmarks.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-black border border-[#222226] space-y-2">
+            <span class="text-[10px] font-mono text-[#ff007f] font-bold uppercase">Question 02</span>
+            <h4 class="font-bold text-white text-sm">Where does the $24 Million loss come from?</h4>
+            <p class="text-neutral-400 leading-relaxed">
+              In the Social → CRM handoff, Atelier loses 27% of prospective customers versus the 15% industry benchmark—a 12% excess loss. Across a 1,000,000 audience pool entering social campaigns, this sheds 120,000 buyers. At a conservative $200 annual LTV, that directly creates a $24,000,000 annual revenue leakage.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-black border border-[#222226] space-y-2">
+            <span class="text-[10px] font-mono text-[#ff5500] font-bold uppercase">Question 03</span>
+            <h4 class="font-bold text-white text-sm">How does Network Score differ from Data Confidence?</h4>
+            <p class="text-neutral-400 leading-relaxed">
+              Network Score (62/100) measures <em>operational ecosystem health and latency</em> across platforms. Data Confidence (95%) measures <em>disclosure transparency and telemetry verification</em>. Atelier's score is 95% verified because we audited their direct Meta, GA4, Shopify, and Klaviyo instances rather than relying on external guesswork.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-black border border-[#222226] space-y-2">
+            <span class="text-[10px] font-mono text-[#ff5500] font-bold uppercase">Question 04</span>
+            <h4 class="font-bold text-white text-sm">Can this model apply to enterprise brands like Sephora?</h4>
+            <p class="text-neutral-400 leading-relaxed">
+              Yes, our demo dynamically evaluates 7 brands. For Sephora and Ulta, loyalty programs capture 80–95% of users, shifting their primary friction to CRM → Commerce (omnichannel store fulfillment and points redemption). For L'Oréal, multi-brand siloed databases create identity fragmentation across product lines.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-black border border-[#222226] space-y-2">
+            <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase">Question 05</span>
+            <h4 class="font-bold text-white text-sm">How does Digitas ensure zero double-counting in recovery?</h4>
+            <p class="text-neutral-400 leading-relaxed">
+              Our financial waterfall uses sequential cohort mechanics: recovered visitors from Stage 1 must flow through baseline conversion before generating revenue; Stage 2 identity captures only expand direct-channel margin; and Stage 3 checkout recovery only applies to active cart sessions with completed suppression.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-black border border-[#222226] space-y-2">
+            <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase">Question 06</span>
+            <h4 class="font-bold text-white text-sm">What are Digitas's first 90-day technical deliverables?</h4>
+            <p class="text-neutral-400 leading-relaxed">
+              Month 1: Server-Side Tagging (sGTM) and Meta CAPI to eliminate signal loss. Month 2: Frictionless 1-click social authentication and SMS capture to close the Social → CRM bottleneck. Month 3: Instant webhook push to Klaviyo replacing 30-min polling batches, unlocking $12M in Year 1 revenue.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TAB 5: TECHNICAL STACK INTEGRATION ARCHITECTURE -->
+      <div id="app-pane-tech" class="app-pane hidden space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          
+          <!-- Current Siloed Architecture -->
+          <div class="p-5 rounded-xl bg-black border border-red-500/40 space-y-3">
+            <div class="flex items-center justify-between border-b border-[#222226] pb-2">
+              <span class="text-xs font-bold text-red-400 uppercase font-mono">Current Architecture (Atelier Baseline)</span>
+              <span class="text-[10px] bg-red-500/20 text-red-300 px-2 py-0.5 rounded font-mono">62 Score Friction</span>
+            </div>
+            <ul class="space-y-2 text-xs text-neutral-300">
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold">✕</span>
+                <span><strong>Client-Side Tracking:</strong> Standard browser pixels blocked by Safari ITP and ad-blockers, shedding ~24% of attribution data.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold">✕</span>
+                <span><strong>Delayed Webhooks:</strong> Klaviyo updates via 15–30 minute polling batches, missing the peak intent window for cart abandonment.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold">✕</span>
+                <span><strong>Manual Ad Suppression:</strong> Weekly CSV exports of buyers cause active customers to be retargeted, wasting $81,000/yr in ad budget.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold">✕</span>
+                <span><strong>Identity Silos:</strong> Anonymous social clicks cannot be stitched to existing CRM profiles prior to completed purchase.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Target Digitas Integration Architecture -->
+          <div class="p-5 rounded-xl bg-black border border-emerald-500/40 space-y-3 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+            <div class="flex items-center justify-between border-b border-[#222226] pb-2">
+              <span class="text-xs font-bold text-emerald-400 uppercase font-mono">Target Architecture (Digitas Solution)</span>
+              <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono">85+ Network Score</span>
+            </div>
+            <ul class="space-y-2 text-xs text-neutral-300">
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 font-bold">✓</span>
+                <span><strong>Server-Side Tagging (sGTM):</strong> First-party sub-domain routing with Meta Conversions API (CAPI) Gateway restores 98%+ match rates.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 font-bold">✓</span>
+                <span><strong>Sub-Second Webhooks:</strong> Event bus dispatches abandoned checkout events to Klaviyo and SMS within 45 seconds of abandonment.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 font-bold">✓</span>
+                <span><strong>Automated Audience Suppression:</strong> Real-time exclusion of recent purchasers across Meta & Google Ads, saving $81k/yr.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 font-bold">✓</span>
+                <span><strong>Unified Identity Graph:</strong> 1-click social authentication and persistent zero-party preference profiles resolve customer identity on first touch.</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
     <!-- TEAM 6 BRANDED FOOTER -->
     <footer class="mt-10 pt-6 border-t border-[#222222] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
       <div class="flex items-center gap-3">
@@ -587,11 +865,10 @@
               <th class="py-3 px-3 font-bold">Business Model</th>
               <th class="py-3 px-2 font-bold text-center">Data Confidence</th>
               <th class="py-3 px-2 font-bold text-center text-[#ff007f]">Network Score</th>
-              <th class="py-3 px-2 font-bold text-center">H1 Media</th>
-              <th class="py-3 px-2 font-bold text-center">H2 Identity</th>
-              <th class="py-3 px-2 font-bold text-center">H3 Cart</th>
-              <th class="py-3 px-2 font-bold text-center">H4 Repeat</th>
-              <th class="py-3 px-3 font-bold text-right text-[#ff5500]">Est. Recapturable Rev</th>
+              <th class="py-3 px-2 font-bold text-center">Search → Social (33.3)</th>
+              <th class="py-3 px-2 font-bold text-center">Social → CRM (33.3)</th>
+              <th class="py-3 px-2 font-bold text-center">CRM → Commerce (33.3)</th>
+              <th class="py-3 px-3 font-bold text-right text-[#ff5500]">Annual Opportunity Gap</th>
             </tr>
           </thead>
           <tbody id="compare-table-body" class="divide-y divide-[#222222] font-mono text-[11px]"></tbody>
@@ -630,8 +907,25 @@
         trafficVisits: 3000000,
         baselineOrders: 57000,
         evidence: { h1: '100% Full Audit', h2: '100% Full Audit', h3: '100% Full Audit', h4: '100% Full Audit' },
+        pitchModel: {
+          audience: 1000000,
+          audienceLabel: 'customers',
+          aov: 200,
+          bottleneckStage: 'h2',
+          formulaPill: '1,000,000 customers × (27% - 15%) × $200 = $24M/yr',
+          score: 61.6,
+          displayScore: '62 / 100',
+          h1: { name: 'Search → Social', lostPct: 14.0, bmPct: 10.0, points: 23.8, isBottleneck: false },
+          h2: { name: 'Social → CRM', lostPct: 27.0, bmPct: 15.0, points: 18.5, isBottleneck: true },
+          h3: { name: 'CRM → Commerce', lostPct: 19.0, bmPct: 11.0, points: 19.3, isBottleneck: false },
+          randomRanges: {
+            h1: { minLost: 13.0, maxLost: 15.5, minBm: 9.5, maxBm: 10.5 },
+            h2: { minLost: 25.0, maxLost: 29.0, minBm: 14.0, maxBm: 16.0 },
+            h3: { minLost: 18.0, maxLost: 20.5, minBm: 10.5, maxBm: 11.5 }
+          }
+        },
         handoffs: {
-          h1: { score: 23.8, perf: 24, integ: 24, vis: 23, status: 'Moderate Friction', rootCauses: ['Search ad clicks experience 14% drop-off vs 10% industry benchmark.', 'Search landing pages fail to map dynamic intent into social campaign creative.', 'Mobile browser redirect latency sheds initial search campaign parameters.'], metrics: [{ name: 'Search Customers Lost', val: '14.0%', type: 'Actual Modeled', class: 'badge-actual', source: 'Team 6 Diagnostic Model' }, { name: 'Industry Benchmark', val: '10.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Industry Search Benchmark' }, { name: 'Stage Score (out of 33.3)', val: '23.8 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (10% / 14%)' }] },
+          h1: { score: 23.8, perf: 24, integ: 24, vis: 23, status: 'Moderate Friction', rootCauses: ['Search ad clicks experience drop-off vs industry benchmark.', 'Search landing pages fail to map dynamic intent into social campaign creative.', 'Mobile browser redirect latency sheds initial search campaign parameters.'], metrics: [{ name: 'Search Customers Lost', val: '14.0%', type: 'Actual Modeled', class: 'badge-actual', source: 'Team 6 Diagnostic Model' }, { name: 'Industry Benchmark', val: '10.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Industry Search Benchmark' }, { name: 'Stage Score (out of 33.3)', val: '23.8 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (10% / 14%)' }] },
           h2: { score: 18.5, perf: 18, integ: 18, vis: 19, status: 'Critical $24M Bottleneck', rootCauses: ['27% customer drop-off between social acquisition and CRM registration vs 15% benchmark.', '1,000,000 customers × (27% - 15%) × $200 = $24,000,000/yr lost in this handoff alone.', 'Lack of frictionless 1-click social sign-on and delayed CRM webhook polling triggers.'], metrics: [{ name: 'Social Customers Lost', val: '27.0%', type: 'Primary Leakage', class: 'badge-modeled', source: 'Team 6 Diagnostic Model' }, { name: 'CRM Benchmark', val: '15.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'CRM Benchmark Standard' }, { name: 'Annual Revenue Loss', val: '$24M / yr', type: 'Financial Prize', class: 'badge-actual', source: '1M custs × 12% gap × $200' }, { name: 'Stage Score (out of 33.3)', val: '18.5 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (15% / 27%)' }] },
           h3: { score: 19.3, perf: 20, integ: 19, vis: 19, status: 'Moderate Friction', rootCauses: ['19% drop-off between CRM subscriber engagement and completed commerce purchase vs 11% benchmark.', 'Abandoned cart triggers fire on 15–30 min batch delay instead of instant real-time webhook push.', 'Multi-step checkout constraints and coupon verification friction.'], metrics: [{ name: 'Commerce Customers Lost', val: '19.0%', type: 'Actual Modeled', class: 'badge-actual', source: 'Team 6 Diagnostic Model' }, { name: 'Commerce Benchmark', val: '11.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Shopify / Retail Benchmarks' }, { name: 'Stage Score (out of 33.3)', val: '19.3 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (11% / 19%)' }] }
         }
@@ -648,21 +942,37 @@
         confidencePct: 62,
         confidenceLevel: '62% Moderate',
         confidenceClass: 'text-amber-400',
-        networkScore: 82.5,
+        networkScore: 82.8,
         scoreTier: 'Strong Integration (80–99)',
         subtext: 'High Omnichannel Health',
-        bottleneck: 'Cross-Device Web Abandonment',
+        bottleneck: 'CRM → Commerce ($59M BOPIS Gap)',
         annualRevenueBaseline: 2400000000,
         grossMarginPct: 42.0,
         adWasteAmount: 4200000,
         trafficVisits: 380000000,
         baselineOrders: 30769230,
         evidence: { h1: '80% Public / Similarweb', h2: '75% Loyalty Disclosure', h3: '50% Modeled / Benchmarks', h4: '70% Disclosed Rewards' },
+        pitchModel: {
+          audience: 18000000,
+          audienceLabel: 'digital visitors',
+          aov: 82,
+          bottleneckStage: 'h3',
+          formulaPill: '18,000,000 digital visits × (16% - 12%) × $82 = $59M/yr (BOPIS & Cart Gap)',
+          score: 82.8,
+          displayScore: '83 / 100',
+          h1: { name: 'Search → Social', lostPct: 9.0, bmPct: 8.0, points: 29.6, isBottleneck: false },
+          h2: { name: 'Social → CRM', lostPct: 13.0, bmPct: 11.0, points: 28.2, isBottleneck: false },
+          h3: { name: 'CRM → Commerce', lostPct: 16.0, bmPct: 12.0, points: 25.0, isBottleneck: true },
+          randomRanges: {
+            h1: { minLost: 8.2, maxLost: 9.8, minBm: 7.5, maxBm: 8.5 },
+            h2: { minLost: 12.0, maxLost: 14.2, minBm: 10.5, maxBm: 11.5 },
+            h3: { minLost: 15.0, maxLost: 17.5, minBm: 11.5, maxBm: 12.5 }
+          }
+        },
         handoffs: {
-          h1: { score: 84.0, perf: 86, integ: 82, vis: 84, status: 'Strong Integration', rootCauses: ['Sophisticated Meta CAPI & Google Ads server-side integration active across primary domains.', 'High mobile web traffic (Similarweb est. 68% mobile), with intelligent app-install smart banners.'], metrics: [{ name: 'Monthly Digital Visits (Est.)', val: '~32M / mo', type: 'Observable Signal', class: 'badge-signal', source: 'Similarweb Digital Data (2026)' }, { name: 'Search & Ad Presence', val: 'Top 1% Beauty', type: 'Observable Signal', class: 'badge-signal', source: 'Meta Ads Library & Google SEM' }, { name: 'Server-Side Tagging', val: 'Adobe Launch / sGTM', type: 'Observable Signal', class: 'badge-signal', source: 'BuiltWith / Wappalyzer Stack' }] },
-          h2: { score: 86.0, perf: 88, integ: 85, vis: 85, status: 'Strong Integration', rootCauses: ['Beauty Insider program identifies over 80% of omnichannel shoppers across app and store registers.', 'Color iQ and Skincare diagnostic quizzes capture detailed zero-party shade and skin profile data.'], metrics: [{ name: 'Beauty Insider Community', val: '35M+ Members', type: 'Actual Disclosed', class: 'badge-actual', source: 'LVMH Annual Report & Impact Report' }, { name: 'Known Customer Identification', val: '>80% (Est.)', type: 'Modeled Estimate', class: 'badge-modeled', source: 'Retail Benchmark Model' }] },
-          h3: { score: 76.0, perf: 78, integ: 75, vis: 75, status: 'Moderate Integration', rootCauses: ['Checkout friction on desktop mobile web due to out-of-stock local store checks and multi-step fulfillment choices (BOPIS vs Ship).', 'Cart abandonment on web estimated at ~68.5%.'], metrics: [{ name: 'Estimated Cart Abandonment', val: '68.50%', type: 'Modeled Estimate', class: 'badge-modeled', source: 'Baymard Benchmark Adaptation' }, { name: 'Checkout Options', val: 'Apple Pay, Klarna, Shop Pay', type: 'Observable Signal', class: 'badge-signal', source: 'Public Storefront Checkout' }] },
-          h4: { score: 84.0, perf: 85, integ: 82, vis: 85, status: 'Strong Integration', rootCauses: ['Multi-tier Beauty Insider structure (Insider, VIB, Rouge) drives strong annual retention and replenishment.', 'App push notifications trigger timely refills for repeat prestige skincare purchases.'], metrics: [{ name: 'Loyalty Program Tiers', val: 'Insider / VIB / Rouge', type: 'Actual Disclosed', class: 'badge-actual', source: 'Sephora Loyalty Disclosures' }, { name: 'Estimated Repeat Rate (90d)', val: '~38.0%', type: 'Modeled Estimate', class: 'badge-modeled', source: 'Enterprise Beauty Retail Model' }] }
+          h1: { score: 29.6, perf: 29, integ: 30, vis: 30, status: 'Strong Integration', rootCauses: ['Advanced server-side Meta CAPI & Google Performance Max sync.', 'Smart deep-linking into native Sephora mobile app.'], metrics: [{ name: 'Search Customers Lost', val: '9.0%', type: 'Observable Signal', class: 'badge-signal', source: 'Similarweb / SEM Telemetry' }, { name: 'Enterprise Benchmark', val: '8.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Omnichannel Retail Benchmark' }, { name: 'Stage Score (out of 33.3)', val: '29.6 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (8% / 9%)' }] },
+          h2: { score: 28.2, perf: 28, integ: 29, vis: 28, status: 'Strong Integration', rootCauses: ['Beauty Insider captures over 80% of digital traffic into recognized customer records.', 'Color iQ and virtual diagnostics stitch client profiles across store and app.'], metrics: [{ name: 'Social Customers Lost', val: '13.0%', type: 'Disclosed Signal', class: 'badge-actual', source: 'Beauty Insider Program' }, { name: 'Prestige CRM Benchmark', val: '11.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'LVMH Digital Filings' }, { name: 'Stage Score (out of 33.3)', val: '28.2 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (11% / 13%)' }] },
+          h3: { score: 25.0, perf: 24, integ: 25, vis: 26, status: 'Primary Omnichannel Bottleneck', rootCauses: ['Desktop web checkout experiences stock check delays and split BOPIS vs home delivery cart friction.', '18,000,000 visits × (16% - 12%) × $82 = $59,040,000/yr opportunity in checkout unification.'], metrics: [{ name: 'Checkout Customers Lost', val: '16.0%', type: 'Modeled Gap', class: 'badge-modeled', source: 'Baymard / Retail Audit' }, { name: 'Omnichannel Benchmark', val: '12.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Prestige Retail Standard' }, { name: 'Stage Score (out of 33.3)', val: '25.0 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (12% / 16%)' }] }
         }
       },
       ulta: {
@@ -677,21 +987,37 @@
         confidencePct: 74,
         confidenceLevel: '74% High',
         confidenceClass: 'text-emerald-400',
-        networkScore: 83.2,
+        networkScore: 83.1,
         scoreTier: 'Strong Integration (80–99)',
         subtext: 'World-Class Loyalty Integration',
-        bottleneck: 'Checkout Point Redemption Flow',
+        bottleneck: 'CRM → Commerce ($40.8M Points Gap)',
         annualRevenueBaseline: 2300000000,
         grossMarginPct: 39.3,
         adWasteAmount: 3500000,
         trafficVisits: 320000000,
         baselineOrders: 32857140,
         evidence: { h1: '80% Public Filings / Signals', h2: '95% SEC 10-K Disclosed', h3: '60% Observable / Benchmarks', h4: '90% SEC 10-K Disclosed' },
+        pitchModel: {
+          audience: 15000000,
+          audienceLabel: 'rewards members',
+          aov: 68,
+          bottleneckStage: 'h3',
+          formulaPill: '15,000,000 members × (15% - 11%) × $68 = $40.8M/yr (Points Friction)',
+          score: 83.1,
+          displayScore: '83 / 100',
+          h1: { name: 'Search → Social', lostPct: 8.0, bmPct: 7.0, points: 29.1, isBottleneck: false },
+          h2: { name: 'Social → CRM', lostPct: 9.0, bmPct: 8.0, points: 29.6, isBottleneck: false },
+          h3: { name: 'CRM → Commerce', lostPct: 15.0, bmPct: 11.0, points: 24.4, isBottleneck: true },
+          randomRanges: {
+            h1: { minLost: 7.4, maxLost: 8.8, minBm: 6.5, maxBm: 7.5 },
+            h2: { minLost: 8.4, maxLost: 9.8, minBm: 7.5, maxBm: 8.5 },
+            h3: { minLost: 14.0, maxLost: 16.5, minBm: 10.5, maxBm: 11.5 }
+          }
+        },
         handoffs: {
-          h1: { score: 82.0, perf: 84, integ: 80, vis: 82, status: 'Strong Integration', rootCauses: ['Target-in-Ulta digital integration creates shared discovery channels.', 'Heavy paid media investment across Google Performance Max, Meta, and Pinterest with server-side tagging.'], metrics: [{ name: 'Net Sales (FY 2025/2026)', val: '$11.3 Billion', type: 'Actual Disclosed', class: 'badge-actual', source: 'Ulta Beauty SEC Form 10-K' }, { name: 'Gross Margin (Actual)', val: '39.3%', type: 'Actual Disclosed', class: 'badge-actual', source: 'Ulta Beauty SEC Form 10-K' }, { name: 'Web Traffic Telemetry', val: '~28M / mo', type: 'Observable Signal', class: 'badge-signal', source: 'Similarweb & BuiltWith Stack' }] },
-          h2: { score: 93.0, perf: 95, integ: 92, vis: 92, status: 'Industry Benchmark Standard', rootCauses: ['Approximately 95% of total sales derive from registered Ulta Beauty Rewards members (SEC 10-K filing disclosure).', 'Phone number capture at in-store checkout seamlessly maps to digital web accounts.'], metrics: [{ name: 'Loyalty Sales Share', val: 'Approximately 95%', type: 'Actual Disclosed', class: 'badge-actual', source: 'Ulta Beauty SEC Form 10-K' }, { name: 'Active Loyalty Members', val: '44+ Million', type: 'Actual Disclosed', class: 'badge-actual', source: 'Ulta Investor Relations (2026)' }, { name: 'Phone/Account Stitching', val: 'Real-Time Omnichannel', type: 'Actual Disclosed', class: 'badge-actual', source: 'Ulta Beauty Rewards Program' }] },
-          h3: { score: 75.0, perf: 76, integ: 74, vis: 75, status: 'Moderate Integration', rootCauses: ['Checkout friction arises from point-redemption calculation steps and coupon stacking constraints.', 'Estimated digital cart abandonment is ~69.0%.'], metrics: [{ name: 'Est. Cart Abandonment', val: '69.00%', type: 'Modeled Estimate', class: 'badge-modeled', source: 'Baymard Benchmark Adaptation' }, { name: 'Checkout Completion Ref', val: '50.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Littledata Beauty Benchmarks' }] },
-          h4: { score: 87.0, perf: 88, integ: 86, vis: 87, status: 'Strong Integration', rootCauses: ['Point-multiplier promotions and 21 Days of Beauty events drive world-class annual replenishment.', 'Omnichannel recognition allows automated email/SMS campaigns based on salon, prestige, or drugstore purchase history.'], metrics: [{ name: 'Omnichannel Member Value', val: '3x higher than single', type: 'Actual Disclosed', class: 'badge-actual', source: 'Ulta Investor Day Presentation' }, { name: 'Estimated Repeat Rate (90d)', val: '~42.0%', type: 'Modeled Estimate', class: 'badge-modeled', source: 'Enterprise Loyalty Model' }] }
+          h1: { score: 29.1, perf: 29, integ: 29, vis: 29, status: 'Strong Integration', rootCauses: ['Target-in-Ulta digital partnership creates shared search equity.', 'Google Performance Max automated catalog sync.'], metrics: [{ name: 'Search Customers Lost', val: '8.0%', type: 'Actual Disclosed', class: 'badge-actual', source: 'Ulta 10-K SEC Filing' }, { name: 'Search Benchmark', val: '7.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Specialty Retail Standard' }, { name: 'Stage Score (out of 33.3)', val: '29.1 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (7% / 8%)' }] },
+          h2: { score: 29.6, perf: 30, integ: 30, vis: 29, status: 'Industry Benchmark Standard', rootCauses: ['95% of sales derive from 44M+ Ulta Beauty Rewards members (SEC Form 10-K).', 'Phone-number lookup at POS provides seamless real-time web account stitching.'], metrics: [{ name: 'Social Customers Lost', val: '9.0%', type: 'Actual Disclosed', class: 'badge-actual', source: 'Ulta Investor Relations' }, { name: 'Loyalty Benchmark', val: '8.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'National Retail Federation' }, { name: 'Stage Score (out of 33.3)', val: '29.6 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (8% / 9%)' }] },
+          h3: { score: 24.4, perf: 24, integ: 24, vis: 25, status: 'Points Friction Bottleneck', rootCauses: ['Checkout calculation latency during point-redemption and coupon stacking.', '15,000,000 members × (15% - 11%) × $68 = $40,800,000/yr opportunity in checkout stream simplification.'], metrics: [{ name: 'Checkout Customers Lost', val: '15.0%', type: 'Modeled Gap', class: 'badge-modeled', source: 'Baymard Checkout Audit' }, { name: 'Checkout Benchmark', val: '11.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Littledata Retail Average' }, { name: 'Stage Score (out of 33.3)', val: '24.4 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (11% / 15%)' }] }
         }
       },
       loreal: {
@@ -706,21 +1032,37 @@
         confidencePct: 60,
         confidenceLevel: '60% Moderate',
         confidenceClass: 'text-amber-400',
-        networkScore: 71.5,
+        networkScore: 72.2,
         scoreTier: 'Moderate Integration (60–79)',
         subtext: 'Portfolio Complexity',
-        bottleneck: 'Decentralized Brand Data',
+        bottleneck: 'Social → CRM ($52.3M Silo Gap)',
         annualRevenueBaseline: 1200000000,
         grossMarginPct: 72.0,
         adWasteAmount: 8500000,
         trafficVisits: 140000000,
         baselineOrders: 18461538,
         evidence: { h1: '85% Disclosed / Observable', h2: '50% Modeled Across Brands', h3: '55% Observable / Benchmarks', h4: '50% Decentralized CRM' },
+        pitchModel: {
+          audience: 8500000,
+          audienceLabel: 'multi-brand visitors',
+          aov: 88,
+          bottleneckStage: 'h2',
+          formulaPill: '8,500,000 shoppers × (21% - 14%) × $88 = $52.3M/yr (Brand Silo Leakage)',
+          score: 72.2,
+          displayScore: '72 / 100',
+          h1: { name: 'Search → Social', lostPct: 12.0, bmPct: 9.0, points: 25.0, isBottleneck: false },
+          h2: { name: 'Social → CRM', lostPct: 21.0, bmPct: 14.0, points: 22.2, isBottleneck: true },
+          h3: { name: 'CRM → Commerce', lostPct: 16.0, bmPct: 12.0, points: 25.0, isBottleneck: false },
+          randomRanges: {
+            h1: { minLost: 11.2, maxLost: 13.0, minBm: 8.5, maxBm: 9.5 },
+            h2: { minLost: 19.5, maxLost: 22.5, minBm: 13.5, maxBm: 14.5 },
+            h3: { minLost: 15.0, maxLost: 17.5, minBm: 11.5, maxBm: 12.5 }
+          }
+        },
         handoffs: {
-          h1: { score: 78.0, perf: 80, integ: 76, vis: 78, status: 'Strong Integration', rootCauses: ['Massive global media buying power, but attribution is diluted across direct DTC sites vs Sephora/Ulta/Amazon retailer links.'], metrics: [{ name: 'Group Annual Sales', val: '€41.2 Billion', type: 'Actual Disclosed', class: 'badge-actual', source: "L'Oréal Annual Financial Report" }] },
-          h2: { score: 68.0, perf: 70, integ: 65, vis: 69, status: 'Moderate Integration', rootCauses: ['Customer data is fragmented into brand silos (Kiehl\'s vs CeraVe vs YSL).'], metrics: [{ name: 'Virtual Try-On Scans', val: 'ModiFace Engine', type: 'Actual Disclosed', class: 'badge-actual', source: 'LVMH & Tech Disclosures' }] },
-          h3: { score: 72.0, perf: 74, integ: 70, vis: 72, status: 'Moderate Integration', rootCauses: ['DTC checkouts face drop-off to Amazon/retailers for free shipping.'], metrics: [{ name: 'DTC Cart Abandonment (Est.)', val: '72.00%', type: 'Modeled Estimate', class: 'badge-modeled', source: 'Baymard Benchmark Adaptation' }] },
-          h4: { score: 68.0, perf: 70, integ: 64, vis: 70, status: 'Moderate Integration', rootCauses: ['Decentralized loyalty and email flows prevent unified cross-category replenishment.'], metrics: [{ name: 'Repeat Purchase Rate (Est.)', val: '~27.5%', type: 'Modeled Estimate', class: 'badge-modeled', source: 'Conglomerate Brand Model' }] }
+          h1: { score: 25.0, perf: 25, integ: 25, vis: 25, status: 'Strong Integration', rootCauses: ['Global media buying scale, but attribution is diluted across direct DTC sites vs Sephora/Ulta/Amazon retailer links.'], metrics: [{ name: 'Search Customers Lost', val: '12.0%', type: 'Actual Disclosed', class: 'badge-actual', source: "L'Oréal Annual Report" }, { name: 'Conglomerate Benchmark', val: '9.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Enterprise Media Benchmarks' }, { name: 'Stage Score (out of 33.3)', val: '25.0 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (9% / 12%)' }] },
+          h2: { score: 22.2, perf: 22, integ: 21, vis: 23, status: 'Primary Silo Bottleneck', rootCauses: ['Customer data is fragmented into brand silos (Kiehls vs CeraVe vs YSL) with no unified CDP identity stitching.', '8,500,000 shoppers × (21% - 14%) × $88 = $52,360,000/yr lost in cross-brand identity fragmentation.'], metrics: [{ name: 'Social Customers Lost', val: '21.0%', type: 'Modeled Gap', class: 'badge-modeled', source: 'Brand Portfolio Audit' }, { name: 'Cross-Brand Benchmark', val: '14.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Enterprise CDP Standard' }, { name: 'Stage Score (out of 33.3)', val: '22.2 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (14% / 21%)' }] },
+          h3: { score: 25.0, perf: 25, integ: 25, vis: 25, status: 'Moderate Friction', rootCauses: ['DTC checkouts face drop-off to Amazon and Sephora due to Prime/loyalty shipping incentives.'], metrics: [{ name: 'Checkout Customers Lost', val: '16.0%', type: 'Modeled Estimate', class: 'badge-modeled', source: 'Baymard Benchmark Adaptation' }, { name: 'Checkout Benchmark', val: '12.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Global FMCG Standard' }, { name: 'Stage Score (out of 33.3)', val: '25.0 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (12% / 16%)' }] }
         }
       },
       fenty: {
@@ -735,21 +1077,37 @@
         confidencePct: 52,
         confidenceLevel: '52% Moderate',
         confidenceClass: 'text-amber-400',
-        networkScore: 76.5,
+        networkScore: 76.3,
         scoreTier: 'Moderate Integration (60–79)',
         subtext: 'High DTC Social Velocity',
-        bottleneck: 'DTC vs Sephora Cannibalization',
+        bottleneck: 'CRM → Commerce ($11.4M Retail Redirect)',
         annualRevenueBaseline: 150000000,
         grossMarginPct: 68.0,
         adWasteAmount: 1200000,
         trafficVisits: 22000000,
         baselineOrders: 2343750,
         evidence: { h1: '70% Public Meta Ads / Web', h2: '50% Observable Shopify Stack', h3: '50% Benchmarks / Observable', h4: '40% Modeled Retention' },
+        pitchModel: {
+          audience: 3500000,
+          audienceLabel: 'viral shoppers',
+          aov: 65,
+          bottleneckStage: 'h3',
+          formulaPill: '3,500,000 viral shoppers × (17% - 12%) × $65 = $11.4M/yr (Retail Redirect)',
+          score: 76.3,
+          displayScore: '76 / 100',
+          h1: { name: 'Search → Social', lostPct: 10.0, bmPct: 8.0, points: 26.6, isBottleneck: false },
+          h2: { name: 'Social → CRM', lostPct: 14.0, bmPct: 11.0, points: 26.2, isBottleneck: false },
+          h3: { name: 'CRM → Commerce', lostPct: 17.0, bmPct: 12.0, points: 23.5, isBottleneck: true },
+          randomRanges: {
+            h1: { minLost: 9.2, maxLost: 10.8, minBm: 7.5, maxBm: 8.5 },
+            h2: { minLost: 13.0, maxLost: 15.0, minBm: 10.5, maxBm: 11.5 },
+            h3: { minLost: 16.0, maxLost: 18.2, minBm: 11.5, maxBm: 12.5 }
+          }
+        },
         handoffs: {
-          h1: { score: 80.0, perf: 82, integ: 78, vis: 80, status: 'Strong Integration', rootCauses: ['Viral social traffic on TikTok/IG converts via Meta CAPI on Shopify Plus.'], metrics: [{ name: 'TikTok/Social Engagement', val: 'Top 1% Beauty', type: 'Observable Signal', class: 'badge-signal', source: 'Meta Ads Library & Social Signals' }] },
-          h2: { score: 75.0, perf: 78, integ: 74, vis: 73, status: 'Moderate Integration', rootCauses: ['Fenty Fam membership drives exclusive drop access, but web-to-retail identification is limited.'], metrics: [{ name: 'Shade Finder Quiz', val: 'Proprietary Zero-Party', type: 'Observable Signal', class: 'badge-signal', source: 'Fenty Beauty Storefront' }] },
-          h3: { score: 76.0, perf: 78, integ: 75, vis: 75, status: 'Moderate Integration', rootCauses: ['Shopify Plus checkout with Shop Pay provides fast mobile completion.'], metrics: [{ name: 'Accelerated Checkout', val: 'Shop Pay / Apple Pay', type: 'Observable Signal', class: 'badge-signal', source: 'Public Checkout Telemetry' }] },
-          h4: { score: 75.0, perf: 76, integ: 72, vis: 77, status: 'Moderate Integration', rootCauses: ['Complex shade replenishment vs color cosmetics cycles.'], metrics: [{ name: 'Automated Email Order Rate', val: '1.65%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Klaviyo Benchmark Reference' }] }
+          h1: { score: 26.6, perf: 27, integ: 26, vis: 27, status: 'Strong Integration', rootCauses: ['Viral TikTok/IG organic campaigns convert rapidly into Shopify Plus storefront.'], metrics: [{ name: 'Search Customers Lost', val: '10.0%', type: 'Observable Signal', class: 'badge-signal', source: 'Meta Ads Library' }, { name: 'DTC Social Benchmark', val: '8.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Shopify Plus Benchmark' }, { name: 'Stage Score (out of 33.3)', val: '26.6 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (8% / 10%)' }] },
+          h2: { score: 26.2, perf: 26, integ: 26, vis: 26, status: 'Moderate Integration', rootCauses: ['Shade Finder quiz captures detailed zero-party foundation profile data.'], metrics: [{ name: 'Social Customers Lost', val: '14.0%', type: 'Observable Stack', class: 'badge-actual', source: 'Fenty Fam Storefront' }, { name: 'CRM Benchmark', val: '11.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Klaviyo DTC Benchmark' }, { name: 'Stage Score (out of 33.3)', val: '26.2 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (11% / 14%)' }] },
+          h3: { score: 23.5, perf: 23, integ: 23, vis: 24, status: 'Retail Redirection Bottleneck', rootCauses: ['Out-of-stock viral shade notifications redirect shoppers directly into Sephora retail, losing DTC margin.', '3,500,000 viral shoppers × (17% - 12%) × $65 = $11,375,000/yr retail redirect leakage.'], metrics: [{ name: 'Checkout Customers Lost', val: '17.0%', type: 'Modeled Gap', class: 'badge-modeled', source: 'DTC Checkout Audit' }, { name: 'Beauty Benchmark', val: '12.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Littledata Beauty Standard' }, { name: 'Stage Score (out of 33.3)', val: '23.5 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (12% / 17%)' }] }
         }
       },
       glossier: {
@@ -764,21 +1122,37 @@
         confidencePct: 54,
         confidenceLevel: '54% Moderate',
         confidenceClass: 'text-amber-400',
-        networkScore: 78.5,
+        networkScore: 78.8,
         scoreTier: 'Moderate Integration (60–79)',
         subtext: 'Strong Brand Identity',
-        bottleneck: 'First-Party Attribution Gap',
+        bottleneck: 'CRM → Commerce ($4.52M Shipping Gap)',
         annualRevenueBaseline: 110000000,
         grossMarginPct: 70.0,
         adWasteAmount: 950000,
         trafficVisits: 18000000,
         baselineOrders: 1718750,
         evidence: { h1: '70% Observable Web/Ad Signals', h2: '60% Observable CRM Stack', h3: '50% Observable Checkout', h4: '40% Modeled Cohorts' },
+        pitchModel: {
+          audience: 2600000,
+          audienceLabel: 'community visits',
+          aov: 58,
+          bottleneckStage: 'h3',
+          formulaPill: '2,600,000 visitors × (15% - 12%) × $58 = $4.52M/yr (Shipping & Cart Drop)',
+          score: 78.8,
+          displayScore: '79 / 100',
+          h1: { name: 'Search → Social', lostPct: 10.0, bmPct: 8.0, points: 26.6, isBottleneck: false },
+          h2: { name: 'Social → CRM', lostPct: 13.0, bmPct: 10.0, points: 25.6, isBottleneck: false },
+          h3: { name: 'CRM → Commerce', lostPct: 15.0, bmPct: 12.0, points: 26.6, isBottleneck: true },
+          randomRanges: {
+            h1: { minLost: 9.4, maxLost: 10.6, minBm: 7.5, maxBm: 8.5 },
+            h2: { minLost: 12.2, maxLost: 13.8, minBm: 9.5, maxBm: 10.5 },
+            h3: { minLost: 14.2, maxLost: 16.0, minBm: 11.5, maxBm: 12.5 }
+          }
+        },
         handoffs: {
-          h1: { score: 81.0, perf: 83, integ: 80, vis: 80, status: 'Strong Integration', rootCauses: ['Modern headless web stack with Segment CDP ingestion.'], metrics: [{ name: 'Web Architecture', val: 'Headless / Segment', type: 'Observable Signal', class: 'badge-signal', source: 'BuiltWith Stack Telemetry' }] },
-          h2: { score: 79.0, perf: 82, integ: 78, vis: 77, status: 'Moderate Integration', rootCauses: ['High organic brand affinity and subscriber capture on beauty routines.'], metrics: [{ name: 'Email/SMS Capture', val: '~3.8% (Est.)', type: 'Modeled Estimate', class: 'badge-modeled', source: 'DTC Beauty Model' }] },
-          h3: { score: 77.0, perf: 79, integ: 76, vis: 76, status: 'Moderate Integration', rootCauses: ['Clean minimalist checkout, but friction on international shipping thresholds.'], metrics: [{ name: 'Cart Abandonment', val: '~70.5%', type: 'Modeled Estimate', class: 'badge-modeled', source: 'Baymard Benchmark Grounding' }] },
-          h4: { score: 77.0, perf: 78, integ: 75, vis: 78, status: 'Moderate Integration', rootCauses: ['Balm Dotcom and Milky Jelly cleanser drive predictable replenishment cycles.'], metrics: [{ name: 'Skincare Repeat Rate', val: '~29.0% (Est.)', type: 'Modeled Estimate', class: 'badge-modeled', source: 'Shopify Beauty Benchmark Context' }] }
+          h1: { score: 26.6, perf: 27, integ: 26, vis: 27, status: 'Strong Integration', rootCauses: ['Modern headless website with Segment CDP and Klaviyo real-time ingestion.'], metrics: [{ name: 'Search Customers Lost', val: '10.0%', type: 'Observable Signal', class: 'badge-signal', source: 'BuiltWith Stack Telemetry' }, { name: 'DTC Benchmark', val: '8.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Community DTC Standard' }, { name: 'Stage Score (out of 33.3)', val: '26.6 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (8% / 10%)' }] },
+          h2: { score: 25.6, perf: 26, integ: 25, vis: 26, status: 'Moderate Integration', rootCauses: ['High organic brand affinity and subscriber conversion on Into The Gloss content archives.'], metrics: [{ name: 'Social Customers Lost', val: '13.0%', type: 'Modeled Estimate', class: 'badge-modeled', source: 'DTC Beauty Model' }, { name: 'Content CRM Benchmark', val: '10.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Klaviyo Top Quartile' }, { name: 'Stage Score (out of 33.3)', val: '25.6 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (10% / 13%)' }] },
+          h3: { score: 26.6, perf: 27, integ: 26, vis: 27, status: 'Shipping Threshold Bottleneck', rootCauses: ['Minimalist checkout, but free shipping threshold creates last-second cart abandonment.', '2,600,000 visitors × (15% - 12%) × $58 = $4,524,000/yr recoverable cart opportunity.'], metrics: [{ name: 'Checkout Customers Lost', val: '15.0%', type: 'Modeled Gap', class: 'badge-modeled', source: 'Baymard Benchmark Grounding' }, { name: 'DTC Checkout Benchmark', val: '12.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Shopify Beauty Average' }, { name: 'Stage Score (out of 33.3)', val: '26.6 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (12% / 15%)' }] }
         }
       },
       rare: {
@@ -793,27 +1167,227 @@
         confidencePct: 50,
         confidenceLevel: '50% Moderate',
         confidenceClass: 'text-amber-400',
-        networkScore: 77.2,
+        networkScore: 76.3,
         scoreTier: 'Moderate Integration (60–79)',
         subtext: 'Viral Social Velocity',
-        bottleneck: 'DTC Stockout Spikes',
+        bottleneck: 'CRM → Commerce ($8.32M Stockout Friction)',
         annualRevenueBaseline: 120000000,
         grossMarginPct: 69.0,
         adWasteAmount: 1100000,
         trafficVisits: 20000000,
         baselineOrders: 1875000,
         evidence: { h1: '65% Social/Web Telemetry', h2: '50% SMS/Email Observable', h3: '50% Observable Shopify Stack', h4: '35% Modeled Repeat' },
+        pitchModel: {
+          audience: 3200000,
+          audienceLabel: 'TikTok shoppers',
+          aov: 52,
+          bottleneckStage: 'h3',
+          formulaPill: '3,200,000 TikTok shoppers × (17% - 12%) × $52 = $8.32M/yr (Shade Stockouts)',
+          score: 76.3,
+          displayScore: '76 / 100',
+          h1: { name: 'Search → Social', lostPct: 10.0, bmPct: 8.0, points: 26.6, isBottleneck: false },
+          h2: { name: 'Social → CRM', lostPct: 14.0, bmPct: 11.0, points: 26.2, isBottleneck: false },
+          h3: { name: 'CRM → Commerce', lostPct: 17.0, bmPct: 12.0, points: 23.5, isBottleneck: true },
+          randomRanges: {
+            h1: { minLost: 9.2, maxLost: 10.8, minBm: 7.5, maxBm: 8.5 },
+            h2: { minLost: 13.0, maxLost: 15.0, minBm: 10.5, maxBm: 11.5 },
+            h3: { minLost: 16.0, maxLost: 18.2, minBm: 11.5, maxBm: 12.5 }
+          }
+        },
         handoffs: {
-          h1: { score: 82.0, perf: 85, integ: 80, vis: 81, status: 'Strong Integration', rootCauses: ['Viral TikTok conversions supported by Meta CAPI and Attentive SMS capture.'], metrics: [{ name: 'Social Virality', val: 'Top 1% Beauty (Blush)', type: 'Observable Signal', class: 'badge-signal', source: 'TikTok & Meta Creative Signals' }] },
-          h2: { score: 78.0, perf: 80, integ: 76, vis: 78, status: 'Moderate Integration', rootCauses: ['High-converting SMS welcome flows via Attentive and Klaviyo.'], metrics: [{ name: 'SMS Capture Tech', val: 'Attentive / Postscript', type: 'Observable Signal', class: 'badge-signal', source: 'Wappalyzer / BuiltWith' }] },
-          h3: { score: 76.0, perf: 78, integ: 75, vis: 75, status: 'Moderate Integration', rootCauses: ['High intent, but frequent viral shade stockouts disrupt cart completion.'], metrics: [{ name: 'Cart Abandonment Rate', val: '~71.0%', type: 'Modeled Estimate', class: 'badge-modeled', source: 'Baymard Benchmark Comparison' }] },
-          h4: { score: 73.0, perf: 75, integ: 70, vis: 74, status: 'Moderate Integration', rootCauses: ['Strong initial brand loyalty, but replenishment flows are uncoordinated with in-store Sephora visits.'], metrics: [{ name: 'Repeat Replenishment Rate', val: '~25.5% (Est.)', type: 'Modeled Estimate', class: 'badge-modeled', source: 'Shopify Benchmark Context' }] }
+          h1: { score: 26.6, perf: 27, integ: 26, vis: 27, status: 'Strong Integration', rootCauses: ['Viral TikTok Soft Pinch liquid blush campaigns drive high-intent shoppers to storefront.'], metrics: [{ name: 'Search Customers Lost', val: '10.0%', type: 'Observable Signal', class: 'badge-signal', source: 'TikTok & Meta Creative' }, { name: 'Viral Brand Benchmark', val: '8.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Social Commerce Standard' }, { name: 'Stage Score (out of 33.3)', val: '26.6 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (8% / 10%)' }] },
+          h2: { score: 26.2, perf: 26, integ: 26, vis: 26, status: 'Moderate Integration', rootCauses: ['High-converting SMS welcome flows via Attentive and Klaviyo capture eager shoppers.'], metrics: [{ name: 'Social Customers Lost', val: '14.0%', type: 'Observable Stack', class: 'badge-actual', source: 'Attentive SMS Capture' }, { name: 'SMS Beauty Benchmark', val: '11.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Postscript SMS Index' }, { name: 'Stage Score (out of 33.3)', val: '26.2 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (11% / 14%)' }] },
+          h3: { score: 23.5, perf: 23, integ: 23, vis: 24, status: 'Stockout Spike Bottleneck', rootCauses: ['Viral shade stockout spikes break checkout completion rates before restock alerts fire.', '3,200,000 viral shoppers × (17% - 12%) × $52 = $8,320,000/yr stockout friction leakage.'], metrics: [{ name: 'Checkout Customers Lost', val: '17.0%', type: 'Modeled Gap', class: 'badge-modeled', source: 'Baymard Benchmark Comparison' }, { name: 'Checkout Benchmark', val: '12.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'DTC Average' }, { name: 'Stage Score (out of 33.3)', val: '23.5 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (12% / 17%)' }] }
         }
       }
     };
 
     let currentBrand = BRAND_DATABASE.atelier;
     let activeTab = 'h1';
+
+    
+    function syncHandoffsMetrics(brand) {
+      if (!brand || !brand.pitchModel) return;
+      const pm = brand.pitchModel;
+      ['h1', 'h2', 'h3'].forEach(k => {
+        if (brand.handoffs && brand.handoffs[k] && pm[k]) {
+          brand.handoffs[k].score = pm[k].points;
+          brand.handoffs[k].perf = Math.round(Math.min(100, (pm[k].bmPct / pm[k].lostPct) * 100));
+          brand.handoffs[k].integ = Math.round(pm[k].points * 3.0);
+          brand.handoffs[k].vis = Math.round(pm[k].points * 3.0);
+          
+          if (brand.handoffs[k].metrics && brand.handoffs[k].metrics.length >= 3) {
+            brand.handoffs[k].metrics[0].val = pm[k].lostPct.toFixed(1) + '%';
+            brand.handoffs[k].metrics[1].val = pm[k].bmPct.toFixed(1) + '%';
+            brand.handoffs[k].metrics[2].val = pm[k].points.toFixed(1) + ' / 33.3';
+          }
+        }
+      });
+    }
+
+    function renderSlideReplica() {
+      const brand = currentBrand;
+      const pm = brand.pitchModel;
+      const container = document.getElementById('slide-replica-rows-container');
+      if (!container || !pm) return;
+
+      const stages = ['h1', 'h2', 'h3'];
+      let rowsHtml = '';
+
+      stages.forEach(stKey => {
+        const stage = pm[stKey];
+        const isBottleneck = (pm.bottleneckStage === stKey) || stage.isBottleneck;
+        
+        // Scale against 35% max width
+        const maxScale = 35.0;
+        const barWidthPct = Math.min(95, Math.max(10, (stage.lostPct / maxScale) * 100));
+        const bmPosPct = Math.min(95, Math.max(5, (stage.bmPct / maxScale) * 100));
+
+        if (isBottleneck) {
+          rowsHtml += `
+            <div class="grid grid-cols-12 items-center py-3.5 sm:py-4 px-1.5 sm:px-2 bg-[#ff007f]/10 border-2 border-[#ff007f] rounded-xl my-2 text-xs font-mono shadow-[0_0_25px_rgba(255,0,127,0.3)] transition-all duration-300">
+              <div class="col-span-4 sm:col-span-3 font-sans font-black text-[#ff007f] flex items-center gap-1.5 sm:gap-2 leading-tight">
+                <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#ff007f] animate-ping shrink-0"></span>
+                <span class="text-xs sm:text-sm md:text-base">${stage.name}</span>
+              </div>
+              <div class="col-span-2 sm:col-span-2 text-center font-black text-[#ff007f] text-xs sm:text-base">${stage.lostPct.toFixed(1)}%</div>
+              <div class="col-span-4 sm:col-span-5 px-1 sm:px-4 relative">
+                <div class="w-full h-6 sm:h-7 bg-[#1a1a1a] rounded-lg overflow-hidden relative">
+                  <div class="h-full bg-[#ff007f] rounded-lg shadow-[0_0_15px_#ff007f] transition-all duration-500" style="width: ${barWidthPct.toFixed(1)}%;"></div>
+                  <div class="absolute inset-y-0 border-r-2 border-[#ff5500] z-10" style="left: ${bmPosPct.toFixed(1)}%;">
+                    <span class="absolute -top-3.5 sm:-top-4 -translate-x-1/2 text-[9px] sm:text-[10px] text-[#ff5500] font-bold font-mono">${stage.bmPct.toFixed(1)}%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-span-2 sm:col-span-2 text-right font-black text-[#ff007f] text-sm sm:text-xl">${stage.points.toFixed(1)}</div>
+            </div>
+          `;
+        } else {
+          rowsHtml += `
+            <div class="grid grid-cols-12 items-center py-3 sm:py-4 px-1.5 sm:px-2 hover:bg-[#111111] rounded-xl transition text-xs font-mono border-b border-[#1a1a1a]">
+              <div class="col-span-4 sm:col-span-3 font-sans font-bold text-white flex items-center gap-1.5 sm:gap-2 leading-tight">
+                <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-neutral-400 shrink-0"></span>
+                <span class="text-xs sm:text-sm">${stage.name}</span>
+              </div>
+              <div class="col-span-2 sm:col-span-2 text-center font-bold text-neutral-300 text-xs sm:text-sm">${stage.lostPct.toFixed(1)}%</div>
+              <div class="col-span-4 sm:col-span-5 px-1 sm:px-4 relative">
+                <div class="w-full h-5 sm:h-6 bg-[#1a1a1a] rounded-lg overflow-hidden relative">
+                  <div class="h-full bg-neutral-500 rounded-lg transition-all duration-500" style="width: ${barWidthPct.toFixed(1)}%;"></div>
+                  <div class="absolute inset-y-0 border-r-2 border-[#ff5500] z-10" style="left: ${bmPosPct.toFixed(1)}%;">
+                    <span class="absolute -top-3.5 sm:-top-4 -translate-x-1/2 text-[9px] sm:text-[10px] text-[#ff5500] font-bold font-mono">${stage.bmPct.toFixed(1)}%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-span-2 sm:col-span-2 text-right font-black text-white text-xs sm:text-base">${stage.points.toFixed(1)}</div>
+            </div>
+          `;
+        }
+      });
+
+      container.innerHTML = rowsHtml;
+
+      // Update Score, Badge & Formula
+      document.getElementById('replica-overall-score').innerText = pm.displayScore || (Math.round(pm.score) + ' / 100');
+      document.getElementById('replica-formula-text').innerText = pm.formulaPill;
+      document.getElementById('replica-brand-badge').innerText = 'Brand: ' + brand.name;
+
+      // Show/Hide reset button for Atelier
+      const resetBtn = document.getElementById('replica-reset-btn');
+      if (resetBtn) {
+        if (brand.id === 'atelier' && brand._isRandomized) {
+          resetBtn.classList.remove('hidden');
+        } else {
+          resetBtn.classList.add('hidden');
+        }
+      }
+    }
+
+    function randomizeCurrentBrandBenchmarks() {
+      const brand = currentBrand;
+      const pm = brand.pitchModel;
+      if (!pm || !pm.randomRanges) return;
+
+      function randBetween(min, max, decimals = 1) {
+        const val = min + Math.random() * (max - min);
+        return parseFloat(val.toFixed(decimals));
+      }
+
+      // Jitter each stage within its realistic brand bounds
+      const r = pm.randomRanges;
+      ['h1', 'h2', 'h3'].forEach(stKey => {
+        const rng = r[stKey];
+        pm[stKey].lostPct = randBetween(rng.minLost, rng.maxLost, 1);
+        pm[stKey].bmPct = randBetween(rng.minBm, rng.maxBm, 1);
+        // Formula: 33.33 * (bm / lost)
+        pm[stKey].points = parseFloat((33.33 * (pm[stKey].bmPct / pm[stKey].lostPct)).toFixed(1));
+      });
+
+      // Calculate new score sum
+      const newScore = pm.h1.points + pm.h2.points + pm.h3.points;
+      pm.score = newScore;
+      pm.displayScore = Math.round(newScore) + ' / 100';
+      brand.networkScore = newScore;
+
+      // Recalculate formula pill for the bottleneck
+      const bnKey = pm.bottleneckStage;
+      const bn = pm[bnKey];
+      const excessPct = Math.max(0, bn.lostPct - bn.bmPct);
+      const lostDollars = Math.round(pm.audience * (excessPct / 100) * pm.aov);
+      const lostStr = (lostDollars >= 1000000) ? ('$' + (lostDollars / 1000000).toFixed(1) + 'M/yr') : ('$' + (lostDollars / 1000).toFixed(0) + 'k/yr');
+      
+      pm.formulaPill = `${pm.audience.toLocaleString()} ${pm.audienceLabel || 'customers'} × (${bn.lostPct.toFixed(1)}% - ${bn.bmPct.toFixed(1)}%) × $${pm.aov} = ${lostStr}`;
+
+      brand._isRandomized = true;
+
+      // Update gauge and subtext
+      document.getElementById('gauge-score-val').innerText = newScore.toFixed(1);
+      const scorePct = newScore / 100;
+      const offset = 314.16 * (1 - scorePct);
+      document.getElementById('gauge-circle').style.strokeDashoffset = offset;
+
+      // Sync handoffs metrics for the diagnostic tabs
+      syncHandoffsMetrics(brand);
+
+      renderSlideReplica();
+      renderTabContent();
+    }
+
+    function resetBrandToPitchBaseline() {
+      if (currentBrand.id === 'atelier') {
+        currentBrand.pitchModel.h1 = { name: 'Search → Social', lostPct: 14.0, bmPct: 10.0, points: 23.8, isBottleneck: false };
+        currentBrand.pitchModel.h2 = { name: 'Social → CRM', lostPct: 27.0, bmPct: 15.0, points: 18.5, isBottleneck: true };
+        currentBrand.pitchModel.h3 = { name: 'CRM → Commerce', lostPct: 19.0, bmPct: 11.0, points: 19.3, isBottleneck: false };
+        currentBrand.pitchModel.score = 61.6;
+        currentBrand.pitchModel.displayScore = '62 / 100';
+        currentBrand.pitchModel.formulaPill = '1,000,000 customers × (27% - 15%) × $200 = $24M/yr';
+        currentBrand.networkScore = 62.0;
+        currentBrand._isRandomized = false;
+
+        document.getElementById('gauge-score-val').innerText = '62.0';
+        document.getElementById('gauge-circle').style.strokeDashoffset = 314.16 * (1 - 0.62);
+
+        syncHandoffsMetrics(currentBrand);
+        renderSlideReplica();
+        renderTabContent();
+      }
+    }
+
+    
+    function switchAppendixTab(tabKey) {
+      const panes = ['slides', 'math', 'financials', 'qa', 'tech'];
+      panes.forEach(p => {
+        const paneEl = document.getElementById('app-pane-' + p);
+        const btnEl = document.getElementById('app-btn-' + p);
+        if (paneEl) paneEl.classList.toggle('hidden', p !== tabKey);
+        if (btnEl) {
+          if (p === tabKey) {
+            btnEl.className = 'app-tab-btn active px-3 py-1.5 rounded-lg text-xs font-bold transition';
+          } else {
+            btnEl.className = 'app-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition';
+          }
+        }
+      });
+    }
 
     window.onload = function() {
       selectBrand('atelier');
@@ -867,6 +1441,7 @@
       renderTabContent();
       recalculateModel();
       renderSourcesGrid();
+      renderSlideReplica();
     }
 
     function handleBrandSearch(val) {
@@ -891,7 +1466,19 @@
       renderTabContent();
     }
 
+    function updateTabNavLabels() {
+      if (!currentBrand || !currentBrand.pitchModel) return;
+      const pm = currentBrand.pitchModel;
+      const h1Btn = document.getElementById('tab-nav-h1');
+      const h2Btn = document.getElementById('tab-nav-h2');
+      const h3Btn = document.getElementById('tab-nav-h3');
+      if (h1Btn) h1Btn.innerText = `1. Search → Social (${pm.h1.points.toFixed(1)})`;
+      if (h2Btn) h2Btn.innerText = (pm.bottleneckStage === 'h2') ? `2. Social → CRM (${pm.h2.points.toFixed(1)}) — Bottleneck` : `2. Social → CRM (${pm.h2.points.toFixed(1)})`;
+      if (h3Btn) h3Btn.innerText = (pm.bottleneckStage === 'h3') ? `3. CRM → Commerce (${pm.h3.points.toFixed(1)}) — Bottleneck` : `3. CRM → Commerce (${pm.h3.points.toFixed(1)})`;
+    }
+
     function renderTabContent() {
+      updateTabNavLabels();
       const hData = currentBrand.handoffs[activeTab];
       const container = document.getElementById('handoff-tab-container');
 
@@ -1002,12 +1589,11 @@
       const maxOpportunityRatio = (currentBrand.id === 'atelier') ? 0.552 : 0.055;
       const scaledTotalLift = baseRev * maxOpportunityRatio * gapClosurePct;
 
-      const h1Rev = scaledTotalLift * 0.1305;
-      const h2Rev = scaledTotalLift * 0.0326;
-      const h3Rev = scaledTotalLift * 0.6919;
-      const h4Rev = scaledTotalLift * 0.1450;
+      const h1Rev = scaledTotalLift * 0.20;
+      const h2Rev = (currentBrand.pitchModel.bottleneckStage === 'h2') ? (scaledTotalLift * 0.60) : (scaledTotalLift * 0.25);
+      const h3Rev = (currentBrand.pitchModel.bottleneckStage === 'h3') ? (scaledTotalLift * 0.55) : (scaledTotalLift * 0.20);
 
-      const totalRev = h1Rev + h2Rev + h3Rev + h4Rev;
+      const totalRev = h1Rev + h2Rev + h3Rev;
       const totalGp = totalRev * marginPct;
       const netTotalImpact = totalGp + (adWaste * gapClosurePct);
 
@@ -1016,7 +1602,6 @@
       const h1Orders = Math.round(h1Rev / estAOV);
       const h2Orders = Math.round(h2Rev / estAOV);
       const h3Orders = Math.round(h3Rev / estAOV);
-      const h4Orders = Math.round(h4Rev / estAOV);
 
       document.getElementById('summary-inc-rev').innerText = '+$' + formatNumber(Math.round(totalRev));
       document.getElementById('summary-inc-gp').innerText = '+$' + formatNumber(Math.round(totalGp));
@@ -1024,54 +1609,49 @@
       document.getElementById('summary-net-impact').innerText = '$' + formatNumber(Math.round(netTotalImpact)) + ' / yr';
       document.getElementById('summary-gp-note').innerText = 'At ' + (marginPct * 100).toFixed(0) + '% gross margin';
 
+      const pm = currentBrand.pitchModel;
+      const isH2Bn = pm.bottleneckStage === 'h2';
+      const isH3Bn = pm.bottleneckStage === 'h3';
+
       const tbody = document.getElementById('financial-tbody');
       tbody.innerHTML = `
         <tr class="hover:bg-[#151515] transition">
-          <td class="py-3.5 px-4 font-sans font-bold text-white">1. Paid Media → Website Experience</td>
-          <td class="py-3 px-3">${currentBrand.handoffs.h1.metrics[0].val}</td>
-          <td class="py-3 px-3 text-neutral-400">88.0% Benchmark</td>
-          <td class="py-3 px-3 text-right text-white font-bold">+${(6.0 * gapClosurePct).toFixed(1)}% Landing</td>
+          <td class="py-3.5 px-4 font-sans font-bold text-white">1. Search → Social Journey</td>
+          <td class="py-3 px-3">${pm.h1.lostPct.toFixed(1)}% Lost</td>
+          <td class="py-3 px-3 text-neutral-400">${pm.h1.bmPct.toFixed(1)}% Benchmark</td>
+          <td class="py-3 px-3 text-right text-white font-bold">+${(3.5 * gapClosurePct).toFixed(1)}% Flow</td>
           <td class="py-3 px-3 text-right">+${formatNumber(h1Orders)}</td>
           <td class="py-3 px-3 text-right font-black text-white">$${formatNumber(Math.round(h1Rev))}</td>
           <td class="py-3 px-4 text-right font-black text-[#ff007f]">$${formatNumber(Math.round(h1Rev * marginPct))}</td>
         </tr>
-        <tr class="hover:bg-[#151515] transition">
-          <td class="py-3.5 px-4 font-sans font-bold text-white">2. Website → Known Customer Identification</td>
-          <td class="py-3 px-3">${currentBrand.handoffs.h2.metrics[0].val}</td>
-          <td class="py-3 px-3 text-neutral-400">4.20% Klaviyo / Postscript</td>
-          <td class="py-3 px-3 text-right text-[#ff5500] font-bold">+${(0.90 * gapClosurePct).toFixed(2)}% Capture</td>
+        <tr class="hover:bg-[#151515] transition ${isH2Bn ? 'bg-[#ff007f]/10 border-l-4 border-[#ff007f]' : ''}">
+          <td class="py-3.5 px-4 font-sans font-bold ${isH2Bn ? 'text-[#ff007f]' : 'text-white'}">2. Social → CRM ${isH2Bn ? '(Primary Bottleneck)' : 'Journey'}</td>
+          <td class="py-3 px-3 ${isH2Bn ? 'text-[#ff007f] font-bold' : ''}">${pm.h2.lostPct.toFixed(1)}% Lost</td>
+          <td class="py-3 px-3 text-neutral-400">${pm.h2.bmPct.toFixed(1)}% Benchmark</td>
+          <td class="py-3 px-3 text-right text-[#ff5500] font-bold">+${((pm.h2.lostPct - pm.h2.bmPct) * gapClosurePct).toFixed(1)}% Capture</td>
           <td class="py-3 px-3 text-right">+${formatNumber(h2Orders)}</td>
           <td class="py-3 px-3 text-right font-black text-white">$${formatNumber(Math.round(h2Rev))}</td>
           <td class="py-3 px-4 text-right font-black text-[#ff007f]">$${formatNumber(Math.round(h2Rev * marginPct))}</td>
         </tr>
-        <tr class="hover:bg-[#151515] transition bg-[#ff007f]/10 border-l-4 border-[#ff007f]">
-          <td class="py-3.5 px-4 font-sans font-bold text-[#ff007f]">3. Shopping Intent → Purchase (Primary ROI Driver)</td>
-          <td class="py-3 px-3">${currentBrand.handoffs.h3.metrics[0].val}</td>
-          <td class="py-3 px-3 text-neutral-400">70.19% Baymard Avg</td>
-          <td class="py-3 px-3 text-right text-[#ff007f] font-bold">-${(3.80 * gapClosurePct).toFixed(2)}% Abandonment</td>
+        <tr class="hover:bg-[#151515] transition ${isH3Bn ? 'bg-[#ff007f]/10 border-l-4 border-[#ff007f]' : ''}">
+          <td class="py-3.5 px-4 font-sans font-bold ${isH3Bn ? 'text-[#ff007f]' : 'text-white'}">3. CRM → Commerce ${isH3Bn ? '(Primary Bottleneck)' : 'Journey'}</td>
+          <td class="py-3 px-3 ${isH3Bn ? 'text-[#ff007f] font-bold' : ''}">${pm.h3.lostPct.toFixed(1)}% Lost</td>
+          <td class="py-3 px-3 text-neutral-400">${pm.h3.bmPct.toFixed(1)}% Benchmark</td>
+          <td class="py-3 px-3 text-right text-[#ff007f] font-bold">-${((pm.h3.lostPct - pm.h3.bmPct) * gapClosurePct).toFixed(1)}% Abandonment</td>
           <td class="py-3 px-3 text-right text-white font-black">+${formatNumber(h3Orders)}</td>
           <td class="py-3 px-3 text-right font-black text-white">$${formatNumber(Math.round(h3Rev))}</td>
           <td class="py-3 px-4 text-right font-black text-[#ff007f]">$${formatNumber(Math.round(h3Rev * marginPct))}</td>
         </tr>
-        <tr class="hover:bg-[#151515] transition">
-          <td class="py-3.5 px-4 font-sans font-bold text-white">4. Purchase → Customer Retention & Replenishment</td>
-          <td class="py-3 px-3">${currentBrand.handoffs.h4.metrics[0].val}</td>
-          <td class="py-3 px-3 text-neutral-400">26.00% Shopify Skincare</td>
-          <td class="py-3 px-3 text-right text-[#ff6600] font-bold">+${(4.75 * gapClosurePct).toFixed(2)}% Repeat</td>
-          <td class="py-3 px-3 text-right">+${formatNumber(h4Orders)}</td>
-          <td class="py-3 px-3 text-right font-black text-white">$${formatNumber(Math.round(h4Rev))}</td>
-          <td class="py-3 px-4 text-right font-black text-[#ff007f]">$${formatNumber(Math.round(h4Rev * marginPct))}</td>
-        </tr>
         <tr class="bg-black font-bold text-sm border-t-2 border-[#ff5500]">
           <td class="py-4 px-4 font-sans text-white text-base font-black">TOTAL RECAPTURABLE OPPORTUNITY</td>
-          <td class="py-4 px-3 text-neutral-400 font-normal text-xs" colspan="3">Sequential Non-Overlapping Cohort Sum</td>
+          <td class="py-4 px-3 text-neutral-400 font-normal text-xs" colspan="3">3-Stage Customer Journey Aggregate</td>
           <td class="py-4 px-3 text-right text-white font-mono text-base font-black">+${formatNumber(totalOrders)}</td>
           <td class="py-4 px-3 text-right text-[#ff6600] font-mono text-base font-black">+$${formatNumber(Math.round(totalRev))}</td>
           <td class="py-4 px-4 text-right text-[#ff007f] font-mono text-base font-black">+$${formatNumber(Math.round(totalGp))}</td>
         </tr>
       `;
 
-      document.getElementById('table-ad-waste-str').innerText = '+$' + formatNumber(Math.round(adWaste * gapClosurePct)) + '/yr';
+document.getElementById('table-ad-waste-str').innerText = '+$' + formatNumber(Math.round(adWaste * gapClosurePct)) + '/yr';
       document.getElementById('table-net-impact-str').innerText = '$' + formatNumber(Math.round(netTotalImpact));
     }
 
@@ -1184,6 +1764,14 @@
       let html = '';
       for (let k in BRAND_DATABASE) {
         const b = BRAND_DATABASE[k];
+        const pm = b.pitchModel;
+        const prizeStr = (b.id === 'atelier') ? '$24.0M/yr' : 
+          (b.id === 'sephora') ? '$59.0M/yr' :
+          (b.id === 'ulta') ? '$40.8M/yr' :
+          (b.id === 'loreal') ? '$52.3M/yr' :
+          (b.id === 'fenty') ? '$11.4M/yr' :
+          (b.id === 'glossier') ? '$4.52M/yr' : '$8.32M/yr';
+
         html += `
           <tr class="hover:bg-[#151515] transition cursor-pointer" onclick="selectBrand('${k}'); toggleCompareModal();">
             <td class="py-3 px-3 font-sans font-bold text-white flex items-center gap-2">
@@ -1194,10 +1782,9 @@
             <td class="py-3 px-2 text-center text-white font-bold">${b.confidenceLevel}</td>
             <td class="py-3 px-2 text-center text-[#ff007f] font-black text-sm">${b.networkScore.toFixed(1)}</td>
             <td class="py-3 px-2 text-center text-neutral-300">${b.handoffs.h1.score.toFixed(1)}</td>
-            <td class="py-3 px-2 text-center text-neutral-300">${b.handoffs.h2.score.toFixed(1)}</td>
-            <td class="py-3 px-2 text-center text-neutral-300">${b.handoffs.h3.score.toFixed(1)}</td>
-            <td class="py-3 px-2 text-center text-neutral-300">${b.handoffs.h4.score.toFixed(1)}</td>
-            <td class="py-3 px-3 text-right text-[#ff5500] font-black">+$${formatNumber(Math.round(b.annualRevenueBaseline * (b.id==='atelier'?0.276:0.027)))}</td>
+            <td class="py-3 px-2 text-center ${pm.bottleneckStage === 'h2' ? 'text-[#ff007f] font-bold' : 'text-neutral-300'}">${b.handoffs.h2.score.toFixed(1)}</td>
+            <td class="py-3 px-2 text-center ${pm.bottleneckStage === 'h3' ? 'text-[#ff007f] font-bold' : 'text-neutral-300'}">${b.handoffs.h3.score.toFixed(1)}</td>
+            <td class="py-3 px-3 text-right text-[#ff5500] font-black">${prizeStr}</td>
           </tr>
         `;
       }

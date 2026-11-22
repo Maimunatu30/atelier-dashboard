@@ -47,13 +47,30 @@
       <h1 class="text-2xl font-black text-white tracking-tight">Atelier Pitch Visualizer</h1>
     </div>
 
-    <!-- Slide Switcher Tabs -->
-    <div class="flex items-center gap-2 bg-[#141416] p-1.5 rounded-xl border border-[#2a2a2e]">
-      <button id="btn-slide-1" onclick="showSlide(1)" class="px-4 py-2 rounded-lg text-xs font-bold transition-all duration-200 tab-active flex items-center gap-2">
-        <span>Slide 1: Calculating Network Score (62/100)</span>
-      </button>
-      <button id="btn-slide-2" onclick="showSlide(2)" class="px-4 py-2 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition-all duration-200 flex items-center gap-2">
-        <span>Slide 2: $24M Financial Loss & Recovery</span>
+    <!-- Slide Switcher & Brand Selector -->
+    <div class="flex flex-wrap items-center gap-2">
+      <div class="flex items-center gap-1.5 bg-[#141416] p-1 rounded-xl border border-[#2a2a2e]">
+        <button id="btn-slide-1" onclick="showSlide(1)" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 tab-active flex items-center gap-1.5">
+          <span>Slide 1: Network Score</span>
+        </button>
+        <button id="btn-slide-2" onclick="showSlide(2)" class="px-3.5 py-1.5 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition-all duration-200 flex items-center gap-1.5">
+          <span>Slide 2: $24M Financial Loss</span>
+        </button>
+      </div>
+      
+      <div class="flex items-center gap-1 bg-[#141416] p-1 rounded-xl border border-[#2a2a2e]">
+        <button onclick="selectSlideBrand('atelier')" class="slide-brand-pill px-2.5 py-1 rounded-lg text-[11px] font-bold font-mono transition bg-[#ff007f] text-black">Atelier</button>
+        <button onclick="selectSlideBrand('sephora')" class="slide-brand-pill px-2.5 py-1 rounded-lg text-[11px] font-bold font-mono transition text-neutral-400 hover:text-white">Sephora</button>
+        <button onclick="selectSlideBrand('ulta')" class="slide-brand-pill px-2.5 py-1 rounded-lg text-[11px] font-bold font-mono transition text-neutral-400 hover:text-white">Ulta</button>
+        <button onclick="selectSlideBrand('loreal')" class="slide-brand-pill px-2.5 py-1 rounded-lg text-[11px] font-bold font-mono transition text-neutral-400 hover:text-white">L'Oréal</button>
+        <button onclick="selectSlideBrand('fenty')" class="slide-brand-pill px-2.5 py-1 rounded-lg text-[11px] font-bold font-mono transition text-neutral-400 hover:text-white">Fenty</button>
+        <button onclick="selectSlideBrand('glossier')" class="slide-brand-pill px-2.5 py-1 rounded-lg text-[11px] font-bold font-mono transition text-neutral-400 hover:text-white">Glossier</button>
+        <button onclick="selectSlideBrand('rare')" class="slide-brand-pill px-2.5 py-1 rounded-lg text-[11px] font-bold font-mono transition text-neutral-400 hover:text-white">Rare</button>
+      </div>
+
+      <button onclick="randomizeSlideBenchmarks()" class="px-2.5 py-1.5 rounded-lg bg-[#141416] hover:bg-[#1f1f24] text-[11px] font-mono font-bold text-[#ff5500] border border-[#ff5500]/50 transition flex items-center gap-1">
+        <span>🎲</span>
+        <span>Randomize</span>
       </button>
     </div>
   </div>
@@ -87,65 +104,8 @@
           <div class="col-span-3 text-right">Points (out of 33.3)</div>
         </div>
 
-        <!-- Row 1: Search -> Social -->
-        <div class="grid grid-cols-12 gap-4 items-center py-5 border-b border-[#1c1c20]">
-          <div class="col-span-3 text-sm md:text-base font-medium text-neutral-200">
-            Search &rarr; Social
-          </div>
-          <div class="col-span-6 relative flex items-center pr-12">
-            <!-- Benchmark Marker Line (10% on scale of 35% max = 28.57%) -->
-            <div class="absolute left-[28.57%] -top-4 flex flex-col items-center z-10">
-              <span class="text-[11px] text-[#ff5500] font-bold font-mono">10%</span>
-              <div class="w-0.5 h-10 bg-[#ff5500]"></div>
-            </div>
-            <!-- Progress Bar (14% on scale of 35% max = 40%) -->
-            <div class="h-6 bg-[#4a4a52] rounded-md transition-all duration-500" style="width: 40%;"></div>
-            <span class="ml-3 text-sm font-bold text-neutral-300 font-mono">14%</span>
-          </div>
-          <div class="col-span-3 text-right text-lg md:text-xl font-bold text-white font-mono">
-            23.8
-          </div>
-        </div>
-
-        <!-- Row 2: Social -> CRM (Bottleneck Highlighted in Vibrant Neon Pink) -->
-        <div class="grid grid-cols-12 gap-4 items-center py-5 border-b border-[#1c1c20]">
-          <div class="col-span-3 text-sm md:text-base font-extrabold text-[#ff007f] tracking-wide">
-            Social &rarr; CRM
-          </div>
-          <div class="col-span-6 relative flex items-center pr-12">
-            <!-- Benchmark Marker Line (15% on scale of 35% max = 42.85%) -->
-            <div class="absolute left-[42.85%] -top-4 flex flex-col items-center z-10">
-              <span class="text-[11px] text-[#ff5500] font-bold font-mono">15%</span>
-              <div class="w-0.5 h-10 bg-[#ff5500]"></div>
-            </div>
-            <!-- Progress Bar (27% on scale of 35% max = 77.14%) -->
-            <div class="h-6 bg-[#ff007f] rounded-md shadow-[0_0_15px_rgba(255,0,127,0.6)] transition-all duration-500" style="width: 77.14%;"></div>
-            <span class="ml-3 text-sm font-bold text-[#ff007f] font-mono">27%</span>
-          </div>
-          <div class="col-span-3 text-right text-lg md:text-xl font-black text-[#ff007f] font-mono">
-            18.5
-          </div>
-        </div>
-
-        <!-- Row 3: CRM -> Commerce -->
-        <div class="grid grid-cols-12 gap-4 items-center py-5 border-b border-[#1c1c20]">
-          <div class="col-span-3 text-sm md:text-base font-medium text-neutral-200">
-            CRM &rarr; Commerce
-          </div>
-          <div class="col-span-6 relative flex items-center pr-12">
-            <!-- Benchmark Marker Line (11% on scale of 35% max = 31.42%) -->
-            <div class="absolute left-[31.42%] -top-4 flex flex-col items-center z-10">
-              <span class="text-[11px] text-[#ff5500] font-bold font-mono">11%</span>
-              <div class="w-0.5 h-10 bg-[#ff5500]"></div>
-            </div>
-            <!-- Progress Bar (19% on scale of 35% max = 54.28%) -->
-            <div class="h-6 bg-[#4a4a52] rounded-md transition-all duration-500" style="width: 54.28%;"></div>
-            <span class="ml-3 text-sm font-bold text-neutral-300 font-mono">19%</span>
-          </div>
-          <div class="col-span-3 text-right text-lg md:text-xl font-bold text-white font-mono">
-            19.3
-          </div>
-        </div>
+        <!-- Dynamic Rows for Slide 1 -->
+        <div id="slide-1-rows-container" class="space-y-1"></div>
 
         <!-- Calculation Subtext -->
         <div class="text-right text-xs text-neutral-400 font-mono pt-2">
@@ -158,9 +118,7 @@
         <span class="text-sm md:text-base font-black tracking-wider text-white uppercase">
           Network Score
         </span>
-        <span class="text-xl md:text-2xl font-black text-[#ff007f] font-mono">
-          62 / 100
-        </span>
+        <span id="slide-score-val" class="text-xl md:text-2xl font-black text-[#ff007f] font-mono">62 / 100</span>
       </div>
 
       <!-- Bottom Formula Pill -->
@@ -168,7 +126,7 @@
         <div class="w-full py-3.5 px-6 rounded-full bg-[#1e1e24] border-2 border-[#ff007f] shadow-[0_0_20px_rgba(255,0,127,0.4)] flex items-center justify-between">
           <div class="w-8"></div>
           <div class="text-sm md:text-lg lg:text-xl font-bold text-white tracking-wide font-mono text-center">
-            1,000,000 customers &times; (27% - 15%) &times; $200 = <span class="text-[#ff007f]">$24M/yr</span>
+            <span id="slide-formula-pill-text">1,000,000 customers &times; (27% - 15%) &times; $200 = <span class="text-[#ff007f]">$24M/yr</span></span>
           </div>
           <div class="w-8 h-8 rounded-full border border-neutral-500 flex items-center justify-center text-neutral-300">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -326,7 +284,193 @@
 
   </div>
 
+  
   <script>
+    const SLIDE_BRANDS = {
+      atelier: {
+        name: 'Atelier Skincare',
+        h1: { name: 'Search → Social', lostPct: 14.0, bmPct: 10.0, points: 23.8 },
+        h2: { name: 'Social → CRM', lostPct: 27.0, bmPct: 15.0, points: 18.5, isBottleneck: true },
+        h3: { name: 'CRM → Commerce', lostPct: 19.0, bmPct: 11.0, points: 19.3 },
+        score: '62 / 100',
+        formula: '1,000,000 customers × (27% - 15%) × $200 = $24M/yr',
+        ranges: { h1: [13.0, 15.5, 9.5, 10.5], h2: [25.0, 29.0, 14.0, 16.0], h3: [18.0, 20.5, 10.5, 11.5] },
+        audience: 1000000, aov: 200, label: 'customers'
+      },
+      sephora: {
+        name: 'Sephora',
+        h1: { name: 'Search → Social', lostPct: 9.0, bmPct: 8.0, points: 29.6 },
+        h2: { name: 'Social → CRM', lostPct: 13.0, bmPct: 11.0, points: 28.2 },
+        h3: { name: 'CRM → Commerce', lostPct: 16.0, bmPct: 12.0, points: 25.0, isBottleneck: true },
+        score: '83 / 100',
+        formula: '18,000,000 digital visits × (16% - 12%) × $82 = $59M/yr (BOPIS Gap)',
+        ranges: { h1: [8.2, 9.8, 7.5, 8.5], h2: [12.0, 14.2, 10.5, 11.5], h3: [15.0, 17.5, 11.5, 12.5] },
+        audience: 18000000, aov: 82, label: 'digital visits'
+      },
+      ulta: {
+        name: 'Ulta Beauty',
+        h1: { name: 'Search → Social', lostPct: 8.0, bmPct: 7.0, points: 29.1 },
+        h2: { name: 'Social → CRM', lostPct: 9.0, bmPct: 8.0, points: 29.6 },
+        h3: { name: 'CRM → Commerce', lostPct: 15.0, bmPct: 11.0, points: 24.4, isBottleneck: true },
+        score: '83 / 100',
+        formula: '15,000,000 members × (15% - 11%) × $68 = $40.8M/yr (Points Friction)',
+        ranges: { h1: [7.4, 8.8, 6.5, 7.5], h2: [8.4, 9.8, 7.5, 8.5], h3: [14.0, 16.5, 10.5, 11.5] },
+        audience: 15000000, aov: 68, label: 'members'
+      },
+      loreal: {
+        name: "L'Oréal Group",
+        h1: { name: 'Search → Social', lostPct: 12.0, bmPct: 9.0, points: 25.0 },
+        h2: { name: 'Social → CRM', lostPct: 21.0, bmPct: 14.0, points: 22.2, isBottleneck: true },
+        h3: { name: 'CRM → Commerce', lostPct: 16.0, bmPct: 12.0, points: 25.0 },
+        score: '72 / 100',
+        formula: '8,500,000 shoppers × (21% - 14%) × $88 = $52.3M/yr (Brand Silos)',
+        ranges: { h1: [11.2, 13.0, 8.5, 9.5], h2: [19.5, 22.5, 13.5, 14.5], h3: [15.0, 17.5, 11.5, 12.5] },
+        audience: 8500000, aov: 88, label: 'shoppers'
+      },
+      fenty: {
+        name: 'Fenty Beauty',
+        h1: { name: 'Search → Social', lostPct: 10.0, bmPct: 8.0, points: 26.6 },
+        h2: { name: 'Social → CRM', lostPct: 14.0, bmPct: 11.0, points: 26.2 },
+        h3: { name: 'CRM → Commerce', lostPct: 17.0, bmPct: 12.0, points: 23.5, isBottleneck: true },
+        score: '76 / 100',
+        formula: '3,500,000 viral shoppers × (17% - 12%) × $65 = $11.4M/yr (Retail Redirect)',
+        ranges: { h1: [9.2, 10.8, 7.5, 8.5], h2: [13.0, 15.0, 10.5, 11.5], h3: [16.0, 18.2, 11.5, 12.5] },
+        audience: 3500000, aov: 65, label: 'viral shoppers'
+      },
+      glossier: {
+        name: 'Glossier',
+        h1: { name: 'Search → Social', lostPct: 10.0, bmPct: 8.0, points: 26.6 },
+        h2: { name: 'Social → CRM', lostPct: 13.0, bmPct: 10.0, points: 25.6 },
+        h3: { name: 'CRM → Commerce', lostPct: 15.0, bmPct: 12.0, points: 26.6, isBottleneck: true },
+        score: '79 / 100',
+        formula: '2,600,000 visitors × (15% - 12%) × $58 = $4.52M/yr (Shipping Threshold)',
+        ranges: { h1: [9.4, 10.6, 7.5, 8.5], h2: [12.2, 13.8, 9.5, 10.5], h3: [14.2, 16.0, 11.5, 12.5] },
+        audience: 2600000, aov: 58, label: 'visitors'
+      },
+      rare: {
+        name: 'Rare Beauty',
+        h1: { name: 'Search → Social', lostPct: 10.0, bmPct: 8.0, points: 26.6 },
+        h2: { name: 'Social → CRM', lostPct: 14.0, bmPct: 11.0, points: 26.2 },
+        h3: { name: 'CRM → Commerce', lostPct: 17.0, bmPct: 12.0, points: 23.5, isBottleneck: true },
+        score: '76 / 100',
+        formula: '3,200,000 TikTok shoppers × (17% - 12%) × $52 = $8.32M/yr (Shade Stockouts)',
+        ranges: { h1: [9.2, 10.8, 7.5, 8.5], h2: [13.0, 15.0, 10.5, 11.5], h3: [16.0, 18.2, 11.5, 12.5] },
+        audience: 3200000, aov: 52, label: 'TikTok shoppers'
+      }
+    };
+
+    let currentSlideBrandKey = 'atelier';
+
+    function renderSlide1Content() {
+      const b = SLIDE_BRANDS[currentSlideBrandKey];
+      const container = document.getElementById('slide-1-rows-container');
+      if (!container || !b) return;
+
+      const stages = ['h1', 'h2', 'h3'];
+      let html = '';
+
+      stages.forEach(stKey => {
+        const s = b[stKey];
+        const isBn = s.isBottleneck;
+        const maxScale = 35.0;
+        const barW = Math.min(95, Math.max(10, (s.lostPct / maxScale) * 100));
+        const bmPos = Math.min(95, Math.max(5, (s.bmPct / maxScale) * 100));
+
+        if (isBn) {
+          html += `
+            <div class="grid grid-cols-12 gap-4 items-center py-4 border-b border-[#1c1c20]">
+              <div class="col-span-3 text-sm md:text-base font-extrabold text-[#ff007f] tracking-wide">
+                ${s.name}
+              </div>
+              <div class="col-span-6 relative flex items-center pr-12">
+                <div class="absolute -top-4 flex flex-col items-center z-10" style="left: ${bmPos.toFixed(1)}%;">
+                  <span class="text-[11px] text-[#ff5500] font-bold font-mono">${s.bmPct.toFixed(1)}%</span>
+                  <div class="w-0.5 h-10 bg-[#ff5500]"></div>
+                </div>
+                <div class="h-6 bg-[#ff007f] rounded-md shadow-[0_0_15px_rgba(255,0,127,0.6)] transition-all duration-500" style="width: ${barW.toFixed(1)}%;"></div>
+                <span class="ml-3 text-sm font-bold text-[#ff007f] font-mono">${s.lostPct.toFixed(1)}%</span>
+              </div>
+              <div class="col-span-3 text-right text-lg md:text-xl font-black text-[#ff007f] font-mono">
+                ${s.points.toFixed(1)}
+              </div>
+            </div>
+          `;
+        } else {
+          html += `
+            <div class="grid grid-cols-12 gap-4 items-center py-4 border-b border-[#1c1c20]">
+              <div class="col-span-3 text-sm md:text-base font-medium text-neutral-200">
+                ${s.name}
+              </div>
+              <div class="col-span-6 relative flex items-center pr-12">
+                <div class="absolute -top-4 flex flex-col items-center z-10" style="left: ${bmPos.toFixed(1)}%;">
+                  <span class="text-[11px] text-[#ff5500] font-bold font-mono">${s.bmPct.toFixed(1)}%</span>
+                  <div class="w-0.5 h-10 bg-[#ff5500]"></div>
+                </div>
+                <div class="h-6 bg-[#4a4a52] rounded-md transition-all duration-500" style="width: ${barW.toFixed(1)}%;"></div>
+                <span class="ml-3 text-sm font-bold text-neutral-300 font-mono">${s.lostPct.toFixed(1)}%</span>
+              </div>
+              <div class="col-span-3 text-right text-lg md:text-xl font-bold text-white font-mono">
+                ${s.points.toFixed(1)}
+              </div>
+            </div>
+          `;
+        }
+      });
+
+      container.innerHTML = html;
+      document.getElementById('slide-score-val').innerText = b.score;
+      document.getElementById('slide-formula-pill-text').innerHTML = b.formula;
+    }
+
+    function selectSlideBrand(key) {
+      if (!SLIDE_BRANDS[key]) return;
+      currentSlideBrandKey = key;
+
+      document.querySelectorAll('.slide-brand-pill').forEach(btn => {
+        btn.classList.remove('bg-[#ff007f]', 'text-black');
+        btn.classList.add('text-neutral-400');
+      });
+      const active = Array.from(document.querySelectorAll('.slide-brand-pill')).find(b => b.innerText.toLowerCase().includes(key.slice(0, 4)));
+      if (active) {
+        active.classList.add('bg-[#ff007f]', 'text-black');
+        active.classList.remove('text-neutral-400');
+      }
+
+      renderSlide1Content();
+    }
+
+    function randomizeSlideBenchmarks() {
+      const b = SLIDE_BRANDS[currentSlideBrandKey];
+      if (!b || !b.ranges) return;
+
+      function rand(min, max) {
+        return parseFloat((min + Math.random() * (max - min)).toFixed(1));
+      }
+
+      ['h1', 'h2', 'h3'].forEach(k => {
+        const [minL, maxL, minB, maxB] = b.ranges[k];
+        b[k].lostPct = rand(minL, maxL);
+        b[k].bmPct = rand(minB, maxB);
+        b[k].points = parseFloat((33.33 * (b[k].bmPct / b[k].lostPct)).toFixed(1));
+      });
+
+      const total = b.h1.points + b.h2.points + b.h3.points;
+      b.score = Math.round(total) + ' / 100';
+
+      const bnKey = b.h2.isBottleneck ? 'h2' : 'h3';
+      const bn = b[bnKey];
+      const excess = Math.max(0, bn.lostPct - bn.bmPct);
+      const dollars = Math.round(b.audience * (excess / 100) * b.aov);
+      const dStr = (dollars >= 1000000) ? ('$' + (dollars / 1000000).toFixed(1) + 'M/yr') : ('$' + (dollars / 1000).toFixed(0) + 'k/yr');
+      b.formula = `${b.audience.toLocaleString()} ${b.label} × (${bn.lostPct.toFixed(1)}% - ${bn.bmPct.toFixed(1)}%) × $${b.aov} = <span class="text-[#ff007f]">${dStr}</span>`;
+
+      renderSlide1Content();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderSlide1Content();
+    });
+
     function showSlide(slideNum) {
       document.getElementById('slide-1').classList.toggle('hidden', slideNum !== 1);
       document.getElementById('slide-2').classList.toggle('hidden', slideNum !== 2);
@@ -335,11 +479,11 @@
       const btn2 = document.getElementById('btn-slide-2');
 
       if (slideNum === 1) {
-        btn1.className = 'px-4 py-2 rounded-lg text-xs font-bold transition-all duration-200 tab-active flex items-center gap-2';
-        btn2.className = 'px-4 py-2 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition-all duration-200 flex items-center gap-2';
+        btn1.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 tab-active flex items-center gap-1.5';
+        btn2.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition-all duration-200 flex items-center gap-1.5';
       } else {
-        btn2.className = 'px-4 py-2 rounded-lg text-xs font-bold transition-all duration-200 tab-active flex items-center gap-2';
-        btn1.className = 'px-4 py-2 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition-all duration-200 flex items-center gap-2';
+        btn2.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 tab-active flex items-center gap-1.5';
+        btn1.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition-all duration-200 flex items-center gap-1.5';
       }
     }
   </script>
