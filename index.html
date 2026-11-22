@@ -209,16 +209,16 @@
     <section class="bg-[#0d0d0d] border border-[#222222] rounded-2xl p-5 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
       <div>
         <div class="flex flex-wrap items-center gap-2 mb-1.5">
-          <span id="card-company-name" class="text-xl md:text-2xl font-black text-white tracking-tight">Atelier Skincare</span>
-          <span id="card-business-model" class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-[#111111] text-white border border-[#333333] font-mono">
-            Mid-Market Pure-Play DTC
+          <span id="card-company-name" class="text-xl md:text-2xl font-black text-white tracking-tight">Atelier Prestige Beauty</span>
+          <span id="card-business-model" class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-[#111111] text-[#ff007f] border border-[#ff007f]/50 font-mono">
+            9-Digit Prestige Beauty Brand ($850M Rev)
           </span>
           <span id="card-parent-company" class="px-2.5 py-0.5 rounded text-[11px] font-mono text-neutral-400 border border-[#222222]">
-            Independent / Digitas Benchmark Client (Demo)
+            Independent Luxury (~$3.0B Valuation) / Digitas Pitch Client
           </span>
         </div>
         <p id="card-company-desc" class="text-xs text-neutral-300 max-w-4xl leading-relaxed">
-          Mid-market DTC skincare brand operating on Shopify, Meta Ads, GA4, and Klaviyo. Serves as our fully audited baseline demo.
+          Global prestige skincare and cosmetics powerhouse generating $850M in annual revenue across direct omnichannel ecommerce and luxury retail partnerships (valued at ~$3.0B Enterprise Value). Serves as our fully audited baseline pitch demo.
         </p>
       </div>
 
@@ -226,15 +226,15 @@
       <div class="flex flex-wrap items-center gap-3 shrink-0 text-xs">
         <div class="bg-black p-2.5 rounded-xl border border-[#333333] text-center min-w-[110px]">
           <span class="text-[10px] text-neutral-400 uppercase font-bold block">Annual Revenue</span>
-          <span id="badge-revenue" class="font-mono text-white font-black text-sm">$3.65M (Audited)</span>
+          <span id="badge-revenue" class="font-mono text-white font-black text-sm">$850M (9-Digit)</span>
         </div>
         <div class="bg-black p-2.5 rounded-xl border border-[#333333] text-center min-w-[110px]">
           <span class="text-[10px] text-neutral-400 uppercase font-bold block">Loyalty Base</span>
-          <span id="badge-loyalty" class="font-mono text-[#ff5500] font-black text-sm">52.8k Subs (2.4%)</span>
+          <span id="badge-loyalty" class="font-mono text-[#ff5500] font-black text-sm">4.8M Members</span>
         </div>
         <div class="bg-black p-2.5 rounded-xl border border-[#333333] text-center min-w-[110px]">
-          <span class="text-[10px] text-neutral-400 uppercase font-bold block">Digital Channel</span>
-          <span id="badge-channel" class="font-mono text-[#ff007f] font-black text-sm">100% DTC Ecommerce</span>
+          <span class="text-[10px] text-neutral-400 uppercase font-bold block">Enterprise Scale</span>
+          <span id="badge-channel" class="font-mono text-[#ff007f] font-black text-sm">~$3.0B Valuation</span>
         </div>
       </div>
     </section>
@@ -887,13 +887,13 @@
     const BRAND_DATABASE = {
       atelier: {
         id: 'atelier',
-        name: 'Atelier Skincare',
-        businessModel: 'Mid-Market Pure-Play DTC',
-        parentCompany: 'Independent / Digitas Benchmark Client (Demo)',
-        description: 'Mid-market DTC skincare brand operating on Shopify, Meta Ads, GA4, and Klaviyo. Serves as our fully audited baseline demo with granular internal stack data.',
-        revenueStr: '$3.65M (Audited)',
-        loyaltyStr: '52.8k Subs (2.4%)',
-        channelStr: '100% DTC Ecommerce',
+        name: 'Atelier Prestige Beauty',
+        businessModel: '9-Digit Prestige Beauty Brand ($850M Rev)',
+        parentCompany: 'Independent Luxury (~$3.0B Valuation) / Digitas Pitch Client',
+        description: 'Global prestige skincare and cosmetics powerhouse generating $850M in annual revenue across direct omnichannel ecommerce and luxury retail partnerships (valued at ~$3.0B Enterprise Value). Serves as our fully audited baseline pitch demo.',
+        revenueStr: '$850M (9-Digit Scale)',
+        loyaltyStr: '4.8M Members',
+        channelStr: 'Hybrid (DTC + Luxury Retail)',
         confidencePct: 95,
         confidenceLevel: '95% Verified',
         confidenceClass: 'text-emerald-400',
@@ -901,11 +901,11 @@
         scoreTier: 'Moderate Integration (60–79)',
         subtext: 'Identifiable Losses (62%)',
         bottleneck: 'Social → CRM ($24M Gap)',
-        annualRevenueBaseline: 3648000,
+        annualRevenueBaseline: 850000000,
         grossMarginPct: 70.0,
-        adWasteAmount: 81000,
-        trafficVisits: 3000000,
-        baselineOrders: 57000,
+        adWasteAmount: 2400000,
+        trafficVisits: 45000000,
+        baselineOrders: 13000000,
         evidence: { h1: '100% Full Audit', h2: '100% Full Audit', h3: '100% Full Audit', h4: '100% Full Audit' },
         pitchModel: {
           audience: 1000000,
@@ -1586,14 +1586,13 @@
       const baseRev = currentBrand.annualRevenueBaseline;
       const adWaste = currentBrand.adWasteAmount;
 
-      const maxOpportunityRatio = (currentBrand.id === 'atelier') ? 0.552 : 0.055;
-      const scaledTotalLift = baseRev * maxOpportunityRatio * gapClosurePct;
+      const scaledTotalLift = (currentBrand.id === 'atelier') ? (24000000 * gapClosurePct) : (baseRev * 0.055 * gapClosurePct);
 
-      const h1Rev = scaledTotalLift * 0.20;
-      const h2Rev = (currentBrand.pitchModel.bottleneckStage === 'h2') ? (scaledTotalLift * 0.60) : (scaledTotalLift * 0.25);
-      const h3Rev = (currentBrand.pitchModel.bottleneckStage === 'h3') ? (scaledTotalLift * 0.55) : (scaledTotalLift * 0.20);
+      const h1Rev = (currentBrand.id === 'atelier') ? (scaledTotalLift * 0.15) : (scaledTotalLift * 0.20);
+      const h2Rev = (currentBrand.id === 'atelier') ? (scaledTotalLift * 0.65) : ((currentBrand.pitchModel.bottleneckStage === 'h2') ? (scaledTotalLift * 0.60) : (scaledTotalLift * 0.25));
+      const h3Rev = (currentBrand.id === 'atelier') ? (scaledTotalLift * 0.20) : ((currentBrand.pitchModel.bottleneckStage === 'h3') ? (scaledTotalLift * 0.55) : (scaledTotalLift * 0.20));
 
-      const totalRev = h1Rev + h2Rev + h3Rev;
+      const totalRev = (currentBrand.id === 'atelier') ? (24000000 * gapClosurePct) : (h1Rev + h2Rev + h3Rev);
       const totalGp = totalRev * marginPct;
       const netTotalImpact = totalGp + (adWaste * gapClosurePct);
 
