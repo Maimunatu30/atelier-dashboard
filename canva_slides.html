@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier — Executive 2-Slide Presentation Visualizer (Canva Layout)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    body {
+      background-color: #070709;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    .slide-viewport {
+      aspect-ratio: 16 / 9;
+      background: #111115;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 127, 0.15);
+    }
+    .neon-pill-pink {
+      background: #000;
+      color: #ff007f;
+      border: 1px solid #ff007f;
+      box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+    }
+    .neon-pill-orange {
+      background: #000;
+      color: #ff6600;
+      border: 1px solid #ff5500;
+      box-shadow: 0 0 10px rgba(255, 85, 0, 0.3);
+    }
+    .tab-active {
+      background: linear-gradient(135deg, #ff007f, #ff5500);
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+    }
+  </style>
+</head>
+<body class="p-4 md:p-8 antialiased selection:bg-[#ff007f] selection:text-white">
+
+  <!-- TOP BAR & SLIDE SWITCHER -->
+  <div class="max-w-6xl mx-auto mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#222222] pb-4">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs uppercase tracking-widest font-extrabold text-[#ff007f]">Team 6 · Digitas Pitch</span>
+        <span class="text-xs text-neutral-400">· 16:9 Presentation Appendix</span>
+      </div>
+      <h1 class="text-2xl font-black text-white tracking-tight">Atelier Pitch Visualizer</h1>
+    </div>
+
+    <!-- Slide Switcher Tabs -->
+    <div class="flex items-center gap-2 bg-[#141416] p-1.5 rounded-xl border border-[#2a2a2e]">
+      <button id="btn-slide-1" onclick="showSlide(1)" class="px-4 py-2 rounded-lg text-xs font-bold transition-all duration-200 tab-active flex items-center gap-2">
+        <span>Slide 1: Calculating Network Score (62/100)</span>
+      </button>
+      <button id="btn-slide-2" onclick="showSlide(2)" class="px-4 py-2 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition-all duration-200 flex items-center gap-2">
+        <span>Slide 2: $24M Financial Loss & Recovery</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- SLIDE VIEWPORT (16:9 ASPECT RATIO) -->
+  <div class="max-w-6xl mx-auto">
+
+    <!-- ==================== SLIDE 1: CALCULATING THE NETWORK SCORE ==================== -->
+    <div id="slide-1" class="slide-viewport border border-[#2a2a2e] rounded-2xl p-8 md:p-12 flex flex-col justify-between relative overflow-hidden transition-all duration-300">
+      
+      <!-- Slide Header -->
+      <div class="relative flex items-center justify-between mb-2">
+        <div class="w-12"></div> <!-- Spacer for balance -->
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-wider text-center text-white uppercase font-sans">
+          Calculating The Network Score
+        </h2>
+        <div class="w-12 h-12 flex items-center justify-center">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAA+CAYAAACY9hNHAAAFQElEQVR42u1abYhWRRTWZE3UcLc1BVFyNcVQMvFjBSMSCdkwEO1HqIUfLJJGaLo/xPxC/2kYVpr4Q7FVkYIi+iKxgsRdPyIVlVVRKVFDURQ/koV1fA6eFw7DzNyZe+++7zu5Aw/vvfPOnZnnnjPnnDlzO3XqKB0lyqKUWgScfpIIvwIsBi4C6kkg3BVYqh6Xh1yn/u+kN/LvUSauYibzMfBpQpudwBDgXoFstKQx74+AD4D3bMRR3wBMZeG2RSVlOVFc1gHbgJmi7nVgl2zLZOuZZ2t00sV8JwJ3mcDvwJQCQUGyWrTvB3wo2vwbm5T3AgeASkmUyxfAQr7+RbyALaLtN1FJGXPdDUzXyB4CvgI+Ae5w3SrghjBclQZNUDEQng68JMhuAj4HfgPOKUPh54bqBGNS63FCWj8o/7JSewn/AUeAp2NScWWTqkma/HeDRpwM4a9ARVSkU7ygrcAZcd+Fl0wUa1sFtidyNeIlbI7NejtVmtv8ZND+68Ax4BrwT6jGlFSqSRMVatvF9KIMdTfLzpqHuhqLjSMpn9XWcxv77/L02ZjPcyGBhUGijcD3jPXAMmB70jIpqZTxU+VDWnNRKsnFlfV6NoWQCe3ly+ltI17O1rra12q7DFdsW8gXQ0hbYu+a2EiPCvGpFtLVMe2q+oSqtsmfFwxhuZHrzznoOgZtBiYBs9KQLluDhbmMB/YDLbzboSTALgZlRvYAtWmsrkXFXy01YYqNT1DyLu9dlc2Cs/Y8XyyCozkXTcH+bZ5HnUGAtBE4SedKLP0Wvj7PzwYRF/1eEnVvtDfZGcCPwEHOR9caDNNhYC2HhZ9x/otCxh0cFzdyuNiSQdInhLT7tZsV5/VISboBjjCQ0rZ/GdRQ5WmMTM/bxkg9Fp65AkzWBp0HfK0NdrsYoaEhDl9AXoGT/jrmA9NCByCV7CE4bATeCd0Tt3MC4mXebe1hL1HwFAXPsSakQ/KrYwVhckGt5RIXq8Di2+lEcd1s66CYhMUU7rCxpFTwCg1LLbsz5bP9e0Y8eEPvoFTS9ZGyJXRVSZ3LTf5xj+hoUMDEp7InGNhOL6YK6JxGtZ/ySMDJUuOZ7+rK6R1K1DcBP7OxXMnWdjYwl04j6YCODdTewPX8QiYX6VKPNB0SKe2+hiW/ms+wtjI2AO8CI1Ko/uBMS9CRh1auIMHyTG8iUUxfHizhJDI21Xf0OU1cU7j6JjCG1XkLu8TvgG/Zv0otm+w574pUxA1GqipkGVj+G6BlTC5rwr7KIWwzfx10oRBjc5kvk/2OefTNRFiQftsi6V6UtvE8ZVwu+t/nOHdWjv/mJMy9JzAsOHawOPUJlrbbfFSJY+M+PhsRA/G/Rf0ol9bJj3DoaCeVAUtQWVLX7qJts8WwVdAnUaLdtRTZklOibq6l7QPNNzcFbznRdqTLbZkkY+mn3ibNgLlIaQ+nuSXEDV+mkfJrJtV1qaTLTWXdSxu+KlptmMt2jvIag40Y/zZoA65zGRuuq80jD5ZgY1rF/VrDWPezJA0Uf8RGPvN9VyQmymAPLzAsY6BxS1xPkdFapuNZsW+m+PjPpBNFjVRFQhhbmUOU1Sb6m+0bDaby1Z7R2LMeqZ2+Ged0XcbYlJktatzqE7lJN1VIH+cwtybR34ySpWq4rrNpfWltUqdstSEfiKiwvhSJOUmqu6Xdffm5cg7jHhZDzypEfEUnztdDPMLaupxc2EVxv6lk+SrX1tT0CUWOWdBu+gsvBvHlfDz7liN6+4N8NbfLlEAQjy/hPkcUPVkZ6ubymFhUH9p0lBKVR+XgUKXV3mjyAAAAAElFTkSuQmCC" alt="Team 6 Logo" class="w-10 h-10 object-contain">
+        </div>
+      </div>
+
+      <!-- Main Comparison Chart Matrix -->
+      <div class="my-auto py-2">
+        <!-- Table Column Headers -->
+        <div class="grid grid-cols-12 gap-4 text-xs font-semibold text-neutral-400 pb-3 border-b border-[#222226]">
+          <div class="col-span-3 text-left">Hand-off Stage</div>
+          <div class="col-span-6 flex justify-between px-2">
+            <span>Customers Lost</span>
+            <span class="text-[#ff5500] font-bold">Benchmark</span>
+          </div>
+          <div class="col-span-3 text-right">Points (out of 33.3)</div>
+        </div>
+
+        <!-- Row 1: Search -> Social -->
+        <div class="grid grid-cols-12 gap-4 items-center py-5 border-b border-[#1c1c20]">
+          <div class="col-span-3 text-sm md:text-base font-medium text-neutral-200">
+            Search &rarr; Social
+          </div>
+          <div class="col-span-6 relative flex items-center pr-12">
+            <!-- Benchmark Marker Line (10% on scale of 35% max = 28.57%) -->
+            <div class="absolute left-[28.57%] -top-4 flex flex-col items-center z-10">
+              <span class="text-[11px] text-[#ff5500] font-bold font-mono">10%</span>
+              <div class="w-0.5 h-10 bg-[#ff5500]"></div>
+            </div>
+            <!-- Progress Bar (14% on scale of 35% max = 40%) -->
+            <div class="h-6 bg-[#4a4a52] rounded-md transition-all duration-500" style="width: 40%;"></div>
+            <span class="ml-3 text-sm font-bold text-neutral-300 font-mono">14%</span>
+          </div>
+          <div class="col-span-3 text-right text-lg md:text-xl font-bold text-white font-mono">
+            23.8
+          </div>
+        </div>
+
+        <!-- Row 2: Social -> CRM (Bottleneck Highlighted in Vibrant Neon Pink) -->
+        <div class="grid grid-cols-12 gap-4 items-center py-5 border-b border-[#1c1c20]">
+          <div class="col-span-3 text-sm md:text-base font-extrabold text-[#ff007f] tracking-wide">
+            Social &rarr; CRM
+          </div>
+          <div class="col-span-6 relative flex items-center pr-12">
+            <!-- Benchmark Marker Line (15% on scale of 35% max = 42.85%) -->
+            <div class="absolute left-[42.85%] -top-4 flex flex-col items-center z-10">
+              <span class="text-[11px] text-[#ff5500] font-bold font-mono">15%</span>
+              <div class="w-0.5 h-10 bg-[#ff5500]"></div>
+            </div>
+            <!-- Progress Bar (27% on scale of 35% max = 77.14%) -->
+            <div class="h-6 bg-[#ff007f] rounded-md shadow-[0_0_15px_rgba(255,0,127,0.6)] transition-all duration-500" style="width: 77.14%;"></div>
+            <span class="ml-3 text-sm font-bold text-[#ff007f] font-mono">27%</span>
+          </div>
+          <div class="col-span-3 text-right text-lg md:text-xl font-black text-[#ff007f] font-mono">
+            18.5
+          </div>
+        </div>
+
+        <!-- Row 3: CRM -> Commerce -->
+        <div class="grid grid-cols-12 gap-4 items-center py-5 border-b border-[#1c1c20]">
+          <div class="col-span-3 text-sm md:text-base font-medium text-neutral-200">
+            CRM &rarr; Commerce
+          </div>
+          <div class="col-span-6 relative flex items-center pr-12">
+            <!-- Benchmark Marker Line (11% on scale of 35% max = 31.42%) -->
+            <div class="absolute left-[31.42%] -top-4 flex flex-col items-center z-10">
+              <span class="text-[11px] text-[#ff5500] font-bold font-mono">11%</span>
+              <div class="w-0.5 h-10 bg-[#ff5500]"></div>
+            </div>
+            <!-- Progress Bar (19% on scale of 35% max = 54.28%) -->
+            <div class="h-6 bg-[#4a4a52] rounded-md transition-all duration-500" style="width: 54.28%;"></div>
+            <span class="ml-3 text-sm font-bold text-neutral-300 font-mono">19%</span>
+          </div>
+          <div class="col-span-3 text-right text-lg md:text-xl font-bold text-white font-mono">
+            19.3
+          </div>
+        </div>
+
+        <!-- Calculation Subtext -->
+        <div class="text-right text-xs text-neutral-400 font-mono pt-2">
+          Points = 33.3 &times; benchmark / customers lost
+        </div>
+      </div>
+
+      <!-- Divider & Score Row -->
+      <div class="border-t border-neutral-700 pt-4 pb-2 flex items-center justify-between">
+        <span class="text-sm md:text-base font-black tracking-wider text-white uppercase">
+          Network Score
+        </span>
+        <span class="text-xl md:text-2xl font-black text-[#ff007f] font-mono">
+          62 / 100
+        </span>
+      </div>
+
+      <!-- Bottom Formula Pill -->
+      <div class="w-full mt-2">
+        <div class="w-full py-3.5 px-6 rounded-full bg-[#1e1e24] border-2 border-[#ff007f] shadow-[0_0_20px_rgba(255,0,127,0.4)] flex items-center justify-between">
+          <div class="w-8"></div>
+          <div class="text-sm md:text-lg lg:text-xl font-bold text-white tracking-wide font-mono text-center">
+            1,000,000 customers &times; (27% - 15%) &times; $200 = <span class="text-[#ff007f]">$24M/yr</span>
+          </div>
+          <div class="w-8 h-8 rounded-full border border-neutral-500 flex items-center justify-center text-neutral-300">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==================== SLIDE 2: FINANCIAL LEAKAGE & OPPORTUNITY ==================== -->
+    <div id="slide-2" class="slide-viewport border border-[#2a2a2e] rounded-2xl p-8 md:p-12 flex flex-col justify-between relative overflow-hidden hidden transition-all duration-300">
+      
+      <!-- Slide Header -->
+      <div class="flex items-start justify-between border-b border-[#222226] pb-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="neon-pill-pink px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider">
+              TEAM 6 // APPENDIX 02
+            </span>
+            <span class="text-xs font-mono text-neutral-400">FINANCIAL PROOF & REVENUE RECOVERY MODEL</span>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-black text-white tracking-tight">
+            $24M Financial Leakage & Value Creation
+          </h2>
+        </div>
+        <div class="text-right flex items-center gap-4">
+          <div class="text-right">
+            <span class="neon-pill-orange px-3 py-1 rounded-full text-xs font-black font-mono">
+              Net Loss: -$24,000,000 / yr
+            </span>
+            <span class="block text-[10px] text-neutral-400 mt-1 uppercase font-semibold">Social &rarr; CRM Gap</span>
+          </div>
+          <div class="w-10 h-10 flex items-center justify-center">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAA+CAYAAACY9hNHAAAFQElEQVR42u1abYhWRRTWZE3UcLc1BVFyNcVQMvFjBSMSCdkwEO1HqIUfLJJGaLo/xPxC/2kYVpr4Q7FVkYIi+iKxgsRdPyIVlVVRKVFDURQ/koV1fA6eFw7DzNyZe+++7zu5Aw/vvfPOnZnnnjPnnDlzO3XqKB0lyqKUWgScfpIIvwIsBi4C6kkg3BVYqh6Xh1yn/u+kN/LvUSauYibzMfBpQpudwBDgXoFstKQx74+AD4D3bMRR3wBMZeG2RSVlOVFc1gHbgJmi7nVgl2zLZOuZZ2t00sV8JwJ3mcDvwJQCQUGyWrTvB3wo2vwbm5T3AgeASkmUyxfAQr7+RbyALaLtN1FJGXPdDUzXyB4CvgI+Ae5w3SrghjBclQZNUDEQng68JMhuAj4HfgPOKUPh54bqBGNS63FCWj8o/7JSewn/AUeAp2NScWWTqkma/HeDRpwM4a9ARVSkU7ygrcAZcd+Fl0wUa1sFtidyNeIlbI7NejtVmtv8ZND+68Ax4BrwT6jGlFSqSRMVatvF9KIMdTfLzpqHuhqLjSMpn9XWcxv77/L02ZjPcyGBhUGijcD3jPXAMmB70jIpqZTxU+VDWnNRKsnFlfV6NoWQCe3ly+ltI17O1rra12q7DFdsW8gXQ0hbYu+a2EiPCvGpFtLVMe2q+oSqtsmfFwxhuZHrzznoOgZtBiYBs9KQLluDhbmMB/YDLbzboSTALgZlRvYAtWmsrkXFXy01YYqNT1DyLu9dlc2Cs/Y8XyyCozkXTcH+bZ5HnUGAtBE4SedKLP0Wvj7PzwYRF/1eEnVvtDfZGcCPwEHOR9caDNNhYC2HhZ9x/otCxh0cFzdyuNiSQdInhLT7tZsV5/VISboBjjCQ0rZ/GdRQ5WmMTM/bxkg9Fp65AkzWBp0HfK0NdrsYoaEhDl9AXoGT/jrmA9NCByCV7CE4bATeCd0Tt3MC4mXebe1hL1HwFAXPsSakQ/KrYwVhckGt5RIXq8Di2+lEcd1s66CYhMUU7rCxpFTwCg1LLbsz5bP9e0Y8eEPvoFTS9ZGyJXRVSZ3LTf5xj+hoUMDEp7InGNhOL6YK6JxGtZ/ySMDJUuOZ7+rK6R1K1DcBP7OxXMnWdjYwl04j6YCODdTewPX8QiYX6VKPNB0SKe2+hiW/ms+wtjI2AO8CI1Ko/uBMS9CRh1auIMHyTG8iUUxfHizhJDI21Xf0OU1cU7j6JjCG1XkLu8TvgG/Zv0otm+w574pUxA1GqipkGVj+G6BlTC5rwr7KIWwzfx10oRBjc5kvk/2OefTNRFiQftsi6V6UtvE8ZVwu+t/nOHdWjv/mJMy9JzAsOHawOPUJlrbbfFSJY+M+PhsRA/G/Rf0ol9bJj3DoaCeVAUtQWVLX7qJts8WwVdAnUaLdtRTZklOibq6l7QPNNzcFbznRdqTLbZkkY+mn3ibNgLlIaQ+nuSXEDV+mkfJrJtV1qaTLTWXdSxu+KlptmMt2jvIag40Y/zZoA65zGRuuq80jD5ZgY1rF/VrDWPezJA0Uf8RGPvN9VyQmymAPLzAsY6BxS1xPkdFapuNZsW+m+PjPpBNFjVRFQhhbmUOU1Sb6m+0bDaby1Z7R2LMeqZ2+Ged0XcbYlJktatzqE7lJN1VIH+cwtybR34ySpWq4rrNpfWltUqdstSEfiKiwvhSJOUmqu6Xdffm5cg7jHhZDzypEfEUnztdDPMLaupxc2EVxv6lk+SrX1tT0CUWOWdBu+gsvBvHlfDz7liN6+4N8NbfLlEAQjy/hPkcUPVkZ6ubymFhUH9p0lBKVR+XgUKXV3mjyAAAAAElFTkSuQmCC" alt="Team 6 Logo" class="w-8 h-8 object-contain">
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide Body: 2 Split Cards -->
+      <div class="grid grid-cols-12 gap-6 my-auto py-3">
+        
+        <!-- Left Column: The $24M Mathematical Proof -->
+        <div class="col-span-6 bg-[#0e0e12] border border-[#ff007f]/50 rounded-xl p-5 flex flex-col justify-between shadow-[0_0_20px_rgba(255,0,127,0.15)]">
+          <div>
+            <div class="flex items-center justify-between mb-3 border-b border-[#222228] pb-2">
+              <span class="text-xs font-black text-[#ff007f] uppercase tracking-wider">1. Pitch Math Derivation</span>
+              <span class="text-[10px] font-mono text-white bg-black px-2 py-0.5 rounded border border-[#ff007f]/40">Social &rarr; CRM</span>
+            </div>
+
+            <div class="space-y-3 font-mono text-xs">
+              <div class="flex justify-between items-center p-2 rounded bg-black border border-[#222228]">
+                <span class="text-neutral-400 font-sans">Target Customer Audience:</span>
+                <span class="text-white font-bold">1,000,000 customers</span>
+              </div>
+
+              <div class="flex justify-between items-center p-2 rounded bg-black border border-[#222228]">
+                <span class="text-neutral-400 font-sans">Atelier Customer Drop-off:</span>
+                <span class="text-[#ff007f] font-bold">27% (270,000 lost)</span>
+              </div>
+
+              <div class="flex justify-between items-center p-2 rounded bg-black border border-[#222228]">
+                <span class="text-neutral-400 font-sans">Industry Benchmark Drop-off:</span>
+                <span class="text-[#ff5500] font-bold">15% (150,000 benchmark)</span>
+              </div>
+
+              <div class="flex justify-between items-center p-2 rounded bg-[#ff007f]/10 border border-[#ff007f]">
+                <span class="text-neutral-300 font-sans font-bold">Excess Customers Lost:</span>
+                <span class="text-white font-black">120,000 customers (12%)</span>
+              </div>
+
+              <div class="flex justify-between items-center p-2 rounded bg-black border border-[#222228]">
+                <span class="text-neutral-400 font-sans">Annual Customer Value:</span>
+                <span class="text-white font-bold">$200 / customer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-[#222228] flex justify-between items-center">
+            <span class="text-xs text-neutral-400 uppercase font-bold">Total Identifiable Leakage:</span>
+            <span class="text-xl font-black text-[#ff007f] font-mono">-$24,000,000 / yr</span>
+          </div>
+        </div>
+
+        <!-- Right Column: Revenue Recovery Scenarios -->
+        <div class="col-span-6 bg-[#0e0e12] border border-[#ff5500]/50 rounded-xl p-5 flex flex-col justify-between shadow-[0_0_20px_rgba(255,85,0,0.15)]">
+          <div>
+            <div class="flex items-center justify-between mb-3 border-b border-[#222228] pb-2">
+              <span class="text-xs font-black text-[#ff5500] uppercase tracking-wider">2. Value Creation & Margins</span>
+              <span class="text-[10px] font-mono text-white bg-black px-2 py-0.5 rounded border border-[#ff5500]/40">70% Gross Margin</span>
+            </div>
+
+            <div class="space-y-2.5 font-mono text-xs">
+              <div class="p-2.5 rounded bg-black border border-[#222228] flex justify-between items-center">
+                <div>
+                  <span class="font-sans font-bold text-neutral-300 block">25% Benchmark Gap Closure</span>
+                  <span class="text-[10px] text-neutral-500 font-sans">+30,000 recovered customers</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-white font-bold">+$6,000,000 rev</span>
+                  <span class="block text-[10px] text-[#ff5500]">+$4,200,000 GP</span>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded bg-[#ff5500]/10 border border-[#ff5500] flex justify-between items-center shadow-[0_0_10px_rgba(255,85,0,0.2)]">
+                <div>
+                  <span class="font-sans font-extrabold text-[#ff5500] block text-xs">50% Benchmark Gap Closure (Target)</span>
+                  <span class="text-[10px] text-neutral-300 font-sans">+60,000 recovered customers</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-white font-black text-sm">+$12,000,000 rev</span>
+                  <span class="block text-xs text-[#ff5500] font-black">+$8,400,000 GP</span>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded bg-black border border-[#222228] flex justify-between items-center">
+                <div>
+                  <span class="font-sans font-bold text-neutral-300 block">75% Benchmark Gap Closure</span>
+                  <span class="text-[10px] text-neutral-500 font-sans">+90,000 recovered customers</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-white font-bold">+$18,000,000 rev</span>
+                  <span class="block text-[10px] text-[#ff5500]">+$12,600,000 GP</span>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded bg-black border border-[#222228] flex justify-between items-center">
+                <div>
+                  <span class="font-sans font-bold text-neutral-300 block">100% Full Benchmark Parity</span>
+                  <span class="text-[10px] text-neutral-500 font-sans">+120,000 recovered customers</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-white font-bold">+$24,000,000 rev</span>
+                  <span class="block text-[10px] text-[#ff5500]">+$16,800,000 GP</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-[#222228] flex justify-between items-center">
+            <span class="text-xs text-neutral-400 uppercase font-bold">Digitas Year 1 Value Unlock:</span>
+            <span class="text-xl font-black text-white font-mono">+$12.0M Rev <span class="text-xs text-[#ff5500]">($8.4M Profit)</span></span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Slide Footer Note -->
+      <div class="border-t border-[#222226] pt-3 text-center text-xs text-neutral-500 font-sans">
+        Calculated for Team 6 Digitas Pitch · Atelier Brand Diagnostic · Model calibrated to 62 / 100 Network Score
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function showSlide(slideNum) {
+      document.getElementById('slide-1').classList.toggle('hidden', slideNum !== 1);
+      document.getElementById('slide-2').classList.toggle('hidden', slideNum !== 2);
+      
+      const btn1 = document.getElementById('btn-slide-1');
+      const btn2 = document.getElementById('btn-slide-2');
+
+      if (slideNum === 1) {
+        btn1.className = 'px-4 py-2 rounded-lg text-xs font-bold transition-all duration-200 tab-active flex items-center gap-2';
+        btn2.className = 'px-4 py-2 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition-all duration-200 flex items-center gap-2';
+      } else {
+        btn2.className = 'px-4 py-2 rounded-lg text-xs font-bold transition-all duration-200 tab-active flex items-center gap-2';
+        btn1.className = 'px-4 py-2 rounded-lg text-xs font-bold text-neutral-400 hover:text-white transition-all duration-200 flex items-center gap-2';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -254,11 +254,11 @@
           <div class="grid grid-cols-2 gap-2 text-center text-xs w-full">
             <div class="bg-black p-2 rounded-lg border border-[#333333] flex flex-col justify-center min-h-[44px]">
               <span class="block text-neutral-400 text-[10px]">Methodology</span>
-              <span class="font-mono text-white font-bold text-[11px]">25% × 4 Handoffs</span>
+              <span class="font-mono text-white font-bold text-[11px]">33.3 × Benchmark / Lost</span>
             </div>
             <div class="bg-black p-2 rounded-lg border border-[#ff007f]/40 flex flex-col justify-center min-h-[44px]">
               <span class="block text-neutral-400 text-[10px]">Primary Bottleneck</span>
-              <span id="summary-bottleneck" class="font-bold text-[#ff007f] text-[11px] truncate block" title="Delayed Webhooks & Attribution">Delayed Webhooks & Attribution</span>
+              <span id="summary-bottleneck" class="font-bold text-[#ff007f] text-[11px] truncate block" title="Social → CRM ($24M Gap)">Social → CRM ($24M Gap)</span>
             </div>
           </div>
         </div>
@@ -306,10 +306,10 @@
       <!-- 3. Financial Opportunity Summary Card (5 Cols) -->
       <div class="lg:col-span-5 bg-[#0d0d0d] border-2 border-white rounded-2xl p-6 flex flex-col justify-between h-full shadow-[0_0_20px_rgba(255,255,255,0.15)]" style="min-height: 100%;">
         <div class="flex flex-col flex-1">
-          <div class="flex flex-wrap items-center justify-between gap-2 mb-3 min-h-[36px]">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2 min-h-[36px]">
             <div>
-              <span class="text-xs uppercase tracking-wider font-extrabold text-white">Annual Financial Prize</span>
-              <h3 class="text-base font-black text-white mt-0.5">Sequential Waterfall Impact</h3>
+              <span class="text-xs uppercase tracking-wider font-extrabold text-[#ff007f]">Annual Financial Leakage</span>
+              <h3 class="text-base font-black text-white mt-0.5">Primary Bottleneck Revenue Loss</h3>
             </div>
             <div class="flex items-center gap-1.5">
               <span id="tag-benchmark-closure" class="px-2 py-0.5 text-[10px] rounded-full bg-black text-[#ff007f] border border-[#ff007f] font-bold">
@@ -321,51 +321,150 @@
             </div>
           </div>
 
-          <p class="text-xs text-neutral-300 mb-4 leading-relaxed min-h-[36px] flex items-center">
-            Estimates recoverable leakage across the 4 handoffs using non-overlapping cohort mechanics.
-          </p>
+          <!-- The $24M Exact Pitch Calculation Box -->
+          <div class="p-2.5 bg-black border border-[#ff007f] rounded-xl mb-3 flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono gap-1">
+            <span class="text-neutral-300">1,000,000 × (27% - 15%) × $200 =</span>
+            <span class="text-[#ff007f] font-black text-sm">$24,000,000 / yr</span>
+          </div>
 
           <div class="grid grid-cols-2 gap-3 mb-3 my-auto">
-            <div class="bg-black p-3.5 rounded-xl border border-[#ff5500]">
-              <span class="text-[10px] font-bold text-[#ff6600] uppercase block">Incremental Revenue</span>
-              <span id="summary-inc-rev" class="text-2xl font-black text-white font-mono mt-0.5 block">+$1,006,336</span>
-              <span id="summary-rev-pct" class="text-[10px] text-[#ff6600] font-semibold">+27.6% top-line lift</span>
+            <div class="bg-black p-3.5 rounded-xl border-2 border-[#ff007f] shadow-[0_0_15px_rgba(255,0,127,0.25)]">
+              <span class="text-[10px] font-bold text-[#ff007f] uppercase block">Atelier Revenue Leakage</span>
+              <span id="summary-inc-rev" class="text-2xl font-black text-white font-mono mt-0.5 block">-$24,000,000</span>
+              <span id="summary-rev-pct" class="text-[10px] text-[#ff007f] font-semibold">120,000 Customers Lost</span>
             </div>
-            <div class="bg-black p-3.5 rounded-xl border border-[#ff007f]">
-              <span class="text-[10px] font-bold text-[#ff007f] uppercase block">Incremental Gross Profit</span>
-              <span id="summary-inc-gp" class="text-2xl font-black text-white font-mono mt-0.5 block">+$704,436</span>
-              <span id="summary-gp-note" class="text-[10px] text-[#ff007f] font-semibold">At 70% gross margin</span>
+            <div class="bg-black p-3.5 rounded-xl border border-[#ff5500]">
+              <span class="text-[10px] font-bold text-[#ff6600] uppercase block">Recoverable Prize (50% Lift)</span>
+              <span id="summary-inc-gp" class="text-2xl font-black text-white font-mono mt-0.5 block">+$12,000,000</span>
+              <span id="summary-gp-note" class="text-[10px] text-[#ff5500] font-semibold">+$8.4M Gross Profit (70%)</span>
             </div>
           </div>
 
           <div class="p-2.5 bg-black rounded-lg border border-[#333333] flex items-center justify-between text-xs">
-            <span class="text-neutral-300">⚡ Ad Waste Elimination Recapture:</span>
-            <span id="summary-ad-recoup" class="font-mono text-white font-bold">+$81,000 / yr</span>
+            <span class="text-neutral-300">⚡ Search → Social & CRM → Commerce:</span>
+            <span id="summary-ad-recoup" class="font-mono text-white font-bold">+$24,000,000 / yr Add'l Leakage</span>
           </div>
         </div>
 
         <div class="mt-auto pt-4 border-t border-[#222222] min-h-[72px] flex items-center justify-between text-xs font-mono w-full">
-          <span class="text-neutral-400">Total Net Bottom-Line Impact:</span>
-          <span id="summary-net-impact" class="text-[#ff007f] font-black text-sm">$785,436 / yr</span>
+          <span class="text-neutral-400">Total Primary Bottleneck Loss:</span>
+          <span id="summary-net-impact" class="text-[#ff007f] font-black text-base">$24,000,000 / yr</span>
         </div>
       </div>
 
     </section>
 
-    <!-- FOUR CUSTOMER JOURNEY HANDOFFS -->
-    <section class="bg-[#0d0d0d] border border-[#222222] rounded-2xl p-6 shadow-xl">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#222222]">
+    <!-- THREE CUSTOMER JOURNEY HANDOFFS & SLIDE REPLICA -->
+    <section class="bg-[#0d0d0d] border border-[#222222] rounded-2xl p-6 shadow-xl space-y-6">
+      
+      <!-- EXACT PITCH SLIDE REPLICA: CALCULATING THE NETWORK SCORE -->
+      <div class="bg-black border-2 border-[#ff007f] rounded-2xl p-6 shadow-[0_0_30px_rgba(255,0,127,0.25)]">
+        <div class="flex items-center justify-between border-b border-[#222222] pb-4 mb-6">
+          <div>
+            <span class="px-2.5 py-0.5 rounded bg-[#ff007f] text-black font-black uppercase text-[10px] tracking-wider font-mono">
+              PITCH PRESENTATION ARCHITECTURE
+            </span>
+            <h2 class="text-2xl md:text-3xl font-black text-white tracking-wide uppercase mt-1">
+              CALCULATING THE NETWORK SCORE
+            </h2>
+          </div>
+          <div class="w-12 h-12 rounded-xl bg-black border border-[#ff007f] p-1 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(255,0,127,0.35)]">
+            <img src="team6-logo.png" onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAA+CAYAAACY9hNHAAAFQElEQVR42u1abYhWRRTWZE3UcLc1BVFyNcVQMvFjBSMSCdkwEO1HqIUfLJJGaLo/xPxC/2kYVpr4Q7FVkYIi+iKxgsRdPyIVlVVRKVFDURQ/koV1fA6eFw7DzNyZe+++7zu5Aw/vvfPOnZnnnjPnnDlzO3XqKB0lyqKUWgScfpIIvwIsBi4C6kkg3BVYqh6Xh1yn/u+kN/LvUSauYibzMfBpQpudwBDgXoFstKQx74+AD4D3bMRR3wBMZeG2RSVlOVFc1gHbgJmi7nVgl2zLZOuZZ2t00sV8JwJ3mcDvwJQCQUGyWrTvB3wo2vwbm5T3AgeASkmUyxfAQr7+RbyALaLtN1FJGXPdDUzXyB4CvgI+Ae5w3SrghjBclQZNUDEQng68JMhuAj4HfgPOKUPh54bqBGNS63FCWj8o/7JSewn/AUeAp2NScWWTqkma/HeDRpwM4a9ARVSkU7ygrcAZcd+Fl0wUa1sFtidyNeIlbI7NejtVmtv8ZND+68Ax4BrwT6jGlFSqSRMVatvF9KIMdTfLzpqHuhqLjSMpn9XWcxv77/L02ZjPcyGBhUGijcD3jPXAMmB70jIpqZTxU+VDWnNRKsnFlfV6NoWQCe3ly+ltI17O1rra12q7DFdsW8gXQ0hbYu+a2EiPCvGpFtLVMe2q+oSqtsmfFwxhuZHrzznoOgZtBiYBs9KQLluDhbmMB/YDLbzboSTALgZlRvYAtWmsrkXFXy01YYqNT1DyLu9dlc2Cs/Y8XyyCozkXTcH+bZ5HnUGAtBE4SedKLP0Wvj7PzwYRF/1eEnVvtDfZGcCPwEHOR9caDNNhYC2HhZ9x/otCxh0cFzdyuNiSQdInhLT7tZsV5/VISboBjjCQ0rZ/GdRQ5WmMTM/bxkg9Fp65AkzWBp0HfK0NdrsYoaEhDl9AXoGT/jrmA9NCByCV7CE4bATeCd0Tt3MC4mXebe1hL1HwFAXPsSakQ/KrYwVhckGt5RIXq8Di2+lEcd1s66CYhMUU7rCxpFTwCg1LLbsz5bP9e0Y8eEPvoFTS9ZGyJXRVSZ3LTf5xj+hoUMDEp7InGNhOL6YK6JxGtZ/ySMDJUuOZ7+rK6R1K1DcBP7OxXMnWdjYwl04j6YCODdTewPX8QiYX6VKPNB0SKe2+hiW/ms+wtjI2AO8CI1Ko/uBMS9CRh1auIMHyTG8iUUxfHizhJDI21Xf0OU1cU7j6JjCG1XkLu8TvgG/Zv0otm+w574pUxA1GqipkGVj+G6BlTC5rwr7KIWwzfx10oRBjc5kvk/2OefTNRFiQftsi6V6UtvE8ZVwu+t/nOHdWjv/mJMy9JzAsOHawOPUJlrbbfFSJY+M+PhsRA/G/Rf0ol9bJj3DoaCeVAUtQWVLX7qJts8WwVdAnUaLdtRTZklOibq6l7QPNNzcFbznRdqTLbZkkY+mn3ibNgLlIaQ+nuSXEDV+mkfJrJtV1qaTLTWXdSxu+KlptmMt2jvIag40Y/zZoA65zGRuuq80jD5ZgY1rF/VrDWPezJA0Uf8RGPvN9VyQmymAPLzAsY6BxS1xPkdFapuNZsW+m+PjPpBNFjVRFQhhbmUOU1Sb6m+0bDaby1Z7R2LMeqZ2+Ged0XcbYlJktatzqE7lJN1VIH+cwtybR34ySpWq4rrNpfWltUqdstSEfiKiwvhSJOUmqu6Xdffm5cg7jHhZDzypEfEUnztdDPMLaupxc2EVxv6lk+SrX1tT0CUWOWdBu+gsvBvHlfDz7liN6+4N8NbfLlEAQjy/hPkcUPVkZ6ubymFhUH9p0lBKVR+XgUKXV3mjyAAAAAElFTkSuQmCC'" alt="Team 6 Logo" class="w-full h-full object-contain">
+          </div>
+        </div>
+
+        <!-- Table Headers -->
+        <div class="grid grid-cols-12 text-xs uppercase tracking-wider text-neutral-400 font-bold mb-3 pb-2 border-b border-[#222222] px-2">
+          <div class="col-span-3">Hand-off Stage</div>
+          <div class="col-span-2 text-center">Customers Lost</div>
+          <div class="col-span-5 text-center text-[#ff5500]">Benchmark vs. Actual</div>
+          <div class="col-span-2 text-right">Points (out of 33.3)</div>
+        </div>
+
+        <!-- Row 1: Search -> Social -->
+        <div class="grid grid-cols-12 items-center py-4 px-2 hover:bg-[#111111] rounded-xl transition text-xs font-mono border-b border-[#1a1a1a]">
+          <div class="col-span-3 font-sans font-bold text-white flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-neutral-400"></span>
+            <span class="text-sm">Search → Social</span>
+          </div>
+          <div class="col-span-2 text-center font-bold text-neutral-300 text-sm">14%</div>
+          <div class="col-span-5 px-4 relative">
+            <div class="w-full h-6 bg-[#1a1a1a] rounded-lg overflow-hidden relative">
+              <div class="h-full bg-neutral-500 rounded-lg" style="width: 35%;"></div>
+              <!-- Benchmark 10% marker line -->
+              <div class="absolute inset-y-0 border-r-2 border-[#ff5500] z-10" style="left: 25%;">
+                <span class="absolute -top-4 -translate-x-1/2 text-[10px] text-[#ff5500] font-bold">10%</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-2 text-right font-black text-white text-base">23.8</div>
+        </div>
+
+        <!-- Row 2: Social -> CRM (THE PINK HIGHLIGHTED PRIMARY LEAKAGE) -->
+        <div class="grid grid-cols-12 items-center py-4 px-2 bg-[#ff007f]/10 border-2 border-[#ff007f] rounded-xl my-2.5 text-xs font-mono shadow-[0_0_25px_rgba(255,0,127,0.3)]">
+          <div class="col-span-3 font-sans font-black text-[#ff007f] flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#ff007f] animate-ping"></span>
+            <span class="text-sm md:text-base">Social → CRM</span>
+          </div>
+          <div class="col-span-2 text-center font-black text-[#ff007f] text-base">27%</div>
+          <div class="col-span-5 px-4 relative">
+            <div class="w-full h-7 bg-[#1a1a1a] rounded-lg overflow-hidden relative">
+              <div class="h-full bg-[#ff007f] rounded-lg shadow-[0_0_15px_#ff007f]" style="width: 67.5%;"></div>
+              <!-- Benchmark 15% marker line -->
+              <div class="absolute inset-y-0 border-r-2 border-[#ff5500] z-10" style="left: 37.5%;">
+                <span class="absolute -top-4 -translate-x-1/2 text-[10px] text-[#ff5500] font-bold">15%</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-2 text-right font-black text-[#ff007f] text-xl">18.5</div>
+        </div>
+
+        <!-- Row 3: CRM -> Commerce -->
+        <div class="grid grid-cols-12 items-center py-4 px-2 hover:bg-[#111111] rounded-xl transition text-xs font-mono border-b border-[#1a1a1a]">
+          <div class="col-span-3 font-sans font-bold text-white flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-neutral-400"></span>
+            <span class="text-sm">CRM → Commerce</span>
+          </div>
+          <div class="col-span-2 text-center font-bold text-neutral-300 text-sm">19%</div>
+          <div class="col-span-5 px-4 relative">
+            <div class="w-full h-6 bg-[#1a1a1a] rounded-lg overflow-hidden relative">
+              <div class="h-full bg-neutral-500 rounded-lg" style="width: 47.5%;"></div>
+              <!-- Benchmark 11% marker line -->
+              <div class="absolute inset-y-0 border-r-2 border-[#ff5500] z-10" style="left: 27.5%;">
+                <span class="absolute -top-4 -translate-x-1/2 text-[10px] text-[#ff5500] font-bold">11%</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-2 text-right font-black text-white text-base">19.3</div>
+        </div>
+
+        <!-- Formula & Overall Score Row -->
+        <div class="flex flex-col sm:flex-row items-center justify-between border-t border-[#333333] pt-4 mt-3 text-xs">
+          <span class="text-neutral-400 font-mono text-xs">Points = 33.3 × benchmark / customers lost</span>
+          <div class="flex items-center gap-3 mt-2 sm:mt-0">
+            <span class="text-neutral-300 font-bold uppercase tracking-wider">NETWORK SCORE:</span>
+            <span class="text-3xl font-black text-[#ff007f] font-mono">62 / 100</span>
+          </div>
+        </div>
+
+        <!-- THE EXACT $24M CALLOUT PILL -->
+        <div class="mt-6 p-4 rounded-2xl bg-black border-2 border-[#ff007f] shadow-[0_0_30px_rgba(255,0,127,0.4)] flex items-center justify-center gap-3">
+          <span class="text-white text-base md:text-xl font-mono font-black tracking-tight">1,000,000 customers × (27% - 15%) × $200 = $24M/yr</span>
+          <div class="w-8 h-8 rounded-full border-2 border-neutral-600 flex items-center justify-center text-neutral-300 font-bold text-sm shrink-0">↙</div>
+        </div>
+      </div>
+
+      <!-- THREE DETAILED DIAGNOSTIC TABS -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-2 border-t border-[#222222]">
         <div>
-          <span class="text-xs uppercase tracking-wider font-extrabold text-[#ff007f]">Customer Journey Handoffs</span>
-          <h2 class="text-2xl font-black text-white mt-0.5">Four-Stage Diagnostic Breakdown (25% Weight Each)</h2>
-          <p class="text-xs text-neutral-300 mt-1">Grounded in verified company disclosures, observable signals, and beauty benchmarks.</p>
+          <span class="text-xs uppercase tracking-wider font-extrabold text-[#ff007f]">Deep-Dive Telemetry</span>
+          <h3 class="text-xl font-black text-white mt-0.5">Three-Stage Diagnostic Breakdown</h3>
         </div>
 
         <div class="flex flex-wrap gap-1.5 bg-black p-1.5 rounded-xl border border-[#333333] text-xs">
-          <button onclick="switchTab('h1')" id="tab-nav-h1" class="tab-btn active px-3.5 py-2 rounded-lg font-bold transition">1. Paid Media → Site</button>
-          <button onclick="switchTab('h2')" id="tab-nav-h2" class="tab-btn px-3.5 py-2 rounded-lg font-bold text-neutral-400 hover:text-white transition">2. Site → Known Customer</button>
-          <button onclick="switchTab('h3')" id="tab-nav-h3" class="tab-btn px-3.5 py-2 rounded-lg font-bold text-neutral-400 hover:text-white transition">3. Shopping Intent → Purchase</button>
-          <button onclick="switchTab('h4')" id="tab-nav-h4" class="tab-btn px-3.5 py-2 rounded-lg font-bold text-neutral-400 hover:text-white transition">4. Purchase → Retention</button>
+          <button onclick="switchTab('h1')" id="tab-nav-h1" class="tab-btn active px-3.5 py-2 rounded-lg font-bold transition">1. Search → Social (23.8)</button>
+          <button onclick="switchTab('h2')" id="tab-nav-h2" class="tab-btn px-3.5 py-2 rounded-lg font-bold text-neutral-400 hover:text-white transition">2. Social → CRM (18.5) — $24M Gap</button>
+          <button onclick="switchTab('h3')" id="tab-nav-h3" class="tab-btn px-3.5 py-2 rounded-lg font-bold text-neutral-400 hover:text-white transition">3. CRM → Commerce (19.3)</button>
         </div>
       </div>
 
@@ -524,7 +623,7 @@
         networkScore: 62.0,
         scoreTier: 'Moderate Integration (60–79)',
         subtext: 'Identifiable Losses (62%)',
-        bottleneck: 'Delayed Webhooks & Attribution',
+        bottleneck: 'Social → CRM ($24M Gap)',
         annualRevenueBaseline: 3648000,
         grossMarginPct: 70.0,
         adWasteAmount: 81000,
@@ -532,10 +631,9 @@
         baselineOrders: 57000,
         evidence: { h1: '100% Full Audit', h2: '100% Full Audit', h3: '100% Full Audit', h4: '100% Full Audit' },
         handoffs: {
-          h1: { score: 64.0, perf: 68, integ: 60, vis: 64, status: 'Moderate Integration', rootCauses: ['Ad click redirects shed UTM tags across mobile browsers (14% GA4 attribution loss).', 'Partial client-side Meta pixel coverage with early-stage CAPI Gateway testing.', 'Landing pages have good brand aesthetics but lack dynamic real-time personalization.'], metrics: [{ name: 'Click-to-Session Landing Rate', val: '81.5%', type: 'Actual Audited', class: 'badge-actual', source: 'GA4 / Internal Media Audit' }, { name: 'Ad Click Drop-off', val: '18.5%', type: 'Benchmark Gap', class: 'badge-benchmark', source: 'Agency / GA4 Benchmarks' }, { name: 'UTM Attribution Leakage', val: '14.0%', type: 'Actual Audited', class: 'badge-actual', source: 'GA4 Unassigned Channel' }] },
-          h2: { score: 58.0, perf: 60, integ: 58, vis: 56, status: 'Moderate Issues', rootCauses: ['Welcome modal captures 3.1% of visitors (approaching 4.2% beauty benchmark).', 'Approximately 68% of browsing sessions remain anonymous without persistent cross-device ID stitching.', 'Klaviyo on-site script fires after cookie banner, missing rapid mobile bounces.'], metrics: [{ name: 'Visitor-to-Subscriber Capture', val: '3.10%', type: 'Actual Audited', class: 'badge-actual', source: 'Shopify / Klaviyo Log' }, { name: 'Anonymous Traffic Ratio', val: '68.0%', type: 'Actual Audited', class: 'badge-actual', source: 'GA4 Client ID Stitching' }, { name: 'Beauty Capture Benchmark', val: '4.20%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Klaviyo / Postscript Benchmarks' }] },
-          h3: { score: 68.0, perf: 70, integ: 68, vis: 66, status: 'Moderate Integration', rootCauses: ['74.20% Cart Abandonment vs. 70.19% Baymard Institute baseline benchmark.', '15-minute webhook trigger latency for abandoned cart emails with Shop Pay in checkout drawer.', 'Email recovery flow converts at 1.40% (nearing 1.65% Klaviyo flow benchmark).'], metrics: [{ name: 'Cart Abandonment Rate', val: '74.20%', type: 'Actual Audited', class: 'badge-actual', source: 'Shopify Checkout Funnel' }, { name: 'Baymard Benchmark', val: '70.19%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Baymard Institute (2026)' }, { name: 'Flow Order Rate', val: '1.40%', type: 'Actual Audited', class: 'badge-actual', source: 'Klaviyo Health & Beauty Flows' }] },
-          h4: { score: 58.0, perf: 60, integ: 55, vis: 59, status: 'Moderate Issues', rootCauses: ['12% of paid retargeting ad spend ($54,000/yr) reaches recent purchasers due to weekly CSV syncing.', '20.50% 90-day repeat purchase rate vs 26.00% Shopify beauty benchmark.', 'Post-purchase automated flows provide basic skincare routines but lack SKU replenishment timers.'], metrics: [{ name: '90-Day Repeat Rate', val: '20.50%', type: 'Actual Audited', class: 'badge-actual', source: 'Shopify Cohort Analysis' }, { name: 'Shopify Beauty Benchmark', val: '26.00%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Shopify Beauty Trends (2026)' }, { name: 'Retargeting Ad Waste', val: '$54,000/yr', type: 'Actual Modeled', class: 'badge-modeled', source: 'Meta Ad Account Audit' }] }
+          h1: { score: 23.8, perf: 24, integ: 24, vis: 23, status: 'Moderate Friction', rootCauses: ['Search ad clicks experience 14% drop-off vs 10% industry benchmark.', 'Search landing pages fail to map dynamic intent into social campaign creative.', 'Mobile browser redirect latency sheds initial search campaign parameters.'], metrics: [{ name: 'Search Customers Lost', val: '14.0%', type: 'Actual Modeled', class: 'badge-actual', source: 'Team 6 Diagnostic Model' }, { name: 'Industry Benchmark', val: '10.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Industry Search Benchmark' }, { name: 'Stage Score (out of 33.3)', val: '23.8 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (10% / 14%)' }] },
+          h2: { score: 18.5, perf: 18, integ: 18, vis: 19, status: 'Critical $24M Bottleneck', rootCauses: ['27% customer drop-off between social acquisition and CRM registration vs 15% benchmark.', '1,000,000 customers × (27% - 15%) × $200 = $24,000,000/yr lost in this handoff alone.', 'Lack of frictionless 1-click social sign-on and delayed CRM webhook polling triggers.'], metrics: [{ name: 'Social Customers Lost', val: '27.0%', type: 'Primary Leakage', class: 'badge-modeled', source: 'Team 6 Diagnostic Model' }, { name: 'CRM Benchmark', val: '15.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'CRM Benchmark Standard' }, { name: 'Annual Revenue Loss', val: '$24M / yr', type: 'Financial Prize', class: 'badge-actual', source: '1M custs × 12% gap × $200' }, { name: 'Stage Score (out of 33.3)', val: '18.5 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (15% / 27%)' }] },
+          h3: { score: 19.3, perf: 20, integ: 19, vis: 19, status: 'Moderate Friction', rootCauses: ['19% drop-off between CRM subscriber engagement and completed commerce purchase vs 11% benchmark.', 'Abandoned cart triggers fire on 15–30 min batch delay instead of instant real-time webhook push.', 'Multi-step checkout constraints and coupon verification friction.'], metrics: [{ name: 'Commerce Customers Lost', val: '19.0%', type: 'Actual Modeled', class: 'badge-actual', source: 'Team 6 Diagnostic Model' }, { name: 'Commerce Benchmark', val: '11.0%', type: 'Industry Benchmark', class: 'badge-benchmark', source: 'Shopify / Retail Benchmarks' }, { name: 'Stage Score (out of 33.3)', val: '19.3 / 33.3', type: 'Score Metric', class: 'badge-signal', source: '33.3 × (11% / 19%)' }] }
         }
       },
       sephora: {
@@ -798,10 +896,9 @@
       const container = document.getElementById('handoff-tab-container');
 
       const titles = {
-        h1: '1. Paid Media → Website Experience',
-        h2: '2. Website → Known Customer Identification',
-        h3: '3. Shopping Intent → Purchase Completion',
-        h4: '4. First Purchase → Customer Retention & Replenishment'
+        h1: '1. Search → Social Experience',
+        h2: '2. Social → CRM (Primary Bottleneck // $24M Leakage)',
+        h3: '3. CRM → Commerce Experience'
       };
 
       let metricsHtml = '';
@@ -831,7 +928,7 @@
             <span class="text-[10px] font-bold text-[#ff6600] uppercase block">${titles[activeTab]}</span>
             <div class="text-4xl font-black text-white mt-1 font-mono">${hData.score.toFixed(1)} <span class="text-xs text-neutral-400">/ 100</span></div>
             <div class="text-xs text-[#ff5500] font-bold mt-1">${hData.status}</div>
-            <div class="mt-3 pt-2 border-t border-[#222222] text-[10px] text-neutral-400 font-mono">Weight: 25.0% of Network Score</div>
+            <div class="mt-3 pt-2 border-t border-[#222222] text-[10px] text-neutral-400 font-mono">Weight: 33.3% of Network Score</div>
           </div>
 
           <div class="bg-black p-4 rounded-xl border border-[#333333]">
