@@ -77,6 +77,12 @@
       color: #c084fc;
       border: 1px solid rgba(192, 132, 252, 0.4);
     }
+    .hero-card-flush {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   </style>
 </head>
 <body class="bg-black text-white min-h-screen p-3 md:p-8 antialiased selection:bg-[#ff007f] selection:text-white">
@@ -84,42 +90,55 @@
   <!-- TOP BRAND & SEARCH ENGINE HEADER -->
   <header class="max-w-7xl mx-auto mb-6 pb-6 border-b border-[#222222]">
     
-    <!-- PROMINENT DEMO NOTICE BANNER -->
-    <div class="mb-4 p-2.5 bg-black border border-[#ff5500] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-[0_0_15px_rgba(255,85,0,0.2)] text-xs">
+    <!-- PROMINENT DEMO NOTICE BANNER (TEAM 6) -->
+    <div class="mb-4 p-2.5 bg-black border border-[#ff5500] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-[0_0_15px_rgba(255,85,0,0.25)] text-xs">
       <div class="flex items-center gap-2.5">
         <span class="px-2.5 py-0.5 rounded bg-[#ff5500] text-black font-black uppercase text-[10px] tracking-wider animate-pulse">
           DEMO PROTOTYPE
         </span>
-        <span class="text-neutral-200 font-semibold">
-          Digitas Pitch Interactive Demo: Select or search any company to calculate its customer journey Network Score.
+        <span class="text-neutral-200 font-semibold flex items-center gap-1.5 flex-wrap">
+          <span class="text-[#ff007f] font-black uppercase tracking-wider">TEAM 6</span>
+          <span class="text-neutral-500">•</span>
+          <span>Digitas Pitch Interactive Demo: Select or search any company to calculate its customer journey Network Score.</span>
         </span>
       </div>
-      <span class="text-[10px] text-neutral-400 font-mono">PITCH SIMULATION // DEMO PURPOSES ONLY</span>
+      <span class="text-[10px] text-neutral-400 font-mono shrink-0">TEAM 6 // PITCH SIMULATION</span>
     </div>
 
     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
-      <div>
-        <div class="flex flex-wrap items-center gap-2 mb-2">
-          <span class="px-3 py-1 text-xs font-black tracking-wider uppercase rounded-full bg-black text-[#ff007f] border border-[#ff007f] shadow-[0_0_10px_rgba(255,0,127,0.3)]">
-            DIGITAS PITCH
-          </span>
-          <span class="px-2.5 py-0.5 text-xs text-white bg-[#111111] border border-[#333333] rounded-md font-mono">
-            ENTERPRISE NETWORK SCORE ENGINE
-          </span>
-          <span class="px-2.5 py-0.5 text-[11px] font-bold rounded bg-black text-[#ff5500] border border-[#ff5500] shadow-[0_0_8px_rgba(255,85,0,0.3)] font-mono">
-            INTERACTIVE DEMO
-          </span>
+      <div class="flex items-center gap-3.5">
+        <!-- TEAM 6 UNICORN LOGO EMBEDDED -->
+        <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-black border-2 border-[#ff007f] p-1.5 flex items-center justify-center shadow-[0_0_18px_rgba(255,0,127,0.45)] shrink-0 group hover:border-[#ff5500] transition-colors">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAA+CAYAAACY9hNHAAAFQElEQVR42u1abYhWRRTWZE3UcLc1BVFyNcVQMvFjBSMSCdkwEO1HqIUfLJJGaLo/xPxC/2kYVpr4Q7FVkYIi+iKxgsRdPyIVlVVRKVFDURQ/koV1fA6eFw7DzNyZe+++7zu5Aw/vvfPOnZnnnjPnnDlzO3XqKB0lyqKUWgScfpIIvwIsBi4C6kkg3BVYqh6Xh1yn/u+kN/LvUSauYibzMfBpQpudwBDgXoFstKQx74+AD4D3bMRR3wBMZeG2RSVlOVFc1gHbgJmi7nVgl2zLZOuZZ2t00sV8JwJ3mcDvwJQCQUGyWrTvB3wo2vwbm5T3AgeASkmUyxfAQr7+RbyALaLtN1FJGXPdDUzXyB4CvgI+Ae5w3SrghjBclQZNUDEQng68JMhuAj4HfgPOKUPh54bqBGNS63FCWj8o/7JSewn/AUeAp2NScWWTqkma/HeDRpwM4a9ARVSkU7ygrcAZcd+Fl0wUa1sFtidyNeIlbI7NejtVmtv8ZND+68Ax4BrwT6jGlFSqSRMVatvF9KIMdTfLzpqHuhqLjSMpn9XWcxv77/L02ZjPcyGBhUGijcD3jPXAMmB70jIpqZTxU+VDWnNRKsnFlfV6NoWQCe3ly+ltI17O1rra12q7DFdsW8gXQ0hbYu+a2EiPCvGpFtLVMe2q+oSqtsmfFwxhuZHrzznoOgZtBiYBs9KQLluDhbmMB/YDLbzboSTALgZlRvYAtWmsrkXFXy01YYqNT1DyLu9dlc2Cs/Y8XyyCozkXTcH+bZ5HnUGAtBE4SedKLP0Wvj7PzwYRF/1eEnVvtDfZGcCPwEHOR9caDNNhYC2HhZ9x/otCxh0cFzdyuNiSQdInhLT7tZsV5/VISboBjjCQ0rZ/GdRQ5WmMTM/bxkg9Fp65AkzWBp0HfK0NdrsYoaEhDl9AXoGT/jrmA9NCByCV7CE4bATeCd0Tt3MC4mXebe1hL1HwFAXPsSakQ/KrYwVhckGt5RIXq8Di2+lEcd1s66CYhMUU7rCxpFTwCg1LLbsz5bP9e0Y8eEPvoFTS9ZGyJXRVSZ3LTf5xj+hoUMDEp7InGNhOL6YK6JxGtZ/ySMDJUuOZ7+rK6R1K1DcBP7OxXMnWdjYwl04j6YCODdTewPX8QiYX6VKPNB0SKe2+hiW/ms+wtjI2AO8CI1Ko/uBMS9CRh1auIMHyTG8iUUxfHizhJDI21Xf0OU1cU7j6JjCG1XkLu8TvgG/Zv0otm+w574pUxA1GqipkGVj+G6BlTC5rwr7KIWwzfx10oRBjc5kvk/2OefTNRFiQftsi6V6UtvE8ZVwu+t/nOHdWjv/mJMy9JzAsOHawOPUJlrbbfFSJY+M+PhsRA/G/Rf0ol9bJj3DoaCeVAUtQWVLX7qJts8WwVdAnUaLdtRTZklOibq6l7QPNNzcFbznRdqTLbZkkY+mn3ibNgLlIaQ+nuSXEDV+mkfJrJtV1qaTLTWXdSxu+KlptmMt2jvIag40Y/zZoA65zGRuuq80jD5ZgY1rF/VrDWPezJA0Uf8RGPvN9VyQmymAPLzAsY6BxS1xPkdFapuNZsW+m+PjPpBNFjVRFQhhbmUOU1Sb6m+0bDaby1Z7R2LMeqZ2+Ged0XcbYlJktatzqE7lJN1VIH+cwtybR34ySpWq4rrNpfWltUqdstSEfiKiwvhSJOUmqu6Xdffm5cg7jHhZDzypEfEUnztdDPMLaupxc2EVxv6lk+SrX1tT0CUWOWdBu+gsvBvHlfDz7liN6+4N8NbfLlEAQjy/hPkcUPVkZ6ubymFhUH9p0lBKVR+XgUKXV3mjyAAAAAElFTkSuQmCC"
+               onerror="this.onerror=null; this.src='team6-logo.png'" alt="Team 6 Unicorn Logo" class="w-full h-full object-contain">
         </div>
-        <h1 class="text-3xl md:text-4xl font-black tracking-tight text-white flex items-center gap-3">
-          <span>Calculating Your Network Score</span>
-        </h1>
-        <p class="text-xs md:text-sm text-neutral-300 mt-1.5 max-w-4xl leading-relaxed">
-          Dynamic analysis across 4 customer journey handoffs. Strict separation of <strong>public disclosures</strong>, <strong>observable signals</strong>, and <strong>transparent modeled benchmarks</strong>.
-        </p>
+
+        <div>
+          <div class="flex flex-wrap items-center gap-2 mb-1.5">
+            <span class="px-3 py-0.5 text-xs font-black tracking-wider uppercase rounded-full bg-black text-[#ff007f] border border-[#ff007f] shadow-[0_0_10px_rgba(255,0,127,0.3)]">
+              TEAM 6
+            </span>
+            <span class="px-3 py-0.5 text-xs font-black tracking-wider uppercase rounded-full bg-black text-[#ff5500] border border-[#ff5500] shadow-[0_0_10px_rgba(255,85,0,0.3)]">
+              DIGITAS PITCH
+            </span>
+            <span class="px-2.5 py-0.5 text-xs text-white bg-[#111111] border border-[#333333] rounded-md font-mono">
+              ENTERPRISE NETWORK SCORE ENGINE
+            </span>
+            <span class="px-2.5 py-0.5 text-[11px] font-bold rounded bg-black text-[#ff5500] border border-[#ff5500] shadow-[0_0_8px_rgba(255,85,0,0.3)] font-mono">
+              INTERACTIVE DEMO
+            </span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-black tracking-tight text-white flex items-center gap-3">
+            <span>Calculating Your Network Score</span>
+          </h1>
+          <p class="text-xs md:text-sm text-neutral-300 mt-1 max-w-4xl leading-relaxed">
+            Dynamic analysis across 4 customer journey handoffs. Strict separation of <strong>public disclosures</strong>, <strong>observable signals</strong>, and <strong>transparent modeled benchmarks</strong>.
+          </p>
+        </div>
       </div>
 
       <!-- Quick Action Buttons -->
-      <div class="flex items-center gap-2.5">
+      <div class="flex items-center gap-2.5 shrink-0">
         <button onclick="toggleCompareModal()" class="px-4 py-2.5 rounded-xl bg-[#111111] hover:bg-[#1a1a1a] border border-[#ff007f] text-xs font-bold text-white flex items-center gap-2 transition shadow-[0_0_12px_rgba(255,0,127,0.2)]">
           <svg class="w-4 h-4 text-[#ff007f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
           <span>Compare Brands</span>
@@ -197,25 +216,25 @@
     </section>
 
     <!-- CORE SCORE & DATA CONFIDENCE HERO -->
-    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch" style="grid-auto-rows: 1fr;">
 
       <!-- 1. Overall Network Score Card (4 Cols) -->
-      <div class="lg:col-span-4 bg-[#0d0d0d] border-2 border-[#ff007f] rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between shadow-[0_0_25px_rgba(255,0,127,0.2)]">
+      <div class="lg:col-span-4 bg-[#0d0d0d] border-2 border-[#ff007f] rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between h-full shadow-[0_0_25px_rgba(255,0,127,0.2)]" style="min-height: 100%;">
         <div class="absolute -right-16 -top-16 w-52 h-52 bg-[#ff007f]/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div>
-          <div class="flex items-center justify-between mb-4">
+        <div class="flex flex-col flex-1">
+          <div class="flex items-center justify-between gap-2 mb-3 min-h-[36px]">
             <span class="text-xs uppercase tracking-wider font-extrabold text-[#ff007f]">Ecosystem Integration</span>
-            <span id="score-tier-badge" class="px-2.5 py-1 text-xs font-bold rounded-full bg-black text-[#ff5500] border border-[#ff5500] shadow-[0_0_8px_rgba(255,85,0,0.3)]">
+            <span id="score-tier-badge" class="px-2.5 py-1 text-xs font-bold rounded-full bg-black text-[#ff5500] border border-[#ff5500] shadow-[0_0_8px_rgba(255,85,0,0.3)] whitespace-nowrap">
               Moderate Integration (60–79)
             </span>
           </div>
-          <div class="text-xs text-neutral-300 mb-6 leading-relaxed">
+          <div class="text-xs text-neutral-300 mb-4 leading-relaxed min-h-[36px] flex items-center">
             Measures current omnichannel connectivity, real-time event syncing, and identity resolution (0 = siloed, 100 = seamless).
           </div>
 
           <!-- Radial Gauge Visualization -->
-          <div class="flex flex-col items-center justify-center my-2">
+          <div class="flex flex-col items-center justify-center my-auto py-2">
             <div class="relative w-48 h-48 flex items-center justify-center">
               <svg class="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
                 <circle cx="60" cy="60" r="50" class="gauge-bg" stroke-width="10" fill="none" />
@@ -231,34 +250,34 @@
           </div>
         </div>
 
-        <div class="mt-6 pt-4 border-t border-[#222222]">
-          <div class="grid grid-cols-2 gap-2 text-center text-xs">
-            <div class="bg-black p-2 rounded-lg border border-[#333333]">
+        <div class="mt-auto pt-4 border-t border-[#222222] min-h-[72px] flex items-center">
+          <div class="grid grid-cols-2 gap-2 text-center text-xs w-full">
+            <div class="bg-black p-2 rounded-lg border border-[#333333] flex flex-col justify-center min-h-[44px]">
               <span class="block text-neutral-400 text-[10px]">Methodology</span>
               <span class="font-mono text-white font-bold text-[11px]">25% × 4 Handoffs</span>
             </div>
-            <div class="bg-black p-2 rounded-lg border border-[#ff007f]/40">
+            <div class="bg-black p-2 rounded-lg border border-[#ff007f]/40 flex flex-col justify-center min-h-[44px]">
               <span class="block text-neutral-400 text-[10px]">Primary Bottleneck</span>
-              <span id="summary-bottleneck" class="font-bold text-[#ff007f] text-[11px] truncate">Delayed Webhooks & Attribution</span>
+              <span id="summary-bottleneck" class="font-bold text-[#ff007f] text-[11px] truncate block" title="Delayed Webhooks & Attribution">Delayed Webhooks & Attribution</span>
             </div>
           </div>
         </div>
       </div>
 
       <!-- 2. Data Confidence Rating Card (3 Cols) -->
-      <div class="lg:col-span-3 bg-[#0d0d0d] border-2 border-[#ff5500] rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between shadow-[0_0_20px_rgba(255,85,0,0.2)]">
-        <div>
-          <div class="flex items-center justify-between mb-3">
+      <div class="lg:col-span-3 bg-[#0d0d0d] border-2 border-[#ff5500] rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between h-full shadow-[0_0_20px_rgba(255,85,0,0.2)]" style="min-height: 100%;">
+        <div class="flex flex-col flex-1">
+          <div class="flex items-center justify-between gap-2 mb-3 min-h-[36px]">
             <span class="text-xs uppercase tracking-wider font-extrabold text-[#ff6600]">Data Confidence</span>
-            <span id="confidence-level-pill" class="px-2 py-0.5 text-[11px] font-bold rounded-full bg-black text-white border border-[#ff5500]">
+            <span id="confidence-level-pill" class="px-2 py-0.5 text-[11px] font-bold rounded-full bg-black text-white border border-[#ff5500] whitespace-nowrap">
               95% Verified
             </span>
           </div>
-          <p class="text-xs text-neutral-300 leading-relaxed mb-4">
+          <p class="text-xs text-neutral-300 mb-4 leading-relaxed min-h-[36px] flex items-center">
             Measures the percentage of verified public disclosures and observable telemetry vs. modeled estimates.
           </p>
 
-          <div class="space-y-3 font-mono">
+          <div class="space-y-3 font-mono my-auto">
             <div>
               <div class="flex justify-between text-xs mb-1">
                 <span class="text-neutral-400 font-sans">Evidence Reliability:</span>
@@ -279,18 +298,18 @@
           </div>
         </div>
 
-        <div class="mt-4 pt-3 border-t border-[#222222] text-[10px] text-neutral-400 leading-tight">
-          *Lower confidence ratings reflect missing internal stack access, not assumed failure.
+        <div class="mt-auto pt-4 border-t border-[#222222] min-h-[72px] flex items-center text-[10px] text-neutral-400 leading-tight">
+          <span>*Lower confidence ratings reflect missing internal stack access, not assumed failure.</span>
         </div>
       </div>
 
       <!-- 3. Financial Opportunity Summary Card (5 Cols) -->
-      <div class="lg:col-span-5 bg-[#0d0d0d] border-2 border-white rounded-2xl p-6 flex flex-col justify-between shadow-[0_0_20px_rgba(255,255,255,0.15)]">
-        <div>
-          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+      <div class="lg:col-span-5 bg-[#0d0d0d] border-2 border-white rounded-2xl p-6 flex flex-col justify-between h-full shadow-[0_0_20px_rgba(255,255,255,0.15)]" style="min-height: 100%;">
+        <div class="flex flex-col flex-1">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3 min-h-[36px]">
             <div>
               <span class="text-xs uppercase tracking-wider font-extrabold text-white">Annual Financial Prize</span>
-              <h3 class="text-lg font-black text-white mt-0.5">Sequential Waterfall Impact</h3>
+              <h3 class="text-base font-black text-white mt-0.5">Sequential Waterfall Impact</h3>
             </div>
             <div class="flex items-center gap-1.5">
               <span id="tag-benchmark-closure" class="px-2 py-0.5 text-[10px] rounded-full bg-black text-[#ff007f] border border-[#ff007f] font-bold">
@@ -302,11 +321,11 @@
             </div>
           </div>
 
-          <p class="text-xs text-neutral-300 mb-4 leading-relaxed">
+          <p class="text-xs text-neutral-300 mb-4 leading-relaxed min-h-[36px] flex items-center">
             Estimates recoverable leakage across the 4 handoffs using non-overlapping cohort mechanics.
           </p>
 
-          <div class="grid grid-cols-2 gap-3 mb-4">
+          <div class="grid grid-cols-2 gap-3 mb-3 my-auto">
             <div class="bg-black p-3.5 rounded-xl border border-[#ff5500]">
               <span class="text-[10px] font-bold text-[#ff6600] uppercase block">Incremental Revenue</span>
               <span id="summary-inc-rev" class="text-2xl font-black text-white font-mono mt-0.5 block">+$1,006,336</span>
@@ -325,7 +344,7 @@
           </div>
         </div>
 
-        <div class="mt-4 pt-3 border-t border-[#222222] flex items-center justify-between text-xs font-mono">
+        <div class="mt-auto pt-4 border-t border-[#222222] min-h-[72px] flex items-center justify-between text-xs font-mono w-full">
           <span class="text-neutral-400">Total Net Bottom-Line Impact:</span>
           <span id="summary-net-impact" class="text-[#ff007f] font-black text-sm">$785,436 / yr</span>
         </div>
@@ -422,6 +441,31 @@
 
       <div id="sources-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-[11px]"></div>
     </section>
+
+    <!-- TEAM 6 BRANDED FOOTER -->
+    <footer class="mt-10 pt-6 border-t border-[#222222] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-black border border-[#ff007f] p-1 flex items-center justify-center shadow-[0_0_10px_rgba(255,0,127,0.3)]">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAA+CAYAAACY9hNHAAAFQElEQVR42u1abYhWRRTWZE3UcLc1BVFyNcVQMvFjBSMSCdkwEO1HqIUfLJJGaLo/xPxC/2kYVpr4Q7FVkYIi+iKxgsRdPyIVlVVRKVFDURQ/koV1fA6eFw7DzNyZe+++7zu5Aw/vvfPOnZnnnjPnnDlzO3XqKB0lyqKUWgScfpIIvwIsBi4C6kkg3BVYqh6Xh1yn/u+kN/LvUSauYibzMfBpQpudwBDgXoFstKQx74+AD4D3bMRR3wBMZeG2RSVlOVFc1gHbgJmi7nVgl2zLZOuZZ2t00sV8JwJ3mcDvwJQCQUGyWrTvB3wo2vwbm5T3AgeASkmUyxfAQr7+RbyALaLtN1FJGXPdDUzXyB4CvgI+Ae5w3SrghjBclQZNUDEQng68JMhuAj4HfgPOKUPh54bqBGNS63FCWj8o/7JSewn/AUeAp2NScWWTqkma/HeDRpwM4a9ARVSkU7ygrcAZcd+Fl0wUa1sFtidyNeIlbI7NejtVmtv8ZND+68Ax4BrwT6jGlFSqSRMVatvF9KIMdTfLzpqHuhqLjSMpn9XWcxv77/L02ZjPcyGBhUGijcD3jPXAMmB70jIpqZTxU+VDWnNRKsnFlfV6NoWQCe3ly+ltI17O1rra12q7DFdsW8gXQ0hbYu+a2EiPCvGpFtLVMe2q+oSqtsmfFwxhuZHrzznoOgZtBiYBs9KQLluDhbmMB/YDLbzboSTALgZlRvYAtWmsrkXFXy01YYqNT1DyLu9dlc2Cs/Y8XyyCozkXTcH+bZ5HnUGAtBE4SedKLP0Wvj7PzwYRF/1eEnVvtDfZGcCPwEHOR9caDNNhYC2HhZ9x/otCxh0cFzdyuNiSQdInhLT7tZsV5/VISboBjjCQ0rZ/GdRQ5WmMTM/bxkg9Fp65AkzWBp0HfK0NdrsYoaEhDl9AXoGT/jrmA9NCByCV7CE4bATeCd0Tt3MC4mXebe1hL1HwFAXPsSakQ/KrYwVhckGt5RIXq8Di2+lEcd1s66CYhMUU7rCxpFTwCg1LLbsz5bP9e0Y8eEPvoFTS9ZGyJXRVSZ3LTf5xj+hoUMDEp7InGNhOL6YK6JxGtZ/ySMDJUuOZ7+rK6R1K1DcBP7OxXMnWdjYwl04j6YCODdTewPX8QiYX6VKPNB0SKe2+hiW/ms+wtjI2AO8CI1Ko/uBMS9CRh1auIMHyTG8iUUxfHizhJDI21Xf0OU1cU7j6JjCG1XkLu8TvgG/Zv0otm+w574pUxA1GqipkGVj+G6BlTC5rwr7KIWwzfx10oRBjc5kvk/2OefTNRFiQftsi6V6UtvE8ZVwu+t/nOHdWjv/mJMy9JzAsOHawOPUJlrbbfFSJY+M+PhsRA/G/Rf0ol9bJj3DoaCeVAUtQWVLX7qJts8WwVdAnUaLdtRTZklOibq6l7QPNNzcFbznRdqTLbZkkY+mn3ibNgLlIaQ+nuSXEDV+mkfJrJtV1qaTLTWXdSxu+KlptmMt2jvIag40Y/zZoA65zGRuuq80jD5ZgY1rF/VrDWPezJA0Uf8RGPvN9VyQmymAPLzAsY6BxS1xPkdFapuNZsW+m+PjPpBNFjVRFQhhbmUOU1Sb6m+0bDaby1Z7R2LMeqZ2+Ged0XcbYlJktatzqE7lJN1VIH+cwtybR34ySpWq4rrNpfWltUqdstSEfiKiwvhSJOUmqu6Xdffm5cg7jHhZDzypEfEUnztdDPMLaupxc2EVxv6lk+SrX1tT0CUWOWdBu+gsvBvHlfDz7liN6+4N8NbfLlEAQjy/hPkcUPVkZ6ubymFhUH9p0lBKVR+XgUKXV3mjyAAAAAElFTkSuQmCC"
+               onerror="this.onerror=null; this.src='team6-logo.png'" alt="Team 6 Unicorn Logo" class="w-full h-full object-contain">
+        </div>
+        <div>
+          <span class="font-black text-white tracking-wider flex items-center gap-2">
+            <span>TEAM 6</span>
+            <span class="text-[#ff5500]">•</span>
+            <span class="text-[#ff007f]">DIGITAS PITCH</span>
+          </span>
+          <span class="block text-[10px] text-neutral-400">Customer Journey Integration Diagnostic & Enterprise Network Score Engine</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 text-[10px] font-mono text-neutral-500">
+        <span class="text-neutral-400 font-bold">TEAM 6 PITCH SIMULATION</span>
+        <span>•</span>
+        <span>CONFIDENTIAL DEMO</span>
+        <span>•</span>
+        <span>NOVEMBER 2026</span>
+      </div>
+    </footer>
 
   </main>
 

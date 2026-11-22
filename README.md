@@ -1,8 +1,8 @@
-# Calculating Your Network Score — Digitas Pitch Interactive Demo
+# Calculating Your Network Score — Team 6 · Digitas Pitch Interactive Demo
 
-An interactive, executive-ready **Customer Journey Integration Health & Network Score Dashboard** built for the Digitas Pitch brand diagnostic presentation.
+An interactive, executive-ready **Customer Journey Integration Health & Network Score Dashboard** built for the Team 6 Digitas Pitch brand diagnostic presentation.
 
-> **DEMO PROTOTYPE NOTICE:** Built for pitch simulation and interactive demonstration purposes. Atelier is calibrated at a baseline Network Score of **62.0%** (Moderate Integration Tier). Real enterprise beauty brands (Sephora, Ulta Beauty, L'Oréal, Fenty Beauty, Glossier, Rare Beauty) are evaluated using strict data hierarchy (SEC filings, observable signals, and transparent industry benchmarks).
+> **DEMO PROTOTYPE NOTICE:** Built for Team 6 pitch simulation and interactive demonstration purposes. Atelier is calibrated at a baseline Network Score of **62.0%** (Moderate Integration Tier). Real enterprise beauty brands (Sephora, Ulta Beauty, L'Oréal, Fenty Beauty, Glossier, Rare Beauty) are evaluated using strict data hierarchy (SEC filings, observable signals, and transparent industry benchmarks).
 
 ## 🌐 Live Website (GitHub Pages)
 Once GitHub Pages is enabled in this repository's **Settings → Pages**, the live interactive site is accessible at:
@@ -13,6 +13,8 @@ https://<YOUR-GITHUB-USERNAME>.github.io/atelier-dashboard/
 ---
 
 ## ⚡ Features
+- **Team 6 Brand Identity & Unicorn Logo:** Fully branded with Team 6's rearing unicorn insignia, high-contrast neon styling, and executive pitch badges.
+- **Pixel-Perfect Flush Layout:** Grid containers and hero metric cards (Ecosystem Integration, Data Confidence, and Annual Financial Prize) are strictly calibrated with `grid-auto-rows: 1fr` and `h-full flex flex-col justify-between` to ensure 100% flush top and bottom alignment.
 - **Calculating Your Network Score Engine:** Dynamic search and evaluation across real beauty brands and retailers (**Sephora**, **Ulta Beauty**, **L'Oréal**, **Fenty Beauty**, **Glossier**, **Rare Beauty**, and **Atelier**).
 - **Separation of Network Score vs. Data Confidence:** Clear diagnostic distinction between internal ecosystem health (0–100) and public evidence coverage (SEC 10-K disclosures vs. benchmarks).
 - **Four Customer Journey Handoffs:**
